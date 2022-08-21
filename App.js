@@ -1,25 +1,33 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { ThemeProvider } from 'styled-components'
 
-import GettingStartedScreen from "./screens/getting-started";
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+} from '@expo-google-fonts/poppins'
 
-import * as route from "./routes";
-import LoginScreen from "./screens/login";
-import RegisterScreen from "./screens/register";
+import axios from './lib/api/axios'
 
-const Stack = createNativeStackNavigator();
+import theme from './theme'
+import Navigator from './navigator/navigator'
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold,
+    Poppins_700Bold,
+  })
+
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName={route.gettingStartedRoute}>
-        <Stack.Screen
-          name={route.gettingStartedRoute}
-          component={GettingStartedScreen}
-        />
-        <Stack.Screen name={route.loginRoute} component={LoginScreen} />
-        <Stack.Screen name={route.registerRoute} component={RegisterScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+    <ThemeProvider theme={theme}>
+      <Navigator />
+    </ThemeProvider>
+  )
 }

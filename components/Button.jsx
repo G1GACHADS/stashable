@@ -1,12 +1,78 @@
-import { Pressable } from "react-native-web";
+import { View, Dimensions } from 'react-native'
+import PropTypes from 'prop-types'
+import styled from 'styled-components/native'
+import { css } from 'styled-components/native'
 
-// contoh
-export function Button({ children, onPress, style }) {
+const ButtonContainer = styled.TouchableOpacity`
+  ${props => {
+    if (props.sm) {
+      return css`
+        width: 140px;
+      `
+    }
+
+    return css`
+      width: ${Dimensions.get('window').width - 30}px;
+    `
+  }}
+
+  ${props =>
+    props.stroke &&
+    css`
+      border: 2px solid ${props.strokeColor};
+    `}
+
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ backgroundColor, theme }) =>
+    backgroundColor ?? theme.colors.primary};
+  border-radius: 5px;
+`
+
+const Title = styled.Text`
+  color: ${({ titleColor, theme }) => titleColor ?? theme.colors.white1};
+  font-family: ${({ theme }) => theme.typography.family.semiBold};
+  font-size: ${({ theme }) => theme.typography.tall.lg};
+`
+
+export const Button = ({
+  sm,
+  stroke,
+  strokeColor,
+  title,
+  onPress,
+  icon,
+  backgroundColor,
+  titleColor,
+}) => {
   return (
-    <Pressable onPress={onPress} style={style}>
-      {children}
-    </Pressable>
-  );
+    <ButtonContainer
+      sm={sm}
+      stroke={stroke}
+      strokeColor={strokeColor}
+      onPress={onPress}
+      backgroundColor={backgroundColor}
+    >
+      {icon && <View style={{ marginRight: 10, marginBottom: 6 }}>{icon}</View>}
+      <Title titleColor={titleColor} icon={icon}>
+        {title}
+      </Title>
+    </ButtonContainer>
+  )
 }
 
-export default Button;
+Button.propTypes = {
+  sm: PropTypes.bool,
+  icon: PropTypes.element,
+  onPress: PropTypes.func,
+  backgroundColor: PropTypes.string,
+  stroke: PropTypes.bool,
+  strokeColor: PropTypes.string,
+  title: PropTypes.string,
+  titleColor: PropTypes.string,
+}
+
+export default Button

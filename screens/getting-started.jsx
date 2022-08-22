@@ -1,6 +1,5 @@
-import { ScrollView, Image, StatusBar, Text, View } from 'react-native'
-import { useTheme } from 'styled-components'
-import styled from 'styled-components/native'
+import { ScrollView, Image, StatusBar, View } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 import Button from '../components/Button'
 import Container from '../components/Container'
 import routes from '../constants/routes'

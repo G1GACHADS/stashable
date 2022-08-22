@@ -1,3 +1,8 @@
+import { TouchableOpacity } from 'react-native'
+import styled from 'styled-components/native'
+
+import routes from '../../constants/routes'
+
 const FooterContainer = styled.View`
   margin-top: 15px;
   display: flex;

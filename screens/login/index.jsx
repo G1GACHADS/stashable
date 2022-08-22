@@ -1,11 +1,10 @@
-import { StatusBar, ScrollView, TouchableOpacity } from 'react-native'
+import { StatusBar, ScrollView } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import Button from '../../components/Button'
 import Container from '../../components/Container'
 import IconGoogle from '../../components/icons/IconGoogle'
-import routes from '../../constants/routes'
 import Footer from './footer'
 import { SignInForm } from './form'
 

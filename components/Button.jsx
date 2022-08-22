@@ -1,7 +1,6 @@
-import { View, Dimensions } from 'react-native'
 import PropTypes from 'prop-types'
-import styled from 'styled-components/native'
-import { css } from 'styled-components/native'
+import { Dimensions, View } from 'react-native'
+import styled, { css } from 'styled-components/native'
 
 const ButtonContainer = styled.TouchableOpacity`
   ${props => {

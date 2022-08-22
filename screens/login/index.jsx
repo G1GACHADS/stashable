@@ -1,4 +1,4 @@
-import { StatusBar, ScrollView } from 'react-native'
+import { ScrollView, StatusBar } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 

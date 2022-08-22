@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { useTheme } from 'styled-components'
 
 import * as route from '../constants/routes'
 
+import GettingStartedScreen from '../screens/getting-started'
 import LoginScreen from '../screens/login'
 import RegisterScreen from '../screens/register'
-import GettingStartedScreen from '../screens/getting-started'
-import { useTheme } from 'styled-components'
 
 const Stack = createNativeStackNavigator()
 

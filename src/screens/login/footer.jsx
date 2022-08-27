@@ -1,5 +1,7 @@
 import { TouchableOpacity } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
+
+import Text from '../../components/text'
 
 import routes from '../../constants/routes'
 
@@ -18,20 +20,28 @@ const FooterText = styled.Text`
   font-size: ${({ theme }) => theme.typography.tall.md};
 `
 
-const FooterLink = styled.Text`
-  color: ${({ theme }) => theme.colors.secondary};
-  font-family: ${({ theme }) => theme.typography.weight.semiBold};
-  font-size: ${({ theme }) => theme.typography.tall.md};
-`
-
 export function Footer({ navigation }) {
+  const { colors, typography } = useTheme()
   return (
     <FooterContainer>
-      <FooterText>Don't have an account yet?</FooterText>
+      <Text
+        color={colors.grey5}
+        weight={typography.weight.medium}
+        size={typography.tall.lg}
+        mr="10"
+      >
+        Don't have an account yet?
+      </Text>
       <TouchableOpacity
         onPress={() => navigation.navigate(routes.registerRoute)}
       >
-        <FooterLink>Register Now</FooterLink>
+        <Text
+          color={colors.secondary}
+          weight={typography.weight.semiBold}
+          size={typography.tall.lg}
+        >
+          Register Now
+        </Text>
       </TouchableOpacity>
     </FooterContainer>
   )

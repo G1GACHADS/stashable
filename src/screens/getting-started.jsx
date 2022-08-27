@@ -9,7 +9,6 @@ import Text from '../components/text'
 
 export function GettingStartedScreen({ navigation }) {
   const { colors, typography } = useTheme()
-  console.log({ colors, typography })
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />

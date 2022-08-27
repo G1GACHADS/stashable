@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types'
-import { Dimensions, View } from 'react-native'
+import { ActivityIndicator, Dimensions, View } from 'react-native'
 import styled, { css, useTheme } from 'styled-components/native'
 
 const ButtonContainer = styled.Pressable`
@@ -26,8 +25,10 @@ const ButtonContainer = styled.Pressable`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: ${({ backgroundColor, theme }) =>
-    backgroundColor ?? theme.colors.primary};
+  background-color: ${props =>
+    props.disabled
+      ? props.theme.colors.grey1
+      : props.backgroundColor ?? props.theme.colors.primary};
   border-radius: 5px;
 `
 
@@ -39,12 +40,16 @@ const Title = styled.Text`
 
 export const Button = ({
   sm,
+  disabled,
+  loading,
+  loadingColor,
   title,
   titleColor,
   stroke,
   strokeColor,
   icon,
   backgroundColor,
+  rippleColor,
   onPress,
 }) => {
   const theme = useTheme()
@@ -56,26 +61,25 @@ export const Button = ({
       onPress={onPress}
       backgroundColor={backgroundColor}
       android_ripple={{
-        color: theme.colors.primaryDark,
+        color: rippleColor ?? theme.colors.primaryDark,
       }}
+      disabled={disabled}
     >
-      {icon && <View style={{ marginRight: 10, marginBottom: 6 }}>{icon}</View>}
-      <Title titleColor={titleColor} icon={icon}>
-        {title}
-      </Title>
+      {loading ? (
+        <ActivityIndicator size="large" color={theme.colors.white} />
+      ) : (
+        <>
+          {icon && (
+            <View style={{ marginRight: 10, marginBottom: 6 }}>{icon}</View>
+          )}
+
+          <Title titleColor={titleColor} icon={icon}>
+            {title}
+          </Title>
+        </>
+      )}
     </ButtonContainer>
   )
-}
-
-Button.propTypes = {
-  sm: PropTypes.bool,
-  icon: PropTypes.element,
-  onPress: PropTypes.func,
-  backgroundColor: PropTypes.string,
-  stroke: PropTypes.bool,
-  strokeColor: PropTypes.string,
-  title: PropTypes.string,
-  titleColor: PropTypes.string,
 }
 
 export default Button

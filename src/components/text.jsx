@@ -5,6 +5,7 @@ export const Text = styled.Text`
   font-family: ${({ weight }) => weight};
   font-size: ${({ size }) => size};
 
+  ${props => props.capitalize && `text-transform: capitalize`}
   ${props => props.padding && `padding: ${props.padding}`}
   ${props => props.margin && `margin: ${props.margin}`}
   ${props => props.textAlign && `text-align: ${props.textAlign}`}

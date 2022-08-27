@@ -1,9 +1,8 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useState } from 'react'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { signIn } from '../../lib/api/auth'
+import { useAuthStore } from '../../store/auth-store'
 
 import Button from '../../components/button'
 import Input from '../../components/input'
@@ -12,17 +11,18 @@ import Text from '../../components/text'
 
 export function SignInForm({ navigation }) {
   const theme = useTheme()
+  const { authenticateUser, error } = useAuthStore()
+
+  const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
     email: '',
     password: '',
   })
 
   async function submit() {
-    const data = await signIn(form.email, form.password)
-
-    await AsyncStorage.setItem('accessToken', JSON.stringify(data.accessToken))
-    await AsyncStorage.setItem('userData', JSON.stringify(data.userData))
-    await AsyncStorage.setItem('userAddress', JSON.stringify(data.userAddress))
+    setLoading(true)
+    await authenticateUser(form.email, form.password)
+    setLoading(false)
   }
 
   return (
@@ -49,7 +49,23 @@ export function SignInForm({ navigation }) {
       >
         Forgot Password?
       </Text>
-      <Button title="Log In" onPress={submit} />
+      <Button
+        title="Log In"
+        onPress={submit}
+        disabled={form.email === '' && form.password === ''}
+        loading={loading}
+      />
+      {error !== '' && (
+        <Text
+          color={theme.colors.primary}
+          weight={theme.typography.weight.medium}
+          size={theme.typography.tall.lg}
+          mb="15"
+          capitalize
+        >
+          {error}
+        </Text>
+      )}
     </View>
   )
 }

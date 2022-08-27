@@ -1,5 +1,6 @@
 {
   "expo": {
+    "entryPoint": "./src/App.jsx",
     "name": "stashable",
     "slug": "stashable",
     "version": "1.0.0",

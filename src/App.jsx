@@ -1,19 +1,18 @@
 import { ThemeProvider } from 'styled-components'
 
 import {
-  useFonts,
   Poppins_400Regular,
   Poppins_500Medium,
   Poppins_600SemiBold,
-  Poppins_700Bold,
+  Poppins_700Bold, useFonts
 } from '@expo-google-fonts/poppins'
 
-import axios from './lib/api/axios'
+import { registerRootComponent } from 'expo'
 
-import theme from './theme'
 import Navigator from './navigator/navigator'
+import theme from './theme'
 
-export default function App() {
+function App() {
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
@@ -31,3 +30,5 @@ export default function App() {
     </ThemeProvider>
   )
 }
+
+export default registerRootComponent(App)

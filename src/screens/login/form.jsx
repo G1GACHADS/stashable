@@ -7,6 +7,7 @@ import { signIn } from '../../lib/api/auth'
 
 import Input from '../../components/Input'
 import Label from '../../components/Label'
+import Button from '../../components/Button'
 
 const ForgotPassword = styled.Text`
   text-align: right;

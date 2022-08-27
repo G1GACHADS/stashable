@@ -14,7 +14,7 @@ const Title = styled.Text`
 const Description = styled.Text`
   color: ${({ theme }) => theme.colors.grey3};
   font-family: ${({ theme }) => theme.typography.family.regular};
-  font-size: ${({ theme }) => theme.typography.tall.sm};
+  font-size: ${({ theme }) => theme.typography.tall.md};
   margin-bottom: 20px;
 `
 
@@ -25,7 +25,7 @@ export function GettingStartedScreen({ navigation }) {
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <ScrollView>
         <Image
-          source={require('../assets/images/geting-started-banner.png')}
+          source={require('../../assets/images/geting-started-banner.png')}
           style={{
             width: null,
             height: 400,

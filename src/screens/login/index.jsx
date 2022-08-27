@@ -2,9 +2,9 @@ import { ScrollView, StatusBar } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import Button from '../../components/Button'
-import Container from '../../components/Container'
-import IconGoogle from '../../components/icons/IconGoogle'
+import Button from '../../components/button'
+import Container from '../../components/container'
+import IconGoogle from '../../components/icons/icon-google'
 import Footer from './footer'
 import { SignInForm } from './form'
 

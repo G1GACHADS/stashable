@@ -1,7 +1,7 @@
 import { Image, ScrollView, StatusBar, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
-import Button from '../components/Button'
-import Container from '../components/Container'
+import Button from '../components/button'
+import Container from '../components/container'
 import routes from '../constants/routes'
 
 const Title = styled.Text`

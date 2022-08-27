@@ -9,7 +9,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { registerRootComponent } from 'expo'
 import { ThemeProvider } from 'styled-components'
 
-import Navigator from './Navigator'
+import Navigator from './navigator'
 import theme from './theme'
 
 function App() {

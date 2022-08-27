@@ -5,9 +5,9 @@ import styled from 'styled-components/native'
 
 import { signIn } from '../../lib/api/auth'
 
-import Input from '../../components/Input'
-import Label from '../../components/Label'
-import Button from '../../components/Button'
+import Button from '../../components/button'
+import Input from '../../components/input'
+import Label from '../../components/label'
 
 const ForgotPassword = styled.Text`
   text-align: right;

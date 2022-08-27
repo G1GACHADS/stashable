@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import create from 'zustand'
 import { persist } from 'zustand/middleware'
-import axios from '../lib/api/axios'
+import api from '../api'
 
 const persistOptions = { name: 'auth-storage', getStorage: () => AsyncStorage }
 
@@ -14,7 +14,7 @@ export const useAuthStore = create(
       user: { data: {}, address: {} },
       async authenticateUser(email, password) {
         try {
-          const response = await axios.post('/auth/login', { email, password })
+          const response = await api.post('/auth/login', { email, password })
 
           const attributes = response.data['attributes']
           const relationships = response.data['relationships']
@@ -52,7 +52,7 @@ export const useAuthStore = create(
         password,
       }) {
         try {
-          const response = await axios.post('/auth/register', {
+          const response = await api.post('/auth/register', {
             full_name: fullName,
             email: email,
             phone_number: phoneNumber,

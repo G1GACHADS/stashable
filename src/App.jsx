@@ -1,15 +1,15 @@
-import { ThemeProvider } from 'styled-components'
-
 import {
   Poppins_400Regular,
   Poppins_500Medium,
   Poppins_600SemiBold,
-  Poppins_700Bold, useFonts
+  Poppins_700Bold,
+  useFonts
 } from '@expo-google-fonts/poppins'
-
+import { NavigationContainer } from '@react-navigation/native'
 import { registerRootComponent } from 'expo'
+import { ThemeProvider } from 'styled-components'
 
-import Navigator from './navigator/navigator'
+import Navigator from './Navigator'
 import theme from './theme'
 
 function App() {
@@ -25,9 +25,11 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Navigator />
-    </ThemeProvider>
+    <NavigationContainer>
+      <ThemeProvider theme={theme}>
+        <Navigator />
+      </ThemeProvider>
+    </NavigationContainer>
   )
 }
 

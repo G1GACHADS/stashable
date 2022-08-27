@@ -220,6 +220,9 @@ export const RegisterForm = ({ navigation }) => {
     setLoading(true)
     await registerUser(form)
     setLoading(false)
+    if (!error) {
+      navigation.navigate(routes.mainPageRoute)
+    }
   }
 
   switch (step) {

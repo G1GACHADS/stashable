@@ -8,6 +8,7 @@ import Button from '../../components/button'
 import Input from '../../components/input'
 import Label from '../../components/label'
 import Text from '../../components/text'
+import routes from '../../constants/routes'
 
 export function SignInForm({ navigation }) {
   const theme = useTheme()
@@ -23,6 +24,10 @@ export function SignInForm({ navigation }) {
     setLoading(true)
     await authenticateUser(form.email, form.password)
     setLoading(false)
+
+    if (!error) {
+      navigation.navigate(routes.mainPageRoute)
+    }
   }
 
   return (

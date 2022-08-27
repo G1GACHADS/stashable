@@ -11,7 +11,7 @@ export const Input = styled.TextInput.attrs({
   height: 56px;
   padding-left: 15px;
   margin-bottom: 10px;
-  font-family: ${({ theme }) => theme.typography.family.regular};
+  font-family: ${({ theme }) => theme.typography.weight.regular};
   font-size: ${({ theme }) => theme.typography.tall.md};
 `
 

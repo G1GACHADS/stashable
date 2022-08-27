@@ -1,26 +1,13 @@
 import { ScrollView, StatusBar } from 'react-native'
-import { useTheme } from 'styled-components'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import Button from '../../components/button'
 import Container from '../../components/container'
 import IconGoogle from '../../components/icons/icon-google'
+import Text from '../../components/text'
+
 import Footer from './footer'
 import { SignInForm } from './form'
-
-const Title = styled.Text`
-  color: ${({ theme }) => theme.colors.black};
-  font-family: ${({ theme }) => theme.typography.family.semiBold};
-  font-size: ${({ theme }) => theme.typography.venti.md};
-  margin-bottom: 8px;
-`
-
-const SubTitle = styled.Text`
-  color: ${({ theme }) => theme.colors.grey3};
-  font-family: ${({ theme }) => theme.typography.family.medium};
-  font-size: ${({ theme }) => theme.typography.tall.md};
-  margin-bottom: 14px;
-`
 
 const TextDivider = styled.View`
   flex-direction: row;
@@ -34,17 +21,17 @@ const TextDividerLine = styled.View`
   background-color: ${({ theme }) => theme.colors.grey1};
 `
 
-const TextDividerTitle = styled.Text`
-  color: ${({ theme }) => theme.colors.grey3};
-  font-family: ${({ theme }) => theme.typography.family.medium};
-  font-size: ${({ theme }) => theme.typography.tall.md};
-  padding: 0 12px;
-`
-
-const FormDivider = () => (
+const FormDivider = ({ theme }) => (
   <TextDivider gap="1rem">
     <TextDividerLine />
-    <TextDividerTitle>Or Sign In With</TextDividerTitle>
+    <Text
+      color={theme.colors.grey3}
+      weight={theme.typography.weight.medium}
+      size={theme.typography.tall.md}
+      padding="0 12px"
+    >
+      Or Sign In With
+    </Text>
     <TextDividerLine />
   </TextDivider>
 )
@@ -56,10 +43,24 @@ export function LoginScreen({ navigation }) {
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <ScrollView>
         <Container>
-          <Title>Let's Sign You In</Title>
-          <SubTitle>Hello, welcome back to stashable.</SubTitle>
+          <Text
+            color={theme.colors.black}
+            weight={theme.typography.weight.semiBold}
+            size={theme.typography.venti.md}
+            mb="15"
+          >
+            Let's Sign You In
+          </Text>
+          <Text
+            color={theme.colors.grey3}
+            weight={theme.typography.weight.medium}
+            size={theme.typography.tall.lg}
+            mb="14"
+          >
+            Hello, welcome back to stashable.
+          </Text>
           <SignInForm navigation={navigation} />
-          <FormDivider />
+          <FormDivider theme={theme} />
 
           <Button
             title="Google"

@@ -33,19 +33,19 @@ const ButtonContainer = styled.Pressable`
 
 const Title = styled.Text`
   color: ${({ titleColor, theme }) => titleColor ?? theme.colors.white1};
-  font-family: ${({ theme }) => theme.typography.family.semiBold};
+  font-family: ${({ theme }) => theme.typography.weight.semiBold};
   font-size: ${({ theme }) => theme.typography.tall.lg};
 `
 
 export const Button = ({
   sm,
+  title,
+  titleColor,
   stroke,
   strokeColor,
-  title,
-  onPress,
   icon,
   backgroundColor,
-  titleColor,
+  onPress,
 }) => {
   const theme = useTheme()
   return (

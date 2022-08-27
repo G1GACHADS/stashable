@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { useTheme } from 'styled-components'
+import { useTheme } from 'styled-components/native'
 
 import * as route from './constants/routes'
 
@@ -23,7 +23,7 @@ export const Navigator = () => {
           backgroundColor: theme.colors.white1,
         },
         headerTitleStyle: {
-          fontFamily: theme.typography.family.semiBold,
+          fontFamily: theme.typography.weight.semiBold,
           fontSize: theme.typography.tall.lg_i,
           color: theme.colors.black,
         },

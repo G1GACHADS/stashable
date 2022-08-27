@@ -14,7 +14,7 @@ export const colors = {
 }
 
 export const typography = {
-  family: {
+  weight: {
     regular: 'Poppins_400Regular',
     medium: 'Poppins_500Medium',
     semiBold: 'Poppins_600SemiBold',

@@ -1,23 +1,17 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useState } from 'react'
 import { View } from 'react-native'
-import styled from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { signIn } from '../../lib/api/auth'
 
 import Button from '../../components/button'
 import Input from '../../components/input'
 import Label from '../../components/label'
-
-const ForgotPassword = styled.Text`
-  text-align: right;
-  color: ${({ theme }) => theme.colors.grey3};
-  font-family: ${({ theme }) => theme.typography.family.medium};
-  font-size: ${({ theme }) => theme.typography.tall.md};
-  margin-bottom: 15px;
-`
+import Text from '../../components/text'
 
 export function SignInForm({ navigation }) {
+  const theme = useTheme()
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -26,9 +20,9 @@ export function SignInForm({ navigation }) {
   async function submit() {
     const data = await signIn(form.email, form.password)
 
-    await AsyncStorage.setItem('accessToken', data.accessToken)
-    await AsyncStorage.setItem('userData', data.userData)
-    await AsyncStorage.setItem('userAddress', data.userAddress)
+    await AsyncStorage.setItem('accessToken', JSON.stringify(data.accessToken))
+    await AsyncStorage.setItem('userData', JSON.stringify(data.userData))
+    await AsyncStorage.setItem('userAddress', JSON.stringify(data.userAddress))
   }
 
   return (
@@ -46,7 +40,15 @@ export function SignInForm({ navigation }) {
         secureTextEntry
         onChangeText={password => setForm({ ...form, password })}
       />
-      <ForgotPassword>Forgot Password?</ForgotPassword>
+      <Text
+        color={theme.colors.grey3}
+        weight={theme.typography.weight.medium}
+        size={theme.typography.tall.lg}
+        mb="15"
+        textAlign="right"
+      >
+        Forgot Password?
+      </Text>
       <Button title="Log In" onPress={submit} />
     </View>
   )

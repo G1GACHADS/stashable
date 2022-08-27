@@ -14,13 +14,13 @@ const FooterContainer = styled.View`
 const FooterText = styled.Text`
   margin-right: 10px;
   color: ${({ theme }) => theme.colors.grey5};
-  font-family: ${({ theme }) => theme.typography.family.medium};
+  font-family: ${({ theme }) => theme.typography.weight.medium};
   font-size: ${({ theme }) => theme.typography.tall.md};
 `
 
 const FooterLink = styled.Text`
   color: ${({ theme }) => theme.colors.secondary};
-  font-family: ${({ theme }) => theme.typography.family.semiBold};
+  font-family: ${({ theme }) => theme.typography.weight.semiBold};
   font-size: ${({ theme }) => theme.typography.tall.md};
 `
 

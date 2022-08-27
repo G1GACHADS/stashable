@@ -7,7 +7,7 @@ import {
 } from '@expo-google-fonts/poppins'
 import { NavigationContainer } from '@react-navigation/native'
 import { registerRootComponent } from 'expo'
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components/native'
 
 import Navigator from './navigator'
 import theme from './theme'

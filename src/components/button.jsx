@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import { Dimensions, View } from 'react-native'
-import styled, { css } from 'styled-components/native'
+import styled, { css, useTheme } from 'styled-components/native'
 
-const ButtonContainer = styled.TouchableOpacity`
+const ButtonContainer = styled.Pressable`
   ${props => {
     if (props.sm) {
       return css`
@@ -47,6 +47,7 @@ export const Button = ({
   backgroundColor,
   titleColor,
 }) => {
+  const theme = useTheme()
   return (
     <ButtonContainer
       sm={sm}
@@ -54,6 +55,9 @@ export const Button = ({
       strokeColor={strokeColor}
       onPress={onPress}
       backgroundColor={backgroundColor}
+      android_ripple={{
+        color: theme.colors.primaryDark,
+      }}
     >
       {icon && <View style={{ marginRight: 10, marginBottom: 6 }}>{icon}</View>}
       <Title titleColor={titleColor} icon={icon}>

@@ -80,7 +80,7 @@ export function ProfileScreen({ navigation }) {
   )
 }
 
-export default MainScreen
+export default ProfileScreen
 ```
 
 5. Create a new route go to `./src/constants/routes.js`

@@ -7,6 +7,7 @@ import GettingStartedScreen from './screens/getting-started'
 import LoginScreen from './screens/login'
 import MainScreen from './screens/main'
 import RegisterScreen from './screens/register'
+import WarehouseScreen from './screens/warehouse'
 import useAuthStore from './store/auth-store'
 
 const Stack = createNativeStackNavigator()
@@ -42,6 +43,13 @@ export const Navigator = () => {
             component={MainScreen}
             options={{
               headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name={route.warehousePageRoute}
+            component={WarehouseScreen}
+            options={{
+              title: 'Warehouse Details',
             }}
           />
         </>

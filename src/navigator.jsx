@@ -8,6 +8,7 @@ import LoginScreen from './screens/login'
 import MainScreen from './screens/main'
 import RegisterScreen from './screens/register'
 import WarehouseScreen from './screens/warehouse'
+import CheckoutScreen from './screens/warehouse/checkout'
 import useAuthStore from './store/auth-store'
 
 const Stack = createNativeStackNavigator()
@@ -50,6 +51,13 @@ export const Navigator = () => {
             component={WarehouseScreen}
             options={{
               title: 'Warehouse Details',
+            }}
+          />
+          <Stack.Screen
+            name={route.warehouseCheckoutPageRoute}
+            component={CheckoutScreen}
+            options={{
+              title: 'Checkout',
             }}
           />
         </>

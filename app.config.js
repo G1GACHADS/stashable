@@ -28,6 +28,7 @@ module.exports = {
     favicon: './assets/favicon.png',
   },
   extra: {
-    backendURL: process.env.BACKEND_URL
-  }
+    backendURL: process.env.BACKEND_URL,
+  },
+  plugins: [['expo-image-picker']],
 }

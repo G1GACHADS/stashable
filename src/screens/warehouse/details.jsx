@@ -1,14 +1,11 @@
-import { TouchableOpacity, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import Container from '../../components/container'
 import Text from '../../components/text'
-import routes from '../../constants/routes'
 
-import IconFragile from '../../components/icons/icon-fragile'
-import IconElectric from '../../components/icons/icon-electric'
-import IconHeavyMaterial from '../../components/icons/icon-heavymaterial'
 import IconChemical from '../../components/icons/icon-chemical'
+import IconElectric from '../../components/icons/icon-electric'
+import IconFragile from '../../components/icons/icon-fragile'
+import IconHeavyMaterial from '../../components/icons/icon-heavymaterial'
 
 const DetailContainer = styled.View`
   margin-top: 15px;

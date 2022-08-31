@@ -16,12 +16,11 @@ const CategoryContainer = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   gap: 5px;
-  align-items: baseline;
 `
 const CategoryIcon = styled.View`
   padding: 5px 8px;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 5px; 
 `
 
 

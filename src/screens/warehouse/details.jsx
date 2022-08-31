@@ -36,7 +36,7 @@ const theme = useTheme()
           <Text
             color={theme.colors.black}
             weight={theme.typography.weight.semiBold}
-            size={theme.typography.tall}
+            size={theme.typography.tall.lg}
             mb="5"
           >
             Supports
@@ -60,7 +60,7 @@ const theme = useTheme()
           <Text
             color={theme.colors.black}
             weight={theme.typography.weight.semiBold}
-            size={theme.typography.tall}
+            size={theme.typography.tall.lg}
             mb="5"
           >
             Description
@@ -68,7 +68,7 @@ const theme = useTheme()
           <Text
             color={theme.colors.grey3}
             weight={theme.typography.weight.regular}
-            size={theme.typography.tall}
+            size={theme.typography.tall.sm}
             mb="5"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

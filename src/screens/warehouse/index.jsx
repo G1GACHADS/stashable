@@ -25,7 +25,7 @@ export function WarehouseScreen({ navigation }) {
           <Text
             color={theme.colors.black}
             weight={theme.typography.weight.semiBold}
-            size={theme.typography.grande}
+            size={theme.typography.grande.sm}
             mb="5"
           >
             Luntia Warehouse
@@ -37,7 +37,7 @@ export function WarehouseScreen({ navigation }) {
             <Text
               color={theme.colors.grey3}
               weight={theme.typography.weight.regular}
-              size={theme.typography.tall}
+              size={theme.typography.tall.md}
               mb="5"
             >
               Pademangan, Jakarta Selatan
@@ -45,7 +45,7 @@ export function WarehouseScreen({ navigation }) {
             <Text
               color={theme.colors.grey3}
               weight={theme.typography.weight.regular}
-              size={theme.typography.tall}
+              size={theme.typography.tall.md}
               mb="5"
             >
               Jalan Sebrang

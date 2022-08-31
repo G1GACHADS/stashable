@@ -1,4 +1,4 @@
-import {  Image, ScrollView, StatusBar, View, TouchableOpacity } from 'react-native'
+import { Image, ScrollView, StatusBar, TouchableOpacity } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import Container from '../../components/container'
@@ -9,7 +9,7 @@ import routes from '../../constants/routes'
 import Details from './details'
 
 export function WarehouseScreen({ navigation }) {
-  const theme  = useTheme()
+  const theme = useTheme()
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />

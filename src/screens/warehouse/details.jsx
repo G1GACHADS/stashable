@@ -11,65 +11,69 @@ const DetailContainer = styled.View`
   margin-top: 15px;
   align-items: baseline;
 `
+
 const CategoryContainer = styled.View`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 5px;
 `
+
 const CategoryIcon = styled.View`
   padding: 5px 8px;
   border: 1px solid black;
-  border-radius: 5px; 
+  border-radius: 5px;
 `
 
-
 export function Details({ navigation }) {
-const theme = useTheme()
+  const theme = useTheme()
   return (
     <>
-        <DetailContainer>
-          <Text
-            color={theme.colors.black}
-            weight={theme.typography.weight.semiBold}
-            size={theme.typography.tall.lg}
-            mb="5"
-          >
-            Supports
-          </Text>
-          <CategoryContainer>
-            <CategoryIcon>
-                <IconFragile/>
-            </CategoryIcon>
-            <CategoryIcon>
-                <IconElectric/>
-            </CategoryIcon>
-            <CategoryIcon>
-                <IconHeavyMaterial/>
-            </CategoryIcon>
-            <CategoryIcon>
-                <IconChemical/>
-            </CategoryIcon>
-          </CategoryContainer>
-          </DetailContainer>
-          <DetailContainer>
-          <Text
-            color={theme.colors.black}
-            weight={theme.typography.weight.semiBold}
-            size={theme.typography.tall.lg}
-            mb="5"
-          >
-            Description
-          </Text>
-          <Text
-            color={theme.colors.grey3}
-            weight={theme.typography.weight.regular}
-            size={theme.typography.tall.sm}
-            mb="5"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </Text>
-          </DetailContainer>
+      <DetailContainer>
+        <Text
+          color={theme.colors.black}
+          weight={theme.typography.weight.semiBold}
+          size={theme.typography.tall.lg}
+          mb="5"
+        >
+          Supports
+        </Text>
+        <CategoryContainer>
+          <CategoryIcon>
+            <IconFragile />
+          </CategoryIcon>
+          <CategoryIcon>
+            <IconElectric />
+          </CategoryIcon>
+          <CategoryIcon>
+            <IconHeavyMaterial />
+          </CategoryIcon>
+          <CategoryIcon>
+            <IconChemical />
+          </CategoryIcon>
+        </CategoryContainer>
+      </DetailContainer>
+      <DetailContainer>
+        <Text
+          color={theme.colors.black}
+          weight={theme.typography.weight.semiBold}
+          size={theme.typography.tall.lg}
+          mb="5"
+        >
+          Description
+        </Text>
+        <Text
+          color={theme.colors.grey3}
+          weight={theme.typography.weight.regular}
+          size={theme.typography.tall.sm}
+          mb="5"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </Text>
+      </DetailContainer>
     </>
   )
 }

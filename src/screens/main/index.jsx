@@ -1,4 +1,4 @@
-import { Image, ScrollView, StatusBar, View, StyleSheet } from 'react-native'
+import { Image, ScrollView, StatusBar, View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import routes from '../../constants/routes'
@@ -6,11 +6,10 @@ import routes from '../../constants/routes'
 import Button from '../../components/button'
 import Container from '../../components/container'
 import Text from '../../components/text'
-import Input from '../components/input'
 
-import ElectricCategoryIcon from '../../components/icons/iconElectricCategory'
+import IconElectricCategory from '../../components/icons/icon-electric-category'
 
-export function GettingStartedScreen({ navigation }) {
+export function MainScreen({ navigation }) {
   const theme = useTheme()
   return (
     <>
@@ -29,7 +28,6 @@ export function GettingStartedScreen({ navigation }) {
           </Text>
         </Container>
         <Container>
-          {' '}
           {/* Banner */}
           <Image
             source={require('../../../assets/images/stashable-sale-banner.png')}
@@ -40,7 +38,6 @@ export function GettingStartedScreen({ navigation }) {
           ></Image>
         </Container>
         <Container style={{ gap: 10 }}>
-          {' '}
           {/* Place Section */}
           <Text
             color={theme.colors.black}
@@ -161,7 +158,6 @@ export function GettingStartedScreen({ navigation }) {
           </View>
         </Container>
         <Container>
-          {' '}
           {/* Featured Warehouse */}
           <Text
             color={theme.colors.black}
@@ -203,10 +199,10 @@ export function GettingStartedScreen({ navigation }) {
                 Pademangan, Jakarta Utara
               </Text>
               <View style={{ flexDirection: 'row' }}>
-                <ElectricCategoryIcon />
-                <ElectricCategoryIcon />
-                <ElectricCategoryIcon />
-                <ElectricCategoryIcon />
+                <IconElectricCategory />
+                <IconElectricCategory />
+                <IconElectricCategory />
+                <IconElectricCategory />
               </View>
               <Text
                 color={theme.colors.black}
@@ -288,10 +284,9 @@ export function GettingStartedScreen({ navigation }) {
               </Text>
             </View>
           </ScrollView>
-        </Container>{' '}
+        </Container>
         {/* End Of Featured Warehouse */}
         <Container style={{ gap: 15 }}>
-          {' '}
           {/* Start Of More Warehouse */}
           <Text
             color={theme.colors.black}
@@ -332,10 +327,10 @@ export function GettingStartedScreen({ navigation }) {
                   Pademangan, Jakarta Utara
                 </Text>
                 <View style={{ flexDirection: 'row' }}>
-                  <ElectricCategoryIcon />
-                  <ElectricCategoryIcon />
-                  <ElectricCategoryIcon />
-                  <ElectricCategoryIcon />
+                  <IconElectricCategory />
+                  <IconElectricCategory />
+                  <IconElectricCategory />
+                  <IconElectricCategory />
                 </View>
                 <Text
                   color={theme.colors.black}
@@ -386,10 +381,10 @@ export function GettingStartedScreen({ navigation }) {
                   Pademangan, Jakarta Utara
                 </Text>
                 <View style={{ flexDirection: 'row' }}>
-                  <ElectricCategoryIcon />
-                  <ElectricCategoryIcon />
-                  <ElectricCategoryIcon />
-                  <ElectricCategoryIcon />
+                  <IconElectricCategory />
+                  <IconElectricCategory />
+                  <IconElectricCategory />
+                  <IconElectricCategory />
                 </View>
                 <Text
                   color={theme.colors.black}
@@ -440,10 +435,10 @@ export function GettingStartedScreen({ navigation }) {
                   Pademangan, Jakarta Utara
                 </Text>
                 <View style={{ flexDirection: 'row' }}>
-                  <ElectricCategoryIcon />
-                  <ElectricCategoryIcon />
-                  <ElectricCategoryIcon />
-                  <ElectricCategoryIcon />
+                  <IconElectricCategory />
+                  <IconElectricCategory />
+                  <IconElectricCategory />
+                  <IconElectricCategory />
                 </View>
                 <Text
                   color={theme.colors.black}
@@ -494,10 +489,10 @@ export function GettingStartedScreen({ navigation }) {
                   Pademangan, Jakarta Utara
                 </Text>
                 <View style={{ flexDirection: 'row' }}>
-                  <ElectricCategoryIcon />
-                  <ElectricCategoryIcon />
-                  <ElectricCategoryIcon />
-                  <ElectricCategoryIcon />
+                  <IconElectricCategory />
+                  <IconElectricCategory />
+                  <IconElectricCategory />
+                  <IconElectricCategory />
                 </View>
                 <Text
                   color={theme.colors.black}
@@ -529,4 +524,4 @@ export function GettingStartedScreen({ navigation }) {
   )
 }
 
-export default GettingStartedScreen
+export default MainScreen

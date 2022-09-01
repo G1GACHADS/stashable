@@ -2,17 +2,10 @@ import { ActivityIndicator, Dimensions, View } from 'react-native'
 import styled, { css, useTheme } from 'styled-components/native'
 
 const ButtonContainer = styled.Pressable`
-  ${props => {
-    if (props.sm) {
-      return css`
-        width: 140px;
-      `
-    }
-
-    return css`
-      width: ${Dimensions.get('window').width - 30}px;
-    `
-  }}
+  min-width: ${props =>
+    props.sm
+      ? Dimensions.get('window').width * 0.4
+      : Dimensions.get('window').width - 30}px;
 
   ${props =>
     props.stroke &&
@@ -21,10 +14,11 @@ const ButtonContainer = styled.Pressable`
     `}
 
   height: 56px;
-  display: flex;
+  flex: 1;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 0 10px;
   background-color: ${props =>
     props.disabled
       ? props.theme.colors.grey1

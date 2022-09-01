@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/native'
 import IconDelivery from '../../../components/icons/icon-delivery'
 import IconWalking from '../../../components/icons/icon-walking'
 import Label from '../../../components/label'
-import Text from '../../../components/text'
+import BaseText from '../../../components/base-text'
 
 const CoreShippingTypeOption = styled.Pressable`
   flex: 1;
@@ -33,16 +33,17 @@ const ShippingTypeOption = ({ theme, title, icon, selected, onPress }) => (
     android_ripple={{ color: `hsla(${theme.colors.primaryHSL}, 0.15)` }}
   >
     {icon}
-    <Text
-      color={selected ? theme.colors.primary : theme.colors.grey4}
-      weight={theme.typography.weight.semiBold}
-      size={theme.typography.tall.xl}
-      mt="10"
-      mb="10"
-      ml="10"
+    <BaseText
+      color={selected ? 'primary' : 'grey4'}
+      semiBold
+      tall
+      xl
+      mt={10}
+      mb={10}
+      ml={10}
     >
       {title}
-    </Text>
+    </BaseText>
   </CoreShippingTypeOption>
 )
 

@@ -2,7 +2,7 @@ import { Dimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import IconCamera from '../../../components/icons/icon-camera'
-import Text from '../../../components/text'
+import BaseText from '../../../components/base-text'
 
 const ImageFileZone = styled.View`
   flex: 1;
@@ -22,26 +22,15 @@ export const ItemUploadZone = () => {
 
   return (
     <>
-      <Text
-        color={theme.colors.black}
-        weight={theme.typography.weight.semiBold}
-        size={theme.typography.tall.lg}
-        mb="10"
-      >
+      <BaseText semiBold tall lg mb={10}>
         Upload Your Items
-      </Text>
+      </BaseText>
       <ImageFileZone>
         <IconCamera fill={theme.colors.grey3} />
       </ImageFileZone>
-      <Text
-        color={theme.colors.black}
-        weight={theme.typography.weight.regular}
-        size={theme.typography.tall.sm}
-        mt="10"
-        mb="20"
-      >
+      <BaseText regular tall sm mt={10} mb={20}>
         *max size up to 10 MB
-      </Text>
+      </BaseText>
     </>
   )
 }

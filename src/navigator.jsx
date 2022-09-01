@@ -19,7 +19,7 @@ export const Navigator = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName={route.gettingStartedRoute}
+      initialRouteName={route.warehouseCheckoutPageRoute}
       screenOptions={{
         contentStyle: {
           backgroundColor: '#fff',
@@ -32,7 +32,7 @@ export const Navigator = () => {
           fontSize: theme.typography.tall.lg_i,
           color: theme.colors.black,
         },
-        animation: 'slide_from_right',
+        animation: 'slide_from_bottom',
         animationDuration: 150,
       }}
     >

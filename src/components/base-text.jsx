@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import styled, { css } from 'styled-components/native'
 import { useTheme } from 'styled-components/native'
 
@@ -57,39 +58,57 @@ export const CoreBaseText = styled.Text`
 export const BaseText = props => {
   const theme = useTheme()
 
-  let color = theme.colors[props.color] || theme.colors.black
-  let weight = theme.typography.weight.regular
-  let size = theme.typography.tall.md
+  const color = useMemo(
+    () => theme.colors[props.color] || theme.colors.black,
+    [props.color]
+  )
 
-  if (props.bold) {
-    weight = theme.typography.weight.bold
-  } else if (props.semiBold) {
-    weight = theme.typography.weight.semiBold
-  } else if (props.medium) {
-    weight = theme.typography.weight.medium
-  } else if (props.regular) {
-    weight = theme.typography.weight.regular
-  }
+  const weight = useMemo(() => {
+    let _weight = theme.typography.weight.regular
+    if (props.bold) {
+      _weight = theme.typography.weight.bold
+    } else if (props.semiBold) {
+      _weight = theme.typography.weight.semiBold
+    } else if (props.medium) {
+      _weight = theme.typography.weight.medium
+    }
 
-  if (props.tall) {
-    size = theme.typography.tall
-  } else if (props.grande) {
-    size = theme.typography.grande
-  } else if (props.venti) {
-    size = theme.typography.venti
-  }
+    return _weight
+  }, [props.bold, props.semiBold, props.medium])
 
-  if (props.xs) {
-    size = size.xs
-  } else if (props.sm) {
-    size = size.sm
-  } else if (props.md) {
-    size = size.md
-  } else if (props.lg) {
-    size = size.lg
-  } else if (props.xl) {
-    size = size.xl
-  }
+  const size = useMemo(() => {
+    let _size = theme.typography
+    if (props.tall) {
+      _size = _size.tall
+    } else if (props.grande) {
+      _size = _size.grande
+    } else if (props.venti) {
+      _size = _size.venti
+    }
+
+    if (props.xs) {
+      _size = _size.xs
+    } else if (props.sm) {
+      _size = _size.sm
+    } else if (props.md) {
+      _size = _size.md
+    } else if (props.lg) {
+      _size = _size.lg
+    } else if (props.xl) {
+      _size = _size.xl
+    }
+
+    return _size
+  }, [
+    props.tall,
+    props.grande,
+    props.venti,
+    props.xs,
+    props.sm,
+    props.md,
+    props.lg,
+    props.xl,
+  ])
 
   return (
     <CoreBaseText {...{ ...props, weight, color, size }}>

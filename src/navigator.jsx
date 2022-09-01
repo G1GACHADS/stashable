@@ -19,7 +19,7 @@ export const Navigator = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName={route.warehouseCheckoutPageRoute}
+      initialRouteName={route.gettingStartedRoute}
       screenOptions={{
         contentStyle: {
           backgroundColor: '#fff',

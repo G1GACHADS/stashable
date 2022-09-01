@@ -3,8 +3,9 @@ import {
   Poppins_500Medium,
   Poppins_600SemiBold,
   Poppins_700Bold,
-  useFonts
+  useFonts,
 } from '@expo-google-fonts/poppins'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { NavigationContainer } from '@react-navigation/native'
 import { registerRootComponent } from 'expo'
 import { ThemeProvider } from 'styled-components/native'

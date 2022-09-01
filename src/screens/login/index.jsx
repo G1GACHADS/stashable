@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import Button from '../../components/button'
 import Container from '../../components/container'
 import IconGoogle from '../../components/icons/icon-google'
-import Text from '../../components/text'
+import BaseText from '../../components/base-text'
 
 import Footer from './footer'
 import { SignInForm } from './form'
@@ -24,14 +24,9 @@ const TextDividerLine = styled.View`
 const FormDivider = ({ theme }) => (
   <TextDivider gap="1rem">
     <TextDividerLine />
-    <Text
-      color={theme.colors.grey3}
-      weight={theme.typography.weight.medium}
-      size={theme.typography.tall.md}
-      padding="0 12px"
-    >
+    <BaseText color="grey3" medium tall md padding={['0px', '12px']}>
       Or Sign In With
-    </Text>
+    </BaseText>
     <TextDividerLine />
   </TextDivider>
 )
@@ -43,22 +38,12 @@ export function LoginScreen({ navigation }) {
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <ScrollView>
         <Container>
-          <Text
-            color={theme.colors.black}
-            weight={theme.typography.weight.semiBold}
-            size={theme.typography.venti.md}
-            mb="15"
-          >
+          <BaseText semiBold venti md mb={15}>
             Let's Sign You In
-          </Text>
-          <Text
-            color={theme.colors.grey3}
-            weight={theme.typography.weight.medium}
-            size={theme.typography.tall.lg}
-            mb="14"
-          >
+          </BaseText>
+          <BaseText color="grey3" medium tall lg mb={15}>
             Hello, welcome back to stashable.
-          </Text>
+          </BaseText>
           <SignInForm navigation={navigation} />
           <FormDivider theme={theme} />
 

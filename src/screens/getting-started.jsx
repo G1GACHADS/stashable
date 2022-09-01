@@ -5,7 +5,7 @@ import routes from '../constants/routes'
 
 import Button from '../components/button'
 import Container from '../components/container'
-import Text from '../components/text'
+import BaseText from '../components/base-text'
 
 export function GettingStartedScreen({ navigation }) {
   const { colors, typography } = useTheme()
@@ -21,21 +21,13 @@ export function GettingStartedScreen({ navigation }) {
           }}
         />
         <Container>
-          <Text
-            color={colors.black}
-            weight={typography.weight.semiBold}
-            size={typography.venti.md}
-          >
+          <BaseText semiBold venti md>
             Find Storage Room At Stashable
-          </Text>
-          <Text
-            color={colors.grey3}
-            weight={typography.weight.regular}
-            size={typography.tall.md}
-          >
+          </BaseText>
+          <BaseText color="grey3" regular tall md>
             Stashable provides a platform for users to reserve a place for them
             to store their goods in the warehouse
-          </Text>
+          </BaseText>
 
           <View style={{ alignItems: 'flex-end' }}>
             <Button

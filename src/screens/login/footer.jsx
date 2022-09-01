@@ -2,6 +2,7 @@ import { TouchableOpacity } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import Text from '../../components/text'
+import BaseText from '../../components/base-text'
 
 import routes from '../../constants/routes'
 
@@ -24,24 +25,15 @@ export function Footer({ navigation }) {
   const { colors, typography } = useTheme()
   return (
     <FooterContainer>
-      <Text
-        color={colors.grey5}
-        weight={typography.weight.medium}
-        size={typography.tall.lg}
-        mr="10"
-      >
+      <BaseText color="grey5" medium tall lg mr={10}>
         Don't have an account yet?
-      </Text>
+      </BaseText>
       <TouchableOpacity
         onPress={() => navigation.navigate(routes.registerRoute)}
       >
-        <Text
-          color={colors.secondary}
-          weight={typography.weight.semiBold}
-          size={typography.tall.lg}
-        >
+        <BaseText color="secondary" semiBold tall lg>
           Register Now
-        </Text>
+        </BaseText>
       </TouchableOpacity>
     </FooterContainer>
   )

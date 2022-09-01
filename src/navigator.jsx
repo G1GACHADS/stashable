@@ -36,7 +36,7 @@ export const Navigator = () => {
         animationDuration: 150,
       }}
     >
-      {isAuthenticated ? (
+      {!isAuthenticated ? (
         // User is signed in
         <>
           <Stack.Screen

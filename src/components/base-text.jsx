@@ -7,8 +7,8 @@ export const CoreBaseText = styled.Text`
   font-size: ${({ size }) => size};
 
   ${props => props.capitalize && `text-transform: capitalize`}
-  ${props => props.padding && `padding: ${props.padding}`}
-  ${props => props.margin && `margin: ${props.margin}`}
+  ${props => props.padding && `padding: ${props.padding.join(' ')};`}
+  ${props => props.margin && `margin: ${props.margin.join(' ')}`}
   ${props => props.textAlign && `text-align: ${props.textAlign}`}
 
   ${props =>

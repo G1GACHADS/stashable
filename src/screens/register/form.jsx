@@ -8,6 +8,7 @@ import Button from '../../components/button'
 import IconGoogle from '../../components/icons/icon-google'
 import Input from '../../components/input'
 import Label from '../../components/label'
+import BaseText from '../../components/base-text'
 import Text from '../../components/text'
 import useAuthStore from '../../store/auth-store'
 
@@ -26,14 +27,9 @@ const TextDividerLine = styled.View`
 const FormDivider = ({ theme }) => (
   <TextDivider gap="1rem">
     <TextDividerLine />
-    <Text
-      color={theme.colors.grey3}
-      weight={theme.typography.weight.medium}
-      size={theme.typography.tall.md}
-      padding="0 12px"
-    >
-      Or Register with
-    </Text>
+    <BaseText color="grey3" medium tall md padding={[0, '12px']}>
+      Or Register With
+    </BaseText>
     <TextDividerLine />
   </TextDivider>
 )
@@ -42,14 +38,9 @@ const FirstStep = ({ theme, form, setForm, nextStep }) => {
   const isEmpty = !form.fullName || !form.email || !form.phoneNumber
   return (
     <View>
-      <Text
-        color={theme.colors.grey3}
-        weight={theme.typography.weight.medium}
-        size={theme.typography.tall.lg}
-        mb="14"
-      >
+      <BaseText color="grey3" medium tall lg mb={15}>
         First, fill in your personal details
-      </Text>
+      </BaseText>
       <Label>Full Name</Label>
       <Input
         value={form.fullName}
@@ -95,14 +86,9 @@ const SecondStep = ({ theme, form, setForm, nextStep }) => {
     !form.province || !form.city || !form.streetName || !form.zipCode
   return (
     <View>
-      <Text
-        color={theme.colors.grey3}
-        weight={theme.typography.weight.medium}
-        size={theme.typography.tall.lg}
-        mb="14"
-      >
+      <BaseText color="grey3" medium tall lg mb={15}>
         Next, fill in your address details
-      </Text>
+      </BaseText>
       <Label>Province</Label>
       <Input
         value={form.province}
@@ -141,14 +127,9 @@ const SecondStep = ({ theme, form, setForm, nextStep }) => {
 const FinalStep = ({ theme, form, setForm }) => {
   return (
     <View>
-      <Text
-        color={theme.colors.grey3}
-        weight={theme.typography.weight.medium}
-        size={theme.typography.tall.lg}
-        mb="14"
-      >
+      <BaseText color="grey3" medium tall lg mb={15}>
         Finally, fill in your password
-      </Text>
+      </BaseText>
       <Label>Password</Label>
       <Input
         value={form.password}
@@ -177,22 +158,13 @@ const FooterContainer = styled.View`
 
 const Footer = ({ navigation, theme }) => (
   <FooterContainer>
-    <Text
-      color={theme.colors.grey5}
-      weight={theme.typography.weight.medium}
-      size={theme.typography.tall.lg}
-      mr="10"
-    >
+    <BaseText color="grey5" medium tall lg mr={10}>
       Already have an Account?
-    </Text>
+    </BaseText>
     <TouchableOpacity onPress={() => navigation.navigate(routes.loginRoute)}>
-      <Text
-        color={theme.colors.secondary}
-        weight={theme.typography.weight.semiBold}
-        size={theme.typography.tall.lg}
-      >
+      <BaseText color="secondary" semiBold tall lg>
         Sign In
-      </Text>
+      </BaseText>
     </TouchableOpacity>
   </FooterContainer>
 )
@@ -263,15 +235,9 @@ export const RegisterForm = ({ navigation }) => {
             loading={loading}
           />
           {error !== '' && (
-            <Text
-              color={theme.colors.primary}
-              weight={theme.typography.weight.medium}
-              size={theme.typography.tall.lg}
-              mb="15"
-              capitalize
-            >
+            <BaseText color="primary" capitalize medium tall lg mb={15}>
               {error}
-            </Text>
+            </BaseText>
           )}
           <Footer navigation={navigation} theme={theme} />
         </>

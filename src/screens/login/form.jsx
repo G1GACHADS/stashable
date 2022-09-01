@@ -7,7 +7,7 @@ import { useAuthStore } from '../../store/auth-store'
 import Button from '../../components/button'
 import Input from '../../components/input'
 import Label from '../../components/label'
-import Text from '../../components/text'
+import BaseText from '../../components/base-text'
 import routes from '../../constants/routes'
 
 export function SignInForm({ navigation }) {
@@ -45,15 +45,9 @@ export function SignInForm({ navigation }) {
         secureTextEntry
         onChangeText={password => setForm({ ...form, password })}
       />
-      <Text
-        color={theme.colors.grey3}
-        weight={theme.typography.weight.medium}
-        size={theme.typography.tall.lg}
-        mb="15"
-        textAlign="right"
-      >
+      <BaseText color="grey3" medium tall lg textAlign="right" mb={15}>
         Forgot Password?
-      </Text>
+      </BaseText>
       <Button
         title="Log In"
         onPress={submit}
@@ -61,15 +55,9 @@ export function SignInForm({ navigation }) {
         loading={loading}
       />
       {error !== '' && (
-        <Text
-          color={theme.colors.primary}
-          weight={theme.typography.weight.medium}
-          size={theme.typography.tall.lg}
-          mb="15"
-          capitalize
-        >
+        <BaseText color="primary" capitalize medium tall lg mb={15}>
           {error}
-        </Text>
+        </BaseText>
       )}
     </View>
   )

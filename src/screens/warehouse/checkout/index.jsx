@@ -6,7 +6,6 @@ import Button from '../../../components/button'
 import Container from '../../../components/container'
 import Input from '../../../components/input'
 import Label from '../../../components/label'
-import Text from '../../../components/text'
 import BaseText from '../../../components/base-text'
 
 import ItemForm from './item-form'
@@ -169,7 +168,7 @@ const FinalStep = ({ theme, navigation }) => (
 
 export function CheckoutScreen({ navigation }) {
   const theme = useTheme()
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(0)
   const [form, setForm] = useState({
     name: '',
     description: '',

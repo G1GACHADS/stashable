@@ -2,7 +2,6 @@ import { ScrollView, StatusBar } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import Container from '../../components/container'
-import Text from '../../components/text'
 import BaseText from '../../components/base-text'
 import RegisterForm from './form'
 

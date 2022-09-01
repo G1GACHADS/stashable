@@ -9,7 +9,6 @@ import IconGoogle from '../../components/icons/icon-google'
 import Input from '../../components/input'
 import Label from '../../components/label'
 import BaseText from '../../components/base-text'
-import Text from '../../components/text'
 import useAuthStore from '../../store/auth-store'
 
 const TextDivider = styled.View`

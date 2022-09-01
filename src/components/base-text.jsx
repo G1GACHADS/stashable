@@ -63,69 +63,32 @@ export const BaseText = props => {
 
   if (props.bold) {
     weight = theme.typography.weight.bold
-  }
-  if (props.semiBold) {
+  } else if (props.semiBold) {
     weight = theme.typography.weight.semiBold
-  }
-  if (props.medium) {
+  } else if (props.medium) {
     weight = theme.typography.weight.medium
-  }
-  if (props.regular) {
+  } else if (props.regular) {
     weight = theme.typography.weight.regular
   }
 
   if (props.tall) {
-    if (props.xs) {
-      size = theme.typography.tall.xs
-    }
-    if (props.sm) {
-      size = theme.typography.tall.sm
-    }
-    if (props.md) {
-      size = theme.typography.tall.md
-    }
-    if (props.lg) {
-      size = theme.typography.tall.lg
-    }
-    if (props.xl) {
-      size = theme.typography.tall.xl
-    }
+    size = theme.typography.tall
+  } else if (props.grande) {
+    size = theme.typography.grande
+  } else if (props.venti) {
+    size = theme.typography.venti
   }
 
-  if (props.grande) {
-    if (props.xs) {
-      size = theme.typography.grande.xs
-    }
-    if (props.sm) {
-      size = theme.typography.grande.sm
-    }
-    if (props.md) {
-      size = theme.typography.grande.md
-    }
-    if (props.lg) {
-      size = theme.typography.grande.lg
-    }
-    if (props.xl) {
-      size = theme.typography.grande.xl
-    }
-  }
-
-  if (props.venti) {
-    if (props.xs) {
-      size = theme.typography.venti.xs
-    }
-    if (props.sm) {
-      size = theme.typography.venti.sm
-    }
-    if (props.md) {
-      size = theme.typography.venti.md
-    }
-    if (props.lg) {
-      size = theme.typography.venti.lg
-    }
-    if (props.xl) {
-      size = theme.typography.venti.xl
-    }
+  if (props.xs) {
+    size = size.xs
+  } else if (props.sm) {
+    size = size.sm
+  } else if (props.md) {
+    size = size.md
+  } else if (props.lg) {
+    size = size.lg
+  } else if (props.xl) {
+    size = size.xl
   }
 
   return (

@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useTheme } from 'styled-components/native'
 
 import * as route from './constants/routes'
@@ -10,8 +11,94 @@ import RegisterScreen from './screens/register'
 import WarehouseScreen from './screens/warehouse'
 import CheckoutScreen from './screens/warehouse/checkout'
 import useAuthStore from './store/auth-store'
+import { View } from 'react-native'
+import BaseText from './components/base-text'
+import IconHome from './components/icons/icon-home'
 
+const Tab = createBottomTabNavigator()
 const Stack = createNativeStackNavigator()
+
+const HomeStack = () => {
+  const theme = useTheme()
+  return (
+    <Stack.Navigator
+      initialRouteName={route.mainPageRoute}
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: '#fff',
+        },
+        headerStyle: {
+          backgroundColor: theme.colors.white1,
+        },
+        headerTitleStyle: {
+          fontFamily: theme.typography.weight.semiBold,
+          fontSize: theme.typography.tall.lg_i,
+          color: theme.colors.black,
+        },
+        animation: 'slide_from_bottom',
+        animationDuration: 150,
+      }}
+    >
+      <Stack.Screen
+        name={route.mainPageRoute}
+        component={MainScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={route.warehousePageRoute}
+        component={WarehouseScreen}
+        options={{
+          title: 'Warehouse Details',
+        }}
+      />
+      <Stack.Screen
+        name={route.warehouseCheckoutPageRoute}
+        component={CheckoutScreen}
+        options={{
+          title: 'Checkout',
+        }}
+      />
+    </Stack.Navigator>
+  )
+}
+
+export const Tabs = () => {
+  const theme = useTheme()
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          height: 70,
+          elevation: 20,
+          shadowColor: 'hsla(0, 0, 62, 0.1)',
+          shadowOffset: { width: 0, height: -4 },
+        },
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeStack}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+              <IconHome
+                fill={focused ? theme.colors.primary : undefined}
+                stroke={focused ? theme.colors.primary : theme.colors.black}
+              />
+              <BaseText color={focused ? 'primary' : 'black'} semiBold tall md>
+                Home
+              </BaseText>
+            </View>
+          ),
+          headerShown: false,
+        }}
+      />
+    </Tab.Navigator>
+  )
+}
 
 export const Navigator = () => {
   const theme = useTheme()
@@ -38,29 +125,13 @@ export const Navigator = () => {
     >
       {isAuthenticated ? (
         // User is signed in
-        <>
-          <Stack.Screen
-            name={route.mainPageRoute}
-            component={MainScreen}
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name={route.warehousePageRoute}
-            component={WarehouseScreen}
-            options={{
-              title: 'Warehouse Details',
-            }}
-          />
-          <Stack.Screen
-            name={route.warehouseCheckoutPageRoute}
-            component={CheckoutScreen}
-            options={{
-              title: 'Checkout',
-            }}
-          />
-        </>
+        <Stack.Screen
+          name={route.mainPageRoute}
+          component={Tabs}
+          options={{
+            headerShown: false,
+          }}
+        />
       ) : (
         // User is not signed in
         <>

@@ -1,6 +1,6 @@
 import { useCallback, useLayoutEffect, useState } from 'react'
 import { Dimensions, Platform, ScrollView, StatusBar, View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import Button from '../../../components/button'
 import Container from '../../../components/container'
@@ -24,7 +24,7 @@ const CoreCheckoutPaymentPanel = styled.View`
   border-top-color: ${({ theme }) => theme.colors.grey2};
 `
 
-const CheckoutPaymentPanel = ({ theme, totalFee, disabled, nextStep }) => {
+const CheckoutPaymentPanel = ({ totalFee, disabled, nextStep }) => {
   return (
     <CoreCheckoutPaymentPanel>
       <View>
@@ -41,7 +41,6 @@ const CheckoutPaymentPanel = ({ theme, totalFee, disabled, nextStep }) => {
 }
 
 const FirstStep = ({
-  theme,
   form,
   setForm,
   shippingType,
@@ -59,12 +58,10 @@ const FirstStep = ({
       <ItemUploadZone />
       <ItemForm form={form} setForm={setForm} />
       <ItemSelectShippingType
-        theme={theme}
         shippingType={shippingType}
         setShippingType={setShippingType}
       />
       <CheckoutPaymentPanel
-        theme={theme}
         totalFee={5000000}
         disabled={isEmpty}
         nextStep={nextStep}
@@ -83,7 +80,7 @@ const InlineFormItem = styled.View`
   min-width: 50%;
 `
 
-const SecondStep = ({ theme, nextStep }) => {
+const SecondStep = ({ nextStep }) => {
   const [paymentMethod, setPaymentMethod] = useState({
     creditCardNumber: '',
     expirationDate: '',
@@ -152,7 +149,7 @@ const SuccessView = styled.View`
   margin-top: ${Dimensions.get('window').height * 0.25}px;
 `
 
-const FinalStep = ({ theme, navigation }) => (
+const FinalStep = () => (
   <>
     <SuccessView>
       <BaseText semiBold grande md>
@@ -167,7 +164,6 @@ const FinalStep = ({ theme, navigation }) => (
 )
 
 export function CheckoutScreen({ navigation }) {
-  const theme = useTheme()
   const [step, setStep] = useState(0)
   const [form, setForm] = useState({
     name: '',
@@ -202,7 +198,6 @@ export function CheckoutScreen({ navigation }) {
         <Container>
           {step === 0 && (
             <FirstStep
-              theme={theme}
               form={form}
               setForm={setForm}
               shippingType={shippingType}
@@ -210,8 +205,8 @@ export function CheckoutScreen({ navigation }) {
               nextStep={nextStep}
             />
           )}
-          {step === 1 && <SecondStep theme={theme} nextStep={nextStep} />}
-          {step === 2 && <FinalStep theme={theme} navigation={navigation} />}
+          {step === 1 && <SecondStep nextStep={nextStep} />}
+          {step === 2 && <FinalStep navigation={navigation} />}
         </Container>
       </ScrollView>
     </>

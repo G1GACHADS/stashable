@@ -1,5 +1,4 @@
 import { Image, ScrollView, StatusBar, View } from 'react-native'
-import { useTheme } from 'styled-components/native'
 
 import routes from '../constants/routes'
 
@@ -8,7 +7,6 @@ import Container from '../components/container'
 import BaseText from '../components/base-text'
 
 export function GettingStartedScreen({ navigation }) {
-  const { colors, typography } = useTheme()
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />

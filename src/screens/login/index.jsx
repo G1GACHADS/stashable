@@ -21,7 +21,7 @@ const TextDividerLine = styled.View`
   background-color: ${({ theme }) => theme.colors.grey1};
 `
 
-const FormDivider = ({ theme }) => (
+const FormDivider = () => (
   <TextDivider gap="1rem">
     <TextDividerLine />
     <BaseText color="grey3" medium tall md padding={['0px', '12px']}>
@@ -45,7 +45,7 @@ export function LoginScreen({ navigation }) {
             Hello, welcome back to stashable.
           </BaseText>
           <SignInForm navigation={navigation} />
-          <FormDivider theme={theme} />
+          <FormDivider />
 
           <Button
             title="Google"

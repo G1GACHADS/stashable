@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { View } from 'react-native'
-import { useTheme } from 'styled-components/native'
 
 import { useAuthStore } from '../../store/auth-store'
 
@@ -11,7 +10,6 @@ import BaseText from '../../components/base-text'
 import routes from '../../constants/routes'
 
 export function SignInForm({ navigation }) {
-  const theme = useTheme()
   const { authenticateUser, error } = useAuthStore()
 
   const [loading, setLoading] = useState(false)

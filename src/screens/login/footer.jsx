@@ -1,7 +1,6 @@
 import { TouchableOpacity } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
-import Text from '../../components/text'
 import BaseText from '../../components/base-text'
 
 import routes from '../../constants/routes'
@@ -14,15 +13,7 @@ const FooterContainer = styled.View`
   align-items: baseline;
 `
 
-const FooterText = styled.Text`
-  margin-right: 10px;
-  color: ${({ theme }) => theme.colors.grey5};
-  font-family: ${({ theme }) => theme.typography.weight.medium};
-  font-size: ${({ theme }) => theme.typography.tall.md};
-`
-
 export function Footer({ navigation }) {
-  const { colors, typography } = useTheme()
   return (
     <FooterContainer>
       <BaseText color="grey5" medium tall lg mr={10}>

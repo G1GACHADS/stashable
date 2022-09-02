@@ -15,7 +15,7 @@ export function WarehouseScreen({ navigation }) {
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <ScrollView>
         <Image
-          source={require('../../../assets/images/warehouse-image.png')}
+          source={require('../../assets/images/warehouse-image.png')}
           style={{
             width: null,
             height: 360,

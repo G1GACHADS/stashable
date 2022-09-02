@@ -10,7 +10,7 @@ import Text from '../../components/text'
 import MoreWarehouse from './more-warehouse'
 import Featured from './main-featured'
 import Place from './main-place'
- 
+
 import IconElectricCategory from '../../components/icons/icon-electric-category'
 
 export function MainScreen({ navigation }) {
@@ -34,7 +34,7 @@ export function MainScreen({ navigation }) {
         <Container>
           {/* Banner */}
           <Image
-            source={require('../../../assets/images/stashable-sale-banner.png')}
+            source={require('../../assets/images/stashable-sale-banner.png')}
             style={{
               width: null,
               height: 120,
@@ -44,7 +44,7 @@ export function MainScreen({ navigation }) {
         <Place navigation={navigation} />
         <Featured navigation={navigation} />
         <MoreWarehouse navigation={navigation} />
-        
+
         <View style={{ alignItems: 'flex-end' }}>
           <Button
             sm

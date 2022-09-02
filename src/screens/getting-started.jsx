@@ -12,7 +12,7 @@ export function GettingStartedScreen({ navigation }) {
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <ScrollView>
         <Image
-          source={require('../../assets/images/getting-started-banner.png')}
+          source={require('../assets/images/getting-started-banner.png')}
           style={{
             width: null,
             height: 400,

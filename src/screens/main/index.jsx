@@ -19,8 +19,7 @@ import IconElectricCategory from '../../components/icons/icon-electric-category'
 export function MainScreen({ navigation }) {
   const theme = useTheme()
   const [search, setForm] = useState({
-    // email: '',
-    // password: '',
+    keyname:'',
   })
 
   return (
@@ -46,7 +45,9 @@ export function MainScreen({ navigation }) {
           >
           <IconSearch />
           <Search 
+          value={search.keyname}
           placeholder="Search for a place..."
+          onChangeText={keyname => setForm({ ...search, keyname })}
           />
         </View>
         {/* Banner */}

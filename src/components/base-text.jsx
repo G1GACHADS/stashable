@@ -7,10 +7,32 @@ export const CoreBaseText = styled.Text`
   font-family: ${({ weight }) => weight};
   font-size: ${({ size }) => size};
 
-  ${props => props.capitalize && `text-transform: capitalize`}
-  ${props => props.padding && `padding: ${props.padding.join(' ')};`}
-  ${props => props.margin && `margin: ${props.margin.join(' ')}`}
-  ${props => props.textAlign && `text-align: ${props.textAlign}`}
+  ${props =>
+    props.maxWidth &&
+    css`
+      max-width: ${props.maxWidth};
+    `}
+
+  ${props =>
+    props.capitalize &&
+    css`
+      text-transform: capitalize;
+    `}
+  ${props =>
+    props.padding &&
+    css`
+      padding: ${props.padding.join(' ')};
+    `}
+  ${props =>
+    props.margin &&
+    css`
+      margin: ${props.margin.join(' ')};
+    `}
+  ${props =>
+    props.textAlign &&
+    css`
+      text-align: ${props.textAlign};
+    `}
 
   ${props =>
     props.mb &&

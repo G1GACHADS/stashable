@@ -4,6 +4,7 @@ export const registerRoute = 'register'
 export const mainPageRoute = 'main-page'
 export const warehousePageRoute = 'warehouse-page'
 export const warehouseCheckoutPageRoute = 'warehouse-checkout-page'
+export const historyPageRoute = 'history-page-route'
 
 export default {
   gettingStartedRoute,
@@ -12,4 +13,5 @@ export default {
   mainPageRoute,
   warehousePageRoute,
   warehouseCheckoutPageRoute,
+  historyPageRoute,
 }

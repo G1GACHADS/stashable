@@ -41,7 +41,7 @@ export function Place({ navigation }) {
               Jakarta
             </Text>
           </View>
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ alignItems: 'center', justifyContent: 'center', padding }}>
             <Image
               source={require('../../assets/images/jakarta-place.png')}
               style={{
@@ -76,7 +76,7 @@ export function Place({ navigation }) {
             </Text>
           </View>
         </View>
-        <View style={{ flexDirection: 'row', gap: 10 }}>
+        <View style={{ flexDirection: 'row', padding: 10 }}>
           <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <Image
               source={require('../../assets/images/jakarta-place.png')}

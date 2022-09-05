@@ -1,4 +1,4 @@
-import Svg, { Circle } from 'react-native-svg'
+import Svg, { Circle, Path } from 'react-native-svg'
 
 const IconFragileCategory = props => (
   <Svg

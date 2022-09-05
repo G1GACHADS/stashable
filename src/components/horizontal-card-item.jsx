@@ -6,10 +6,19 @@ import IconElectricCategory from './icons/icon-electric-category'
 import IconHeavyMaterialsCategory from './icons/icon-heavy-materials-category'
 import IconChemicalCategory from './icons/icon-chemical-category'
 import { useMemo } from 'react'
+import { Status } from './status'
+import { Dimensions } from 'react-native'
 
 const CoreHorizontalCardItem = styled.View`
   display: flex;
   flex-direction: row;
+`
+
+const CoreHorizontalCardWithStatus = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `
 
 const CoreHorizontalCardImage = styled.Image`
@@ -40,6 +49,7 @@ export const HorizontalCardItem = ({
   categories,
   priceLabel,
   price,
+  status,
 }) => {
   const categoryIcons = useMemo(
     () =>
@@ -58,7 +68,7 @@ export const HorizontalCardItem = ({
             </CategoriesItem>
           )
         }
-        if (category === 'heavy material') {
+        if (category === 'heavy materials') {
           return (
             <CategoriesItem>
               <IconHeavyMaterialsCategory />
@@ -75,6 +85,18 @@ export const HorizontalCardItem = ({
     [categories]
   )
 
+  const statusBadge = useMemo(
+    () => (
+      <Status
+        paid={status === 'paid'}
+        returned={status === 'returned'}
+        unpaid={status === 'unpaid'}
+        cancelled={status === 'cancelled'}
+      />
+    ),
+    [status]
+  )
+
   return (
     <CoreHorizontalCardItem>
       <CoreHorizontalCardImage
@@ -82,9 +104,18 @@ export const HorizontalCardItem = ({
         resizeMode="cover"
       />
       <CoreHorizontalCardContent>
-        <BaseText semiBold tall md>
-          {title}
-        </BaseText>
+        {status ? (
+          <CoreHorizontalCardWithStatus>
+            <BaseText semiBold tall md>
+              {title.length > 20 ? `${title.slice(0, 20)}...` : title}
+            </BaseText>
+            {statusBadge}
+          </CoreHorizontalCardWithStatus>
+        ) : (
+          <BaseText semiBold tall md>
+            {title}
+          </BaseText>
+        )}
         <BaseText color="grey3" regular tall sm>
           {subtitle}
         </BaseText>

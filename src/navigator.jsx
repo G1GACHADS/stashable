@@ -14,6 +14,8 @@ import useAuthStore from './store/auth-store'
 import { View } from 'react-native'
 import BaseText from './components/base-text'
 import IconHome from './components/icons/icon-home'
+import IconHistory from './components/icons/icon-history'
+import HistoryScreen from './screens/history'
 
 const Tab = createBottomTabNavigator()
 const Stack = createNativeStackNavigator()
@@ -64,6 +66,38 @@ const HomeStack = () => {
   )
 }
 
+const HistoryStack = () => {
+  const theme = useTheme()
+  return (
+    <Stack.Navigator
+      initialRouteName={route.mainPageRoute}
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: '#fff',
+        },
+        headerStyle: {
+          backgroundColor: theme.colors.white1,
+        },
+        headerTitleStyle: {
+          fontFamily: theme.typography.weight.semiBold,
+          fontSize: theme.typography.tall.lg_i,
+          color: theme.colors.black,
+        },
+        animation: 'slide_from_bottom',
+        animationDuration: 150,
+      }}
+    >
+      <Stack.Screen
+        name={route.historyPageRoute}
+        component={HistoryScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  )
+}
+
 export const Tabs = () => {
   const theme = useTheme()
   return (
@@ -94,6 +128,20 @@ export const Tabs = () => {
             </View>
           ),
           headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Rental History"
+        component={HistoryStack}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+              <IconHistory filled={focused} />
+              <BaseText color={focused ? 'primary' : 'black'} semiBold tall md>
+                History
+              </BaseText>
+            </View>
+          ),
         }}
       />
     </Tab.Navigator>

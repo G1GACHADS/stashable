@@ -1,3 +1,9 @@
+if (__DEV__) {
+  import('../reactotron-config').then(() =>
+    console.log('Reactotron configured')
+  )
+}
+
 import {
   Poppins_400Regular,
   Poppins_500Medium,
@@ -5,7 +11,6 @@ import {
   Poppins_700Bold,
   useFonts,
 } from '@expo-google-fonts/poppins'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { NavigationContainer } from '@react-navigation/native'
 import { registerRootComponent } from 'expo'
 import { ThemeProvider } from 'styled-components/native'

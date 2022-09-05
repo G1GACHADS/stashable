@@ -1,26 +1,22 @@
 import { Image, ScrollView, StatusBar, View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import routes from '../../constants/routes'
-
-import Button from '../../components/button'
 import Container from '../../components/container'
 import Text from '../../components/text'
 
 import IconElectricCategory from '../../components/icons/icon-electric-category'
+import BaseText from '../../components/base-text'
 
 export function Featured({ navigation }) {
   const theme = useTheme()
   return (
-    <Container>
+    <>
       {/* Featured Warehouse */}
-      <Text
-        color={theme.colors.black}
-        weight={theme.typography.weight.semiBold}
-        size={theme.typography.tall.xl}
-      >
-        Featured Warehouse
-      </Text>
+      <Container>
+        <BaseText semiBold tall xl>
+          Featured Warehouse
+        </BaseText>
+      </Container>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View
           style={{
@@ -139,7 +135,7 @@ export function Featured({ navigation }) {
           </Text>
         </View>
       </ScrollView>
-    </Container>
+    </>
     //   {/* End Of Featured Warehouse */}
   )
 }

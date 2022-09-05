@@ -36,7 +36,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "@types/styled-components-react-native": "^5.1.3"
+    "@types/styled-components-react-native": "^5.1.3",
+    "reactotron-react-native": "^5.0.2"
   },
   "private": true
 }

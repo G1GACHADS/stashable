@@ -87,6 +87,13 @@ export const useAuthStore = create(
           }, 3000)
         }
       },
+      async logoutUser() {
+        set({
+          isAuthenticated: false,
+          accessToken: '',
+          user: { data: {}, address: {} },
+        })
+      },
     }),
     persistOptions
   )

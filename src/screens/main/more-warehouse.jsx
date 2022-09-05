@@ -169,23 +169,21 @@ const WarehouseItem = ({ item, onPress }) => {
 }
 
 export function MoreWarehouse({ navigation }) {
-  const renderItem = ({ item }) => (
-    <WarehouseItem item={item} onPress={() => {}} />
-  )
-
   return (
-    <Container>
+    <>
       <BaseText semiBold tall xl mb={15}>
         More Warehouse
       </BaseText>
       <SafeAreaView>
-        <FlatList
-          data={sampleData['items']}
-          renderItem={renderItem}
-          keyExtractor={({ attributes }) => attributes['id']}
-        />
+        {sampleData['items'].map(item => (
+          <WarehouseItem
+            key={item.attributes.id}
+            item={item}
+            onPress={() => {}}
+          />
+        ))}
       </SafeAreaView>
-    </Container>
+    </>
   )
 }
 

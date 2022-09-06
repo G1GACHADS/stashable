@@ -219,20 +219,24 @@ export const Navigator = () => {
     >
       {isAuthenticated ? (
         // User is signed in
-        <Stack.Screen
-          name={route.mainPageRoute}
-          component={Tabs}
-          options={{
-            headerShown: false,
-          }}
-        />,
-        <Stack.Screen
-          name={route.discoverPageRoute}
-          component={Tabs}
-          options={{
-            headerShown: false,
-          }}
-        />
+        ((
+          <Stack.Screen
+            name={route.mainPageRoute}
+            component={Tabs}
+            options={{
+              headerShown: false,
+            }}
+          />
+        ),
+        (
+          <Stack.Screen
+            name={route.discoverPageRoute}
+            component={Tabs}
+            options={{
+              headerShown: false,
+            }}
+          />
+        ))
       ) : (
         // User is not signed in
         <>

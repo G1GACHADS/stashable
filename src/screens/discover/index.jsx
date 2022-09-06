@@ -49,4 +49,4 @@ export function DiscoverScreen({ navigation }) {
   )
 }
 
-export default MainScreen
+export default DiscoverScreen

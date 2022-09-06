@@ -7,6 +7,7 @@ import * as route from './constants/routes'
 import GettingStartedScreen from './screens/getting-started'
 import LoginScreen from './screens/login'
 import MainScreen from './screens/main'
+import DiscoverScreen from './screens/discover'
 import RegisterScreen from './screens/register'
 import WarehouseScreen from './screens/warehouse'
 import CheckoutScreen from './screens/warehouse/checkout'
@@ -97,7 +98,37 @@ const HistoryStack = () => {
     </Stack.Navigator>
   )
 }
-
+const DiscoverStack = () => {
+  const theme = useTheme()
+  return (
+    <Stack.Navigator
+      initialRouteName={route.mainPageRoute}
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: '#fff',
+        },
+        headerStyle: {
+          backgroundColor: theme.colors.white1,
+        },
+        headerTitleStyle: {
+          fontFamily: theme.typography.weight.semiBold,
+          fontSize: theme.typography.tall.lg_i,
+          color: theme.colors.black,
+        },
+        animation: 'slide_from_bottom',
+        animationDuration: 150,
+      }}
+    >
+      <Stack.Screen
+        name={route.discoverPageRoute}
+        component={DiscoverScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  )
+}
 export const Tabs = () => {
   const theme = useTheme()
   return (
@@ -144,6 +175,21 @@ export const Tabs = () => {
           ),
         }}
       />
+      <Tab.Screen
+        name="Discover"
+        component={DiscoverStack}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+              {/* belum ganti icon discover*/}
+              <IconHistory filled={focused} />
+              <BaseText color={focused ? 'primary' : 'black'} semiBold tall md>
+                Discover
+              </BaseText>
+            </View>
+          ),
+        }}
+      />
     </Tab.Navigator>
   )
 }
@@ -175,6 +221,13 @@ export const Navigator = () => {
         // User is signed in
         <Stack.Screen
           name={route.mainPageRoute}
+          component={Tabs}
+          options={{
+            headerShown: false,
+          }}
+        />,
+        <Stack.Screen
+          name={route.discoverPageRoute}
           component={Tabs}
           options={{
             headerShown: false,

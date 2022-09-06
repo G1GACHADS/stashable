@@ -1,5 +1,11 @@
 import styled, { useTheme } from 'styled-components/native'
-
+import {
+  Image,
+  ScrollView,
+  StatusBar,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import Text from '../../components/text'
 
 import IconChemical from '../../components/icons/icon-chemical'
@@ -16,7 +22,6 @@ const CategoryContainer = styled.View`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 5px;
 `
 
 const CategoryIcon = styled.View`
@@ -30,6 +35,16 @@ export function Details({ navigation }) {
   return (
     <>
       <DetailContainer>
+        {/* <View style={{
+          borderWidth: 1,
+          paddingTop: 5,
+          paddingBottom: 5,
+          paddingLeft: 10,
+          paddingRight: 10,
+          borderRadius: 5
+        }}>
+          <IconChemical></IconChemical>
+        </View> */}
         <Text
           color={theme.colors.black}
           weight={theme.typography.weight.semiBold}
@@ -73,6 +88,32 @@ export function Details({ navigation }) {
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat.
         </Text>
+      </DetailContainer>
+      <DetailContainer>
+      <Text
+          color={theme.colors.black}
+          weight={theme.typography.weight.semiBold}
+          size={theme.typography.tall.lg}
+          mb="5"
+        >
+          Contact Number
+        </Text>
+        <Text //Warehouse Address 1
+            color={theme.colors.grey3}
+            weight={theme.typography.weight.regular}
+            size={theme.typography.tall.md}
+            mb="5"
+          >
+            ptgudangku@gmail.com
+          </Text>
+          <Text //Warehouse Address 2
+            color={theme.colors.grey3}
+            weight={theme.typography.weight.regular}
+            size={theme.typography.tall.md}
+            mb="5"
+          >
+            081295700856
+          </Text>
       </DetailContainer>
     </>
   )

@@ -12,6 +12,7 @@ import IconChemicalCategory from './icons/icon-chemical-category'
 const CoreHorizontalCardItem = styled.Pressable`
   display: flex;
   flex-direction: row;
+  margin-bottom: 15px;
 `
 
 const CoreHorizontalCardWithStatus = styled.View`
@@ -22,8 +23,8 @@ const CoreHorizontalCardWithStatus = styled.View`
 `
 
 const CoreHorizontalCardImage = styled.Image`
-  max-width: 100px;
-  max-height: 100px;
+  width: 100px;
+  height: 100px;
   border-radius: 10px;
 `
 
@@ -100,10 +101,7 @@ export const HorizontalCardItem = ({
 
   return (
     <CoreHorizontalCardItem onPress={onPress}>
-      <CoreHorizontalCardImage
-        source={require('../assets/images/warehouse-banner.png')}
-        resizeMode="cover"
-      />
+      <CoreHorizontalCardImage source={{ uri: imageURL }} resizeMode="cover" />
       <CoreHorizontalCardContent>
         {status ? (
           <CoreHorizontalCardWithStatus>

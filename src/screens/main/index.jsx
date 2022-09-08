@@ -9,6 +9,8 @@ import IconSearch from '../../components/icons/icon-search'
 import MoreWarehouse from './more-warehouse'
 import Featured from './main-featured'
 import Place from './main-place'
+import useWarehouse from '../../shared/useWarehouse'
+import BaseText from '../../components/base-text'
 
 export function MainScreen({ navigation }) {
   const theme = useTheme()

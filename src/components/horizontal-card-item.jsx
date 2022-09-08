@@ -8,6 +8,7 @@ import IconFragileCategory from './icons/icon-fragile-category'
 import IconElectricCategory from './icons/icon-electric-category'
 import IconHeavyMaterialsCategory from './icons/icon-heavy-materials-category'
 import IconChemicalCategory from './icons/icon-chemical-category'
+import { currencyFormatter } from '../shared/currencyFormatter'
 
 const CoreHorizontalCardItem = styled.Pressable`
   display: flex;
@@ -127,7 +128,7 @@ export const HorizontalCardItem = ({
           {priceLabel}
         </BaseText>
         <BaseText color="primary" semiBold tall md>
-          Rp.{price}/month
+          {currencyFormatter(price)}/month
         </BaseText>
       </CoreHorizontalCardContent>
     </CoreHorizontalCardItem>

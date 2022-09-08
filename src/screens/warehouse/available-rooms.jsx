@@ -3,6 +3,7 @@ import { ActivityIndicator, SafeAreaView } from 'react-native'
 
 import BaseText from '../../components/base-text'
 import HorizontalCardItem from '../../components/horizontal-card-item'
+import routes from '../../constants/routes'
 
 const WarehouseItem = ({ item, onPress }) => {
   const { room, categories } = item
@@ -27,10 +28,13 @@ const WarehouseItem = ({ item, onPress }) => {
   )
 }
 
-export function AvailableRooms({ isLoading, rooms, categories, navigation }) {
+export function AvailableRooms({ isLoading, warehouse, navigation }) {
+  const rooms = warehouse.relationships['rooms']
+  const categories = warehouse.relationships['categories']
+
   return (
     <>
-      <BaseText semiBold tall lg mb={15}>
+      <BaseText semiBold tall xl mb={15}>
         Select Available Room
       </BaseText>
       <SafeAreaView>
@@ -40,7 +44,12 @@ export function AvailableRooms({ isLoading, rooms, categories, navigation }) {
             <WarehouseItem
               key={room.id}
               item={{ room, categories }}
-              onPress={() => {}}
+              onPress={() =>
+                navigation.navigate(routes.warehouseRoomDetailPageRoute, {
+                  warehouseID: warehouse.attributes.id,
+                  roomID: room.id,
+                })
+              }
             />
           ))}
       </SafeAreaView>

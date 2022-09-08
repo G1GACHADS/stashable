@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import BaseText from '../../../components/base-text'
 
@@ -33,10 +33,17 @@ const Radio = styled.View`
   border-radius: 100px;
 `
 
-const SelectPlanOption = ({ price, plan, setSelectedPlan, isSelected }) => (
+const SelectPlanOption = ({
+  theme,
+  price,
+  plan,
+  setSelectedPlan,
+  isSelected,
+}) => (
   <CoreSelectPlanOption
     isSelected={isSelected}
     onPress={() => setSelectedPlan(plan)}
+    android_ripple={{ color: `hsla(${theme.colors.primaryHSL}, 0.15)` }}
   >
     <Radio isSelected={isSelected} />
     <View>
@@ -51,6 +58,7 @@ const SelectPlanOption = ({ price, plan, setSelectedPlan, isSelected }) => (
 )
 
 export const SelectPlan = ({ basePrice }) => {
+  const theme = useTheme()
   const [selectedPlan, setSelectedPlan] = useState(plans.MONTHLY)
 
   return (
@@ -68,6 +76,7 @@ export const SelectPlan = ({ basePrice }) => {
       >
         <View style={{ paddingRight: 10 }}>
           <SelectPlanOption
+            theme={theme}
             plan={plans.MONTHLY}
             price={basePrice}
             isSelected={selectedPlan === plans.MONTHLY}
@@ -75,6 +84,7 @@ export const SelectPlan = ({ basePrice }) => {
           />
         </View>
         <SelectPlanOption
+          theme={theme}
           plan={plans.YEARLY}
           price={basePrice * 12}
           isSelected={selectedPlan === plans.YEARLY}

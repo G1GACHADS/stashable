@@ -44,8 +44,7 @@ export function WarehouseScreen({ route, navigation }) {
               />
               <AvailableRooms
                 isLoading={isLoading}
-                rooms={warehouse.relationships.rooms}
-                categories={warehouse.relationships.categories}
+                warehouse={warehouse}
                 navigation={navigation}
               />
             </>

@@ -9,14 +9,16 @@ import IconSearch from '../../components/icons/icon-search'
 import MoreWarehouse from './more-warehouse'
 import Featured from './main-featured'
 import Place from './main-place'
-import useWarehouse from '../../shared/useWarehouse'
-import BaseText from '../../components/base-text'
+import useAuthStore from '../../store/auth-store'
 
 export function MainScreen({ navigation }) {
   const theme = useTheme()
   const [search, setForm] = useState({
     keyname: '',
   })
+
+  // const { logoutUser } = useAuthStore()
+  // logoutUser()
 
   return (
     <>

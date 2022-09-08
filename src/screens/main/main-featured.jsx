@@ -16,6 +16,7 @@ import IconHeavyMaterialsCategory from '../../components/icons/icon-heavy-materi
 import IconChemicalCategory from '../../components/icons/icon-chemical-category'
 import BaseText from '../../components/base-text'
 import useWarehouse from '../../shared/useWarehouse'
+import { currencyFormatter } from '../../shared/currencyFormatter'
 
 const FeaturedWarehouseCard = ({ theme, item }) => {
   const keyedCategories = item.relationships.categories.map(category =>
@@ -42,7 +43,9 @@ const FeaturedWarehouseCard = ({ theme, item }) => {
         height: 254,
         backgroundColor: 'white',
         borderRadius: 5,
-        padding: 10,
+        paddingTop: 10,
+        paddingBottom: 10,
+        paddingRight: 10,
       }}
     >
       <Image
@@ -53,7 +56,7 @@ const FeaturedWarehouseCard = ({ theme, item }) => {
           borderRadius: 5,
         }}
       />
-      <BaseText medium tall lg>
+      <BaseText medium tall lg mt={5}>
         {item.attributes.name}
       </BaseText>
       <BaseText color="grey3" regular tall sm>
@@ -63,8 +66,8 @@ const FeaturedWarehouseCard = ({ theme, item }) => {
       <BaseText medium tall sm>
         Start From
       </BaseText>
-      <BaseText primary semiBold tall lg>
-        Rp. {item.attributes.base_price}/month
+      <BaseText color="primary" semiBold tall lg>
+        {currencyFormatter(item.attributes['base_price'])}/month
       </BaseText>
     </View>
   )
@@ -75,13 +78,17 @@ export function Featured({ navigation }) {
   const { warehouses, isLoading } = useWarehouse(3)
 
   return (
-    <Container>
-      {/* Featured Warehouse */}
-      <BaseText semiBold tall xl>
-        Featured Warehouse
-      </BaseText>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {/* <SafeAreaView> */}
+    <>
+      <Container>
+        <BaseText semiBold tall xl>
+          Featured Warehouse
+        </BaseText>
+      </Container>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{ paddingLeft: 15 }}
+      >
         {isLoading && <ActivityIndicator />}
         {!isLoading &&
           warehouses['items'].map(item => (
@@ -91,9 +98,9 @@ export function Featured({ navigation }) {
               item={item}
             />
           ))}
+        <View style={{ paddingRight: 30 }}></View>
       </ScrollView>
-    </Container>
-    //   {/* End Of Featured Warehouse */}
+    </>
   )
 }
 

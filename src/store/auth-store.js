@@ -29,6 +29,8 @@ export const useAuthStore = create(
             user: { data: userData, address: userAddress },
             error: '',
           })
+
+          api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
         } catch (error) {
           set({
             error: error.response.data.message,

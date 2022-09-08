@@ -28,7 +28,7 @@ function useWarehouseDetail(id) {
   })
   const [isLoading, setLoading] = useState(false)
 
-  const fetchWarehouses = id => {
+  const fetchWarehouse = id => {
     api.get(`/warehouses/${id}`).then(response => {
       setWarehouse(response.data)
     })
@@ -36,7 +36,7 @@ function useWarehouseDetail(id) {
 
   useEffect(() => {
     setLoading(true)
-    fetchWarehouses(id)
+    fetchWarehouse(id)
     setLoading(false)
   }, [])
 

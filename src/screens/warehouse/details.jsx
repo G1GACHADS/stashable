@@ -20,34 +20,50 @@ const CategoryContainer = styled.View`
 
 const CategoryIcon = styled.View`
   padding: 5px 8px;
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.colors.black};
   border-radius: 5px;
+  margin-bottom: 15px;
+  margin-right: 15px;
 `
+
+const WarehouseDetailSupportedCategories = ({ categories }) => (
+  <CategoryContainer>
+    {categories.includes('Fragile') && (
+      <CategoryIcon>
+        <IconFragile />
+      </CategoryIcon>
+    )}
+    {categories.includes('Electric') && (
+      <CategoryIcon>
+        <IconElectric />
+      </CategoryIcon>
+    )}
+    {categories.includes('Heavy Materials') && (
+      <CategoryIcon>
+        <IconHeavyMaterial />
+      </CategoryIcon>
+    )}
+    {categories.includes('Chemical') && (
+      <CategoryIcon>
+        <IconChemical />
+      </CategoryIcon>
+    )}
+  </CategoryContainer>
+)
 
 export function Details({ isLoading, warehouse, navigation }) {
   return (
     <>
       <DetailContainer>
-        <BaseText semiBold tall lg mb={5}>
+        <BaseText semiBold tall xl mb={5}>
           Supports
         </BaseText>
-        <CategoryContainer>
-          <CategoryIcon>
-            <IconFragile />
-          </CategoryIcon>
-          <CategoryIcon>
-            <IconElectric />
-          </CategoryIcon>
-          <CategoryIcon>
-            <IconHeavyMaterial />
-          </CategoryIcon>
-          <CategoryIcon>
-            <IconChemical />
-          </CategoryIcon>
-        </CategoryContainer>
+        <WarehouseDetailSupportedCategories
+          categories={warehouse.relationships.categories}
+        />
       </DetailContainer>
       <DetailContainer>
-        <BaseText semiBold tall lg mb={5}>
+        <BaseText semiBold tall xl mb={5}>
           Description
         </BaseText>
         <BaseText color="grey3" regular tall md mb={5}>
@@ -56,14 +72,14 @@ export function Details({ isLoading, warehouse, navigation }) {
         </BaseText>
       </DetailContainer>
       <DetailContainer>
-        <BaseText semiBold tall lg mb={5}>
+        <BaseText semiBold tall xl mb={5}>
           Contact Number
         </BaseText>
         <BaseText color="grey3" regular tall md mb={5}>
           {isLoading && <ActivityIndicator />}
           {!isLoading && warehouse.attributes['email']}
         </BaseText>
-        <BaseText color="grey3" regular tall md mb={5}>
+        <BaseText color="grey3" regular tall md mb={20}>
           {isLoading && <ActivityIndicator />}
           {!isLoading && warehouse.attributes['phone_number']}
         </BaseText>

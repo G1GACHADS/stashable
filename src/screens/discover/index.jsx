@@ -29,9 +29,8 @@ export function DiscoverScreen({ navigation }) {
               paddingVertical: 12,
               justifyContent: 'center',
               alignItems: 'center',
-              gap: 8,
               backgroundColor: theme.colors.white2,
-              marginVertical: 38,
+              marginBottom: 20,
             }}
           >
             <IconSearch />
@@ -42,8 +41,8 @@ export function DiscoverScreen({ navigation }) {
             />
           </View>
           <Category navigation={navigation} />
+          <SearchResult navigation={navigation} />
         </Container>
-        <SearchResult navigation={navigation} />
       </ScrollView>
     </>
   )

@@ -35,16 +35,6 @@ export function Details({ navigation }) {
   return (
     <>
       <DetailContainer>
-        {/* <View style={{
-          borderWidth: 1,
-          paddingTop: 5,
-          paddingBottom: 5,
-          paddingLeft: 10,
-          paddingRight: 10,
-          borderRadius: 5
-        }}>
-          <IconChemical></IconChemical>
-        </View> */}
         <Text
           color={theme.colors.black}
           weight={theme.typography.weight.semiBold}

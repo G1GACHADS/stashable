@@ -168,7 +168,7 @@ const WarehouseItem = ({ item, onPress }) => {
   )
 }
 
-export function MoreWarehouse({ navigation }) {
+export function AvailableRooms({ navigation }) {
   return (
     <>
       <BaseText semiBold tall lg mb={15}>
@@ -187,4 +187,4 @@ export function MoreWarehouse({ navigation }) {
   )
 }
 
-export default MoreWarehouse
+export default AvailableRooms

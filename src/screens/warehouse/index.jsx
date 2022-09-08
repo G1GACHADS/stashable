@@ -14,8 +14,7 @@ import Text from '../../components/text'
 import routes from '../../constants/routes'
 
 import Details from './details'
-import SelectRoom from './room'
-import SelectPlanSection from './select-plan'
+import AvailableRooms from './available-rooms'
 
 export function WarehouseScreen({ navigation }) {
   const theme = useTheme()
@@ -55,8 +54,7 @@ export function WarehouseScreen({ navigation }) {
           </Text>
 
           <Details navigation={navigation} />
-          <SelectRoom navigation={navigation} />
-          <SelectPlanSection basePrice={5000000} />
+          <AvailableRooms navigation={navigation} />
 
           <View
             backgroundColor={theme.colors.primary}

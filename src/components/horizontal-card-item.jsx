@@ -1,15 +1,15 @@
+import { useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import BaseText from './base-text'
+import { Status } from './status'
+
 import IconFragileCategory from './icons/icon-fragile-category'
 import IconElectricCategory from './icons/icon-electric-category'
 import IconHeavyMaterialsCategory from './icons/icon-heavy-materials-category'
 import IconChemicalCategory from './icons/icon-chemical-category'
-import { useMemo } from 'react'
-import { Status } from './status'
-import { Dimensions } from 'react-native'
 
-const CoreHorizontalCardItem = styled.View`
+const CoreHorizontalCardItem = styled.Pressable`
   display: flex;
   flex-direction: row;
 `
@@ -50,6 +50,7 @@ export const HorizontalCardItem = ({
   priceLabel,
   price,
   status,
+  onPress,
 }) => {
   const categoryIcons = useMemo(
     () =>
@@ -98,7 +99,7 @@ export const HorizontalCardItem = ({
   )
 
   return (
-    <CoreHorizontalCardItem>
+    <CoreHorizontalCardItem onPress={onPress}>
       <CoreHorizontalCardImage
         source={require('../assets/images/warehouse-banner.png')}
         resizeMode="cover"

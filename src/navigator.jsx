@@ -1,8 +1,14 @@
+import { View } from 'react-native'
+import { useTheme } from 'styled-components/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { useTheme } from 'styled-components/native'
 
 import * as route from './constants/routes'
+import useAuthStore from './store/auth-store'
+
+import BaseText from './components/base-text'
+import IconHome from './components/icons/icon-home'
+import IconHistory from './components/icons/icon-history'
 
 import GettingStartedScreen from './screens/getting-started'
 import LoginScreen from './screens/login'
@@ -11,12 +17,8 @@ import DiscoverScreen from './screens/discover'
 import RegisterScreen from './screens/register'
 import WarehouseScreen from './screens/warehouse'
 import CheckoutScreen from './screens/warehouse/checkout'
-import useAuthStore from './store/auth-store'
-import { View } from 'react-native'
-import BaseText from './components/base-text'
-import IconHome from './components/icons/icon-home'
-import IconHistory from './components/icons/icon-history'
 import HistoryScreen from './screens/history'
+import RoomDetailScreen from './screens/warehouse/room'
 
 const Tab = createBottomTabNavigator()
 const Stack = createNativeStackNavigator()
@@ -25,7 +27,7 @@ const HomeStack = () => {
   const theme = useTheme()
   return (
     <Stack.Navigator
-      initialRouteName={route.mainPageRoute}
+      initialRouteName={route.warehouseRoomDetailPageRoute}
       screenOptions={{
         contentStyle: {
           backgroundColor: '#fff',
@@ -54,6 +56,13 @@ const HomeStack = () => {
         component={WarehouseScreen}
         options={{
           title: 'Warehouse Details',
+        }}
+      />
+      <Stack.Screen
+        name={route.warehouseRoomDetailPageRoute}
+        component={RoomDetailScreen}
+        options={{
+          title: 'Room Details',
         }}
       />
       <Stack.Screen

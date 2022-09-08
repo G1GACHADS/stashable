@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import BaseText from '../../components/base-text'
+import BaseText from '../../../components/base-text'
 
 const plans = {
   MONTHLY: 'Monthly',
@@ -50,7 +50,7 @@ const SelectPlanOption = ({ price, plan, setSelectedPlan, isSelected }) => (
   </CoreSelectPlanOption>
 )
 
-export const SelectPlanSection = ({ basePrice }) => {
+export const SelectPlan = ({ basePrice }) => {
   const [selectedPlan, setSelectedPlan] = useState(plans.MONTHLY)
 
   return (
@@ -59,7 +59,13 @@ export const SelectPlanSection = ({ basePrice }) => {
         Select Plan
       </BaseText>
 
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          marginBottom: 20,
+        }}
+      >
         <View style={{ paddingRight: 10 }}>
           <SelectPlanOption
             plan={plans.MONTHLY}
@@ -79,4 +85,4 @@ export const SelectPlanSection = ({ basePrice }) => {
   )
 }
 
-export default SelectPlanSection
+export default SelectPlan

@@ -27,7 +27,7 @@ const HomeStack = () => {
   const theme = useTheme()
   return (
     <Stack.Navigator
-      initialRouteName={route.warehouseRoomDetailPageRoute}
+      initialRouteName={route.mainPageRoute}
       screenOptions={{
         contentStyle: {
           backgroundColor: '#fff',

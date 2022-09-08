@@ -69,13 +69,13 @@ export const ItemSelectShippingType = ({
           icon={
             <IconWalking
               fill={
-                shippingType == 'self-service'
+                shippingType === 'self-service'
                   ? theme.colors.primary
                   : theme.colors.grey4
               }
             />
           }
-          selected={shippingType == 'self-service'}
+          selected={shippingType === 'self-service'}
           onPress={() => setShippingType('self-service')}
         />
         <ShippingTypeOption
@@ -85,13 +85,13 @@ export const ItemSelectShippingType = ({
           icon={
             <IconDelivery
               fill={
-                shippingType == 'delivery'
+                shippingType === 'delivery'
                   ? theme.colors.primary
                   : theme.colors.grey4
               }
             />
           }
-          selected={shippingType == 'delivery'}
+          selected={shippingType === 'delivery'}
           onPress={() => setShippingType('delivery')}
         />
       </ShippingTypeContainer>

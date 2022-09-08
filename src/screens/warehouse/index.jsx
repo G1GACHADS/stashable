@@ -1,36 +1,28 @@
-import {
-  Image,
-  ScrollView,
-  StatusBar,
-  TouchableOpacity,
-  View,
-} from 'react-native'
-import { useTheme } from 'styled-components/native'
+import { Image, ScrollView, StatusBar } from 'react-native'
+
 import BaseText from '../../components/base-text'
-
 import Container from '../../components/container'
-
-import routes from '../../constants/routes'
 
 import Details from './details'
 import AvailableRooms from './available-rooms'
 import useWarehouseDetail from '../../shared/useWarehouseDetail'
 
 export function WarehouseScreen({ route, navigation }) {
-  const theme = useTheme()
   const { warehouse, isLoading } = useWarehouseDetail(route.params.warehouseID)
 
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <ScrollView>
-        <Image
-          source={{ uri: warehouse.attributes['image_url'] }}
-          style={{
-            width: null,
-            height: 360,
-          }}
-        />
+        {!isLoading && (
+          <Image
+            source={{ uri: warehouse.attributes['image_url'] }}
+            style={{
+              width: null,
+              height: 360,
+            }}
+          />
+        )}
         <Container>
           {!isLoading && (
             <>
@@ -45,9 +37,17 @@ export function WarehouseScreen({ route, navigation }) {
                 {warehouse.relationships.address['city']},{' '}
                 {warehouse.relationships.address['province']}
               </BaseText>
-
-              <Details navigation={navigation} />
-              <AvailableRooms navigation={navigation} />
+              <Details
+                isLoading={isLoading}
+                warehouse={warehouse}
+                navigation={navigation}
+              />
+              <AvailableRooms
+                isLoading={isLoading}
+                rooms={warehouse.relationships.rooms}
+                categories={warehouse.relationships.categories}
+                navigation={navigation}
+              />
             </>
           )}
         </Container>

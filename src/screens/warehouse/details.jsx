@@ -1,17 +1,11 @@
-import styled, { useTheme } from 'styled-components/native'
-import {
-  Image,
-  ScrollView,
-  StatusBar,
-  TouchableOpacity,
-  View,
-} from 'react-native'
-import Text from '../../components/text'
+import styled from 'styled-components/native'
 
 import IconChemical from '../../components/icons/icon-chemical'
 import IconElectric from '../../components/icons/icon-electric'
 import IconFragile from '../../components/icons/icon-fragile'
 import IconHeavyMaterial from '../../components/icons/icon-heavymaterial'
+import BaseText from '../../components/base-text'
+import { ActivityIndicator } from 'react-native'
 
 const DetailContainer = styled.View`
   margin-top: 15px;
@@ -30,19 +24,13 @@ const CategoryIcon = styled.View`
   border-radius: 5px;
 `
 
-export function Details({ navigation }) {
-  const theme = useTheme()
+export function Details({ isLoading, warehouse, navigation }) {
   return (
     <>
       <DetailContainer>
-        <Text
-          color={theme.colors.black}
-          weight={theme.typography.weight.semiBold}
-          size={theme.typography.tall.lg}
-          mb="5"
-        >
+        <BaseText semiBold tall lg mb={5}>
           Supports
-        </Text>
+        </BaseText>
         <CategoryContainer>
           <CategoryIcon>
             <IconFragile />
@@ -59,51 +47,26 @@ export function Details({ navigation }) {
         </CategoryContainer>
       </DetailContainer>
       <DetailContainer>
-        <Text
-          color={theme.colors.black}
-          weight={theme.typography.weight.semiBold}
-          size={theme.typography.tall.lg}
-          mb="5"
-        >
+        <BaseText semiBold tall lg mb={5}>
           Description
-        </Text>
-        <Text
-          color={theme.colors.grey3}
-          weight={theme.typography.weight.regular}
-          size={theme.typography.tall.sm}
-          mb="5"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </Text>
+        </BaseText>
+        <BaseText color="grey3" regular tall md mb={5}>
+          {isLoading && <ActivityIndicator />}
+          {!isLoading && warehouse.attributes['description']}
+        </BaseText>
       </DetailContainer>
       <DetailContainer>
-      <Text
-          color={theme.colors.black}
-          weight={theme.typography.weight.semiBold}
-          size={theme.typography.tall.lg}
-          mb="5"
-        >
+        <BaseText semiBold tall lg mb={5}>
           Contact Number
-        </Text>
-        <Text //Warehouse Address 1
-            color={theme.colors.grey3}
-            weight={theme.typography.weight.regular}
-            size={theme.typography.tall.md}
-            mb="5"
-          >
-            ptgudangku@gmail.com
-          </Text>
-          <Text //Warehouse Address 2
-            color={theme.colors.grey3}
-            weight={theme.typography.weight.regular}
-            size={theme.typography.tall.md}
-            mb="5"
-          >
-            081295700856
-          </Text>
+        </BaseText>
+        <BaseText color="grey3" regular tall md mb={5}>
+          {isLoading && <ActivityIndicator />}
+          {!isLoading && warehouse.attributes['email']}
+        </BaseText>
+        <BaseText color="grey3" regular tall md mb={5}>
+          {isLoading && <ActivityIndicator />}
+          {!isLoading && warehouse.attributes['phone_number']}
+        </BaseText>
       </DetailContainer>
     </>
   )

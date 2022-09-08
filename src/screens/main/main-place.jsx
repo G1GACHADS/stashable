@@ -41,7 +41,7 @@ export function Place({ navigation }) {
               Jakarta
             </Text>
           </View>
-          <View style={{ alignItems: 'center', justifyContent: 'center'}}>
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <Image
               source={require('../../assets/images/jakarta-place.png')}
               style={{

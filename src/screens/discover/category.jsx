@@ -33,6 +33,7 @@ const CategoryIcon = styled.Pressable`
   display:flex;
   flex-direction:row;
   justify-content:center;
+  margin: 5px;
   padding: 5px 8px;
   border: 1px solid black;
   border-radius: 5px;
@@ -68,7 +69,6 @@ export function Category({ navigation }) {
             color={theme.colors.black}
             weight={theme.typography.weight.semiBold}
             size={theme.typography.tall.xl}
-            
           >
             Category
           </Text>       

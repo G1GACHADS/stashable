@@ -1,6 +1,6 @@
 const defaultOptions = {
   thousandsSeparator: '.',
-  symbol: 'Rp. ',
+  symbol: 'Rp ',
 }
 
 export const currencyFormatter = (value, options) => {

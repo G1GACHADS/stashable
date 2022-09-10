@@ -1,9 +1,10 @@
 import { useMemo } from 'react'
 import { ActivityIndicator, SafeAreaView } from 'react-native'
 
+import routes from '../../constants/routes'
+
 import BaseText from '../../components/base-text'
 import HorizontalCardItem from '../../components/horizontal-card-item'
-import routes from '../../constants/routes'
 
 const WarehouseItem = ({ item, onPress }) => {
   const { room, categories } = item
@@ -46,7 +47,7 @@ export function AvailableRooms({ isLoading, warehouse, navigation }) {
               item={{ room, categories }}
               onPress={() =>
                 navigation.navigate(routes.warehouseRoomDetailPageRoute, {
-                  warehouseID: warehouse.attributes.id,
+                  warehouse,
                   roomID: room.id,
                 })
               }

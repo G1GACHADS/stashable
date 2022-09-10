@@ -1,13 +1,11 @@
-import { useState } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import BaseText from '../../../components/base-text'
+import plans from '../../../constants/plans'
 
-const plans = {
-  MONTHLY: 'Monthly',
-  YEARLY: 'Yearly',
-}
+import { currencyFormatter } from '../../../shared/currencyFormatter'
+
+import BaseText from '../../../components/base-text'
 
 const CoreSelectPlanOption = styled.Pressable`
   flex-direction: row;
@@ -33,16 +31,10 @@ const Radio = styled.View`
   border-radius: 100px;
 `
 
-const SelectPlanOption = ({
-  theme,
-  price,
-  plan,
-  setSelectedPlan,
-  isSelected,
-}) => (
+const SelectPlanOption = ({ theme, price, plan, isSelected, onPress }) => (
   <CoreSelectPlanOption
     isSelected={isSelected}
-    onPress={() => setSelectedPlan(plan)}
+    onPress={onPress}
     android_ripple={{ color: `hsla(${theme.colors.primaryHSL}, 0.15)` }}
   >
     <Radio isSelected={isSelected} />
@@ -51,15 +43,14 @@ const SelectPlanOption = ({
         {plan} Price
       </BaseText>
       <BaseText color="primary" semiBold tall lg>
-        Rp. {price}
+        {currencyFormatter(price)}
       </BaseText>
     </View>
   </CoreSelectPlanOption>
 )
 
-export const SelectPlan = ({ basePrice }) => {
+export const SelectPlan = ({ basePrice, selectedPlan, setSelectedPlan }) => {
   const theme = useTheme()
-  const [selectedPlan, setSelectedPlan] = useState(plans.MONTHLY)
 
   return (
     <>
@@ -80,7 +71,7 @@ export const SelectPlan = ({ basePrice }) => {
             plan={plans.MONTHLY}
             price={basePrice}
             isSelected={selectedPlan === plans.MONTHLY}
-            setSelectedPlan={setSelectedPlan}
+            onPress={() => setSelectedPlan(plans.MONTHLY)}
           />
         </View>
         <SelectPlanOption
@@ -88,7 +79,7 @@ export const SelectPlan = ({ basePrice }) => {
           plan={plans.YEARLY}
           price={basePrice * 12}
           isSelected={selectedPlan === plans.YEARLY}
-          setSelectedPlan={setSelectedPlan}
+          onPress={() => setSelectedPlan(plans.YEARLY)}
         />
       </View>
     </>

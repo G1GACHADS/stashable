@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useState } from 'react'
+import { useCallback, useLayoutEffect, useMemo, useState } from 'react'
 import { Dimensions, Platform, ScrollView, StatusBar, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -11,6 +11,8 @@ import BaseText from '../../../components/base-text'
 import ItemForm from './item-form'
 import ItemSelectShippingType from './item-select-shipping-type'
 import ItemUploadZone from './item-upload-zone'
+import { currencyFormatter } from '../../../shared/currencyFormatter'
+import HorizontalCardItem from '../../../components/horizontal-card-item'
 
 const CoreCheckoutPaymentPanel = styled.View`
   flex: 1;
@@ -24,7 +26,12 @@ const CoreCheckoutPaymentPanel = styled.View`
   border-top-color: ${({ theme }) => theme.colors.grey2};
 `
 
-const CheckoutPaymentPanel = ({ totalFee, disabled, nextStep }) => {
+const CheckoutPaymentPanel = ({
+  totalFee,
+  isPaidAnnually,
+  disabled,
+  nextStep,
+}) => {
   return (
     <CoreCheckoutPaymentPanel>
       <View>
@@ -32,7 +39,7 @@ const CheckoutPaymentPanel = ({ totalFee, disabled, nextStep }) => {
           Total Payment
         </BaseText>
         <BaseText color="primary" semiBold tall xl mb={5}>
-          Rp.{totalFee}/month
+          {currencyFormatter(totalFee)}/{isPaidAnnually ? 'year' : 'month'}
         </BaseText>
       </View>
       <Button sm title="Checkout" disabled={disabled} onPress={nextStep} />
@@ -44,19 +51,42 @@ const FirstStep = ({
   theme,
   form,
   setForm,
+  warehouse,
+  room,
   shippingType,
   setShippingType,
+  totalFee,
+  isPaidAnnually,
   nextStep,
 }) => {
   const isEmpty =
-    Object.values(form).some(value => value === '') || !shippingType
+    Object.values(form).some(
+      value => value === '' || (Array.isArray(value) && value.length === 0)
+    ) || !shippingType
+
+  const keyedCategories = useMemo(
+    () =>
+      warehouse.relationships.categories.map(category =>
+        category.toLowerCase()
+      ),
+    [warehouse.relationships.categories]
+  )
+  const subtitle = `${room.attributes['length']} meter x ${room.attributes['width']} meter x ${room.attributes['height']} meter`
 
   return (
     <>
       <BaseText semiBold tall lg mb={10}>
         Picked Room
       </BaseText>
-      <ItemUploadZone />
+      <HorizontalCardItem
+        title={room.attributes['name']}
+        subtitle={subtitle}
+        price={room.attributes['price']}
+        priceLabel="Price For"
+        imageURL={room.attributes['image_url']}
+        categories={keyedCategories}
+      />
+      <ItemUploadZone form={form} setForm={setForm} />
       <ItemForm form={form} setForm={setForm} />
       <ItemSelectShippingType
         theme={theme}
@@ -64,7 +94,8 @@ const FirstStep = ({
         setShippingType={setShippingType}
       />
       <CheckoutPaymentPanel
-        totalFee={5000000}
+        totalFee={totalFee}
+        isPaidAnnually={isPaidAnnually}
         disabled={isEmpty}
         nextStep={nextStep}
       />
@@ -165,8 +196,11 @@ const FinalStep = () => (
   </>
 )
 
-export function CheckoutScreen({ navigation }) {
+export function CheckoutScreen({ route, navigation }) {
   const theme = useTheme()
+
+  const { warehouse, room, isPaidAnnually, totalFee } = route.params
+
   const [step, setStep] = useState(0)
   const [form, setForm] = useState({
     name: '',
@@ -176,6 +210,7 @@ export function CheckoutScreen({ navigation }) {
     height: '',
     weight: '',
     quantity: '',
+    images: [null, null, null, null],
   })
   const [shippingType, setShippingType] = useState('')
 
@@ -202,10 +237,14 @@ export function CheckoutScreen({ navigation }) {
           {step === 0 && (
             <FirstStep
               theme={theme}
+              room={room}
+              warehouse={warehouse}
               form={form}
               setForm={setForm}
               shippingType={shippingType}
               setShippingType={setShippingType}
+              totalFee={totalFee}
+              isPaidAnnually={isPaidAnnually}
               nextStep={nextStep}
             />
           )}

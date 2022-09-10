@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   StatusBar,
   ScrollView,
@@ -9,6 +10,11 @@ import styled from 'styled-components/native'
 
 import SelectPlan from './select-plan'
 
+import routes from '../../../constants/routes'
+import plans from '../../../constants/plans'
+
+import useWarehouseRoomDetail from '../../../shared/useWarehouseRoomDetail'
+
 import BaseText from '../../../components/base-text'
 import Button from '../../../components/button'
 import Container from '../../../components/container'
@@ -17,7 +23,6 @@ import IconChemical from '../../../components/icons/icon-chemical'
 import IconElectric from '../../../components/icons/icon-electric'
 import IconFragile from '../../../components/icons/icon-fragile'
 import IconHeavyMaterial from '../../../components/icons/icon-heavymaterial'
-import useWarehouseRoomDetail from '../../../shared/useWarehouseRoomDetail'
 
 const RoomDetailHeader = ({ name, address }) => (
   <View style={{ marginBottom: 20 }}>
@@ -100,8 +105,13 @@ const RoomDetailSize = ({ length, width, height }) => (
 )
 
 export function RoomDetailScreen({ route, navigation }) {
-  const { warehouseID, roomID } = route.params
-  const { room, isLoading } = useWarehouseRoomDetail(warehouseID, roomID)
+  const { warehouse, roomID } = route.params
+  const { room, isLoading } = useWarehouseRoomDetail(
+    warehouse.attributes['id'],
+    roomID
+  )
+
+  const [selectedPlan, setSelectedPlan] = useState(plans.MONTHLY)
 
   return (
     <>
@@ -133,10 +143,28 @@ export function RoomDetailScreen({ route, navigation }) {
                 height={room.attributes.height}
                 width={room.attributes.width}
               />
-              <SelectPlan basePrice={room.attributes.price} />
+              <SelectPlan
+                basePrice={room.attributes.price}
+                selectedPlan={selectedPlan}
+                setSelectedPlan={setSelectedPlan}
+              />
             </>
           )}
-          <Button sm title="Checkout" />
+          <Button
+            sm
+            title="Checkout"
+            onPress={() =>
+              navigation.navigate(routes.warehouseCheckoutPageRoute, {
+                warehouse,
+                room,
+                isPaidAnnually: selectedPlan === plans.YEARLY,
+                totalFee:
+                  selectedPlan === plans.YEARLY
+                    ? room.attributes.price * 12
+                    : room.attributes.price,
+              })
+            }
+          />
         </Container>
       </ScrollView>
     </>

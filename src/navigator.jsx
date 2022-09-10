@@ -105,7 +105,6 @@ const HistoryStack = () => {
         options={{
           headerShown: false,
         }}
-        
       />
       <Stack.Screen
         name={route.historyDetailPageRoute}
@@ -186,9 +185,9 @@ export const Tabs = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-              <IconDiscover 
+              <IconDiscover
                 fill={focused ? theme.colors.primary : undefined}
-                stroke={focused ? theme.colors.white1: theme.colors.black} 
+                stroke={focused ? theme.colors.white1 : theme.colors.black}
               />
               <BaseText color={focused ? 'primary' : 'black'} semiBold tall md>
                 Discover

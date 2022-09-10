@@ -1,14 +1,14 @@
-import { Image, ScrollView, StatusBar, View } from 'react-native'
-import { useTheme } from 'styled-components/native'
+import { Image, View } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
-import routes from '../../constants/routes'
-
-import Button from '../../components/button'
 import Container from '../../components/container'
 import Text from '../../components/text'
 
-import IconElectricCategory from '../../components/icons/icon-electric-category'
-
+const PlaceContainer = styled.View`
+  align-items: center; 
+  justify-content: center; 
+  padding: 2%;
+`
 export function Place({ navigation }) {
   const theme = useTheme()
   return (
@@ -22,9 +22,7 @@ export function Place({ navigation }) {
         Place
       </Text>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-        <View
-          style={{ alignItems: 'center', justifyContent: 'center', padding: 8 }}
-        >
+        <PlaceContainer>
           <Image
             source={require('../../assets/images/bali-place.png')}
             style={{
@@ -40,10 +38,8 @@ export function Place({ navigation }) {
           >
             Jakarta
           </Text>
-        </View>
-        <View
-          style={{ alignItems: 'center', justifyContent: 'center', padding: 8 }}
-        >
+        </PlaceContainer>
+        <PlaceContainer>
           <Image
             source={require('../../assets/images/surabaya-place.png')}
             style={{
@@ -59,10 +55,8 @@ export function Place({ navigation }) {
           >
             Surabaya
           </Text>
-        </View>
-        <View
-          style={{ alignItems: 'center', justifyContent: 'center', padding: 8 }}
-        >
+        </PlaceContainer>
+        <PlaceContainer>
           <Image
             source={require('../../assets/images/medan-place.png')}
             style={{
@@ -78,10 +72,8 @@ export function Place({ navigation }) {
           >
             Medan
           </Text>
-        </View>
-        <View
-          style={{ alignItems: 'center', justifyContent: 'center', padding: 8 }}
-        >
+        </PlaceContainer>
+        <PlaceContainer>
           <Image
             source={require('../../assets/images/batam-place.png')}
             style={{
@@ -97,10 +89,8 @@ export function Place({ navigation }) {
           >
             Batam
           </Text>
-        </View>
-        <View
-          style={{ alignItems: 'center', justifyContent: 'center', padding: 8 }}
-        >
+        </PlaceContainer>
+        <PlaceContainer>
           <Image
             source={require('../../assets/images/bali-place.png')}
             style={{
@@ -116,10 +106,8 @@ export function Place({ navigation }) {
           >
             Bali
           </Text>
-        </View>
-        <View
-          style={{ alignItems: 'center', justifyContent: 'center', padding: 8 }}
-        >
+        </PlaceContainer>
+        <PlaceContainer>
           <Image
             source={require('../../assets/images/semarang-place.png')}
             style={{
@@ -135,7 +123,7 @@ export function Place({ navigation }) {
           >
             Semarang
           </Text>
-        </View>
+        </PlaceContainer>
       </View>
     </Container>
   )

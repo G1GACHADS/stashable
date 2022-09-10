@@ -98,11 +98,11 @@ const HistoryDetailStatus = ({ paid_annually, status, address }) => {
         Status
       </BaseText>
       <View style={{ marginBottom: 20 }}>
-      <Status
-        paid={status === 'paid'}
-        returned={status === 'returned'}
-        unpaid={status === 'unpaid'}
-        cancelled={status === 'cancelled'}  
+        <Status
+          paid={status === 'paid'}
+          returned={status === 'returned'}
+          unpaid={status === 'unpaid'}
+          cancelled={status === 'cancelled'}
         />
       </View>
       <BaseText semiBold tall xl>

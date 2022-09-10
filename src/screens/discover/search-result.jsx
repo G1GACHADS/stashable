@@ -191,25 +191,25 @@ export function SearchResult({ navigation }) {
   return (
     <>
       <Container>
-      <SearchHeader>
-        <Text
+        <SearchHeader>
+          <Text
             color={theme.colors.black}
             weight={theme.typography.weight.semiBold}
             size={theme.typography.tall.xl}
           >
             Search Result "Jakarta"
-        </Text>
-        <FilterButton />
-      </SearchHeader>
-      <SafeAreaView>
-        {sampleData['items'].map(item => (
-          <WarehouseItem
-            key={item.attributes.id}
-            item={item}
-            onPress={() => {}}
-          />
-        ))}
-      </SafeAreaView>
+          </Text>
+          <FilterButton />
+        </SearchHeader>
+        <SafeAreaView>
+          {sampleData['items'].map(item => (
+            <WarehouseItem
+              key={item.attributes.id}
+              item={item}
+              onPress={() => {}}
+            />
+          ))}
+        </SafeAreaView>
       </Container>
     </>
   )

@@ -124,7 +124,7 @@ const CoreHistoryCardItem = styled.Pressable`
 const HistoryCardItem = ({ item, onPress }) => {
   const keyedCategories = useMemo(
     () => item.relationships.categories.map(category => category.toLowerCase()),
-    [item.relationships.categories] 
+    [item.relationships.categories]
   )
 
   const subtitle = `${item.relationships.address['city']}, ${item.relationships.address['province']}`

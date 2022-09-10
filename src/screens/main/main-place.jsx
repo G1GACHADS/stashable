@@ -7,12 +7,12 @@ import Text from '../../components/text'
 const PlaceContainer = styled.View`
   align-items: center; 
   justify-content: center; 
-  padding: 2%;
+  padding: 1%;
 `
 export function Place({ navigation }) {
   const theme = useTheme()
   return (
-    <Container style={{ gap: 10 }}>
+    <Container>
       {/* Place Section */}
       <Text
         color={theme.colors.black}
@@ -24,7 +24,7 @@ export function Place({ navigation }) {
       <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
         <PlaceContainer>
           <Image
-            source={require('../../assets/images/bali-place.png')}
+            source={require('../../assets/images/jakarta-place.png')}
             style={{
               width: 100,
               height: 100,

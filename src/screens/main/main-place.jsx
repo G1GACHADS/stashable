@@ -1,131 +1,85 @@
-import { Image, View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
-import Container from '../../components/container'
-import Text from '../../components/text'
+import BaseText from '../../components/base-text'
 
-const PlaceContainer = styled.View`
-  align-items: center; 
-  justify-content: center; 
-  padding: 1%;
+const PlaceRow = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 `
+
+const PlaceItem = styled.View`
+  min-width: 33.3333%;
+  max-width: 33.3333%;
+  padding-right: 10px;
+`
+
+const PlaceImage = styled.ImageBackground`
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100px;
+  border-radius: 5px;
+`
+
 export function Place({ navigation }) {
-  const theme = useTheme()
+  const places = [
+    {
+      name: 'Jakarta',
+      image: require('../../assets/images/jakarta-place.png'),
+    },
+    {
+      name: 'Surabaya',
+      image: require('../../assets/images/surabaya-place.png'),
+    },
+    {
+      name: 'Medan',
+      image: require('../../assets/images/medan-place.png'),
+    },
+    {
+      name: 'Batam',
+      image: require('../../assets/images/batam-place.png'),
+    },
+    {
+      name: 'Bali',
+      image: require('../../assets/images/bali-place.png'),
+    },
+    {
+      name: 'Semarang',
+      image: require('../../assets/images/semarang-place.png'),
+    },
+  ]
+
   return (
-    <Container>
-      {/* Place Section */}
-      <Text
-        color={theme.colors.black}
-        weight={theme.typography.weight.semiBold}
-        size={theme.typography.tall.xl}
-      >
+    <>
+      <BaseText semiBold tall xl mt={20}>
         Place
-      </Text>
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-        <PlaceContainer>
-          <Image
-            source={require('../../assets/images/jakarta-place.png')}
-            style={{
-              width: 100,
-              height: 100,
-            }}
-          ></Image>
-          <Text
-            color={theme.colors.white1}
-            weight={theme.typography.weight.medium}
-            size={theme.typography.tall.lg}
-            style={{ position: 'absolute' }}
-          >
-            Jakarta
-          </Text>
-        </PlaceContainer>
-        <PlaceContainer>
-          <Image
-            source={require('../../assets/images/surabaya-place.png')}
-            style={{
-              width: 100,
-              height: 100,
-            }}
-          ></Image>
-          <Text
-            color={theme.colors.white1}
-            weight={theme.typography.weight.medium}
-            size={theme.typography.tall.lg}
-            style={{ position: 'absolute' }}
-          >
-            Surabaya
-          </Text>
-        </PlaceContainer>
-        <PlaceContainer>
-          <Image
-            source={require('../../assets/images/medan-place.png')}
-            style={{
-              width: 100,
-              height: 100,
-            }}
-          ></Image>
-          <Text
-            color={theme.colors.white1}
-            weight={theme.typography.weight.medium}
-            size={theme.typography.tall.lg}
-            style={{ position: 'absolute' }}
-          >
-            Medan
-          </Text>
-        </PlaceContainer>
-        <PlaceContainer>
-          <Image
-            source={require('../../assets/images/batam-place.png')}
-            style={{
-              width: 100,
-              height: 100,
-            }}
-          ></Image>
-          <Text
-            color={theme.colors.white1}
-            weight={theme.typography.weight.medium}
-            size={theme.typography.tall.lg}
-            style={{ position: 'absolute' }}
-          >
-            Batam
-          </Text>
-        </PlaceContainer>
-        <PlaceContainer>
-          <Image
-            source={require('../../assets/images/bali-place.png')}
-            style={{
-              width: 100,
-              height: 100,
-            }}
-          ></Image>
-          <Text
-            color={theme.colors.white1}
-            weight={theme.typography.weight.medium}
-            size={theme.typography.tall.lg}
-            style={{ position: 'absolute' }}
-          >
-            Bali
-          </Text>
-        </PlaceContainer>
-        <PlaceContainer>
-          <Image
-            source={require('../../assets/images/semarang-place.png')}
-            style={{
-              width: 100,
-              height: 100,
-            }}
-          ></Image>
-          <Text
-            color={theme.colors.white1}
-            weight={theme.typography.weight.medium}
-            size={theme.typography.tall.lg}
-            style={{ position: 'absolute' }}
-          >
-            Semarang
-          </Text>
-        </PlaceContainer>
-      </View>
-    </Container>
+      </BaseText>
+      <PlaceRow>
+        {places.slice(0, 3).map((place, index) => (
+          <PlaceItem key={index}>
+            <PlaceImage source={place.image}>
+              <BaseText color="white1" semiBold tall lg>
+                {place.name}
+              </BaseText>
+            </PlaceImage>
+          </PlaceItem>
+        ))}
+      </PlaceRow>
+      <PlaceRow>
+        {places.slice(3, 6).map((place, index) => (
+          <PlaceItem key={index}>
+            <PlaceImage source={place.image}>
+              <BaseText color="white1" semiBold tall lg>
+                {place.name}
+              </BaseText>
+            </PlaceImage>
+          </PlaceItem>
+        ))}
+      </PlaceRow>
+    </>
   )
 }
 

@@ -8,6 +8,7 @@ import useAuthStore from './store/auth-store'
 
 import BaseText from './components/base-text'
 import IconHome from './components/icons/icon-home'
+import IconDiscover from './components/icons/icon-discover'
 import IconHistory from './components/icons/icon-history'
 
 import GettingStartedScreen from './screens/getting-started'
@@ -18,6 +19,7 @@ import RegisterScreen from './screens/register'
 import WarehouseScreen from './screens/warehouse'
 import CheckoutScreen from './screens/warehouse/checkout'
 import HistoryScreen from './screens/history'
+import HistoryDetailScreen from './screens/history/history-detail'
 import RoomDetailScreen from './screens/warehouse/room'
 
 const Tab = createBottomTabNavigator()
@@ -103,6 +105,14 @@ const HistoryStack = () => {
         options={{
           headerShown: false,
         }}
+        
+      />
+      <Stack.Screen
+        name={route.historyDetailPageRoute}
+        component={HistoryDetailScreen}
+        options={{
+          headerShown: false,
+        }}
       />
     </Stack.Navigator>
   )
@@ -171,6 +181,23 @@ export const Tabs = () => {
         }}
       />
       <Tab.Screen
+        name="Discover"
+        component={DiscoverStack}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+              <IconDiscover 
+                fill={focused ? theme.colors.primary : undefined}
+                stroke={focused ? theme.colors.white1: theme.colors.black} 
+              />
+              <BaseText color={focused ? 'primary' : 'black'} semiBold tall md>
+                Discover
+              </BaseText>
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
         name="Rental History"
         component={HistoryStack}
         options={{
@@ -179,21 +206,6 @@ export const Tabs = () => {
               <IconHistory filled={focused} />
               <BaseText color={focused ? 'primary' : 'black'} semiBold tall md>
                 History
-              </BaseText>
-            </View>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Discover"
-        component={DiscoverStack}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-              {/* belum ganti icon discover*/}
-              <IconHistory filled={focused} />
-              <BaseText color={focused ? 'primary' : 'black'} semiBold tall md>
-                Discover
               </BaseText>
             </View>
           ),

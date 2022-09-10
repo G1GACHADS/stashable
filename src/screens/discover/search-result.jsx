@@ -5,6 +5,7 @@ import {
   StatusBar,
   TouchableOpacity,
   SafeAreaView,
+  Pressable,
   View,
 } from 'react-native'
 import Text from '../../components/text'

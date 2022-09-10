@@ -7,6 +7,7 @@ export const warehousePageRoute = 'warehouse-page'
 export const warehouseRoomDetailPageRoute = 'warehouse-room-detail'
 export const warehouseCheckoutPageRoute = 'warehouse-checkout-page'
 export const historyPageRoute = 'history-page-route'
+export const historyDetailPageRoute = 'history-detail-page-route'
 
 export default {
   gettingStartedRoute,
@@ -18,4 +19,5 @@ export default {
   warehouseRoomDetailPageRoute,
   warehouseCheckoutPageRoute,
   historyPageRoute,
+  historyDetailPageRoute,
 }

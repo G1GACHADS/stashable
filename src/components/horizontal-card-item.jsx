@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import BaseText from './base-text'
-import { Status } from './status'
+import Status from './status'
 
 import IconFragileCategory from './icons/icon-fragile-category'
 import IconElectricCategory from './icons/icon-electric-category'

@@ -6,6 +6,7 @@ const StatusBg = styled.View`
   padding: 1px 8px;
   background-color: ${({ bgColor }) => bgColor};
   border-radius: 4px;
+  align-self: flex-start;
 `
 
 export const Status = ({ paid, unpaid, returned, cancelled }) => {
@@ -41,3 +42,5 @@ export const Status = ({ paid, unpaid, returned, cancelled }) => {
     </StatusBg>
   )
 }
+
+export default Status

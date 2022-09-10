@@ -9,6 +9,8 @@ import BaseText from '../../components/base-text'
 import HorizontalCardItem from '../../components/horizontal-card-item'
 import styled from 'styled-components/native'
 
+import HistoryDetail from './history-detail'
+
 const sampleData = {
   total_items: 2,
   items: [
@@ -122,7 +124,7 @@ const CoreHistoryCardItem = styled.Pressable`
 const HistoryCardItem = ({ item, onPress }) => {
   const keyedCategories = useMemo(
     () => item.relationships.categories.map(category => category.toLowerCase()),
-    [item.relationships.categories]
+    [item.relationships.categories] 
   )
 
   const subtitle = `${item.relationships.address['city']}, ${item.relationships.address['province']}`
@@ -147,7 +149,7 @@ export function HistoryScreen({ navigation }) {
     <HistoryCardItem
       key={item.attributes['id']}
       item={item}
-      onPress={() => {}}
+      onPress={() => navigation.navigate(routes.historyDetailPageRoute)}
     />
   )
 

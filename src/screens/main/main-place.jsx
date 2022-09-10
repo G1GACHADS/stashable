@@ -21,10 +21,8 @@ export function Place({ navigation }) {
       >
         Place
       </Text>
-      <View style={{ flexDirection: 'column', gap: 10, alignItems: 'center' }}>
-        {/* change to loop */}
-        <View style={{ flexDirection: 'row', gap: 10 }}>
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flexDirection: 'row', flexWrap:'wrap' }}>
+          <View style={{ alignItems: 'center', justifyContent: 'center', padding: 8  }}>
             <Image
               source={require('../../assets/images/bali-place.png')}
               style={{
@@ -41,9 +39,9 @@ export function Place({ navigation }) {
               Jakarta
             </Text>
           </View>
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ alignItems: 'center', justifyContent: 'center', padding: 8  }}>
             <Image
-              source={require('../../assets/images/jakarta-place.png')}
+              source={require('../../assets/images/surabaya-place.png')}
               style={{
                 width: 100,
                 height: 100,
@@ -55,12 +53,12 @@ export function Place({ navigation }) {
               size={theme.typography.tall.lg}
               style={{ position: 'absolute' }}
             >
-              Jakarta
+              Surabaya
             </Text>
           </View>
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ alignItems: 'center', justifyContent: 'center', padding: 8  }}>
             <Image
-              source={require('../../assets/images/jakarta-place.png')}
+              source={require('../../assets/images/medan-place.png')}
               style={{
                 width: 100,
                 height: 100,
@@ -72,64 +70,61 @@ export function Place({ navigation }) {
               size={theme.typography.tall.lg}
               style={{ position: 'absolute' }}
             >
-              Jakarta
+              Medan
+            </Text>
+          </View>
+          <View style={{ alignItems: 'center', justifyContent: 'center', padding: 8  }}>
+            <Image
+              source={require('../../assets/images/batam-place.png')}
+              style={{
+                width: 100,
+                height: 100,
+              }}
+            ></Image>
+            <Text
+              color={theme.colors.white1}
+              weight={theme.typography.weight.medium}
+              size={theme.typography.tall.lg}
+              style={{ position: 'absolute' }}
+            >
+              Batam
+            </Text>
+          </View>
+          <View style={{ alignItems: 'center', justifyContent: 'center', padding: 8  }}>
+            <Image
+              source={require('../../assets/images/bali-place.png')}
+              style={{
+                width: 100,
+                height: 100,
+              }}
+            ></Image>
+            <Text
+              color={theme.colors.white1}
+              weight={theme.typography.weight.medium}
+              size={theme.typography.tall.lg}
+              style={{ position: 'absolute' }}
+            >
+              Bali
+            </Text>
+          </View>
+          <View style={{ alignItems: 'center', justifyContent: 'center', padding: 8  }}>
+            <Image
+              source={require('../../assets/images/semarang-place.png')}
+              style={{
+                width: 100,
+                height: 100,
+              }}
+            ></Image>
+            <Text
+              color={theme.colors.white1}
+              weight={theme.typography.weight.medium}
+              size={theme.typography.tall.lg}
+              style={{ position: 'absolute' }}
+            >
+              Semarang
             </Text>
           </View>
         </View>
-        <View style={{ flexDirection: 'row', padding: 10 }}>
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-            <Image
-              source={require('../../assets/images/jakarta-place.png')}
-              style={{
-                width: 100,
-                height: 100,
-              }}
-            ></Image>
-            <Text
-              color={theme.colors.white1}
-              weight={theme.typography.weight.medium}
-              size={theme.typography.tall.lg}
-              style={{ position: 'absolute' }}
-            >
-              Jakarta
-            </Text>
-          </View>
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-            <Image
-              source={require('../../assets/images/jakarta-place.png')}
-              style={{
-                width: 100,
-                height: 100,
-              }}
-            ></Image>
-            <Text
-              color={theme.colors.white1}
-              weight={theme.typography.weight.medium}
-              size={theme.typography.tall.lg}
-              style={{ position: 'absolute' }}
-            >
-              Jakarta
-            </Text>
-          </View>
-          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-            <Image
-              source={require('../../assets/images/jakarta-place.png')}
-              style={{
-                width: 100,
-                height: 100,
-              }}
-            ></Image>
-            <Text
-              color={theme.colors.white1}
-              weight={theme.typography.weight.medium}
-              size={theme.typography.tall.lg}
-              style={{ position: 'absolute' }}
-            >
-              Jakarta
-            </Text>
-          </View>
-        </View>
-      </View>
     </Container>
   )
 }

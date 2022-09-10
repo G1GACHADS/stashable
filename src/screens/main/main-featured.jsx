@@ -1,24 +1,38 @@
-import {
-  ActivityIndicator,
-  Image,
-  ScrollView,
-  StatusBar,
-  View,
-} from 'react-native'
-import { useTheme } from 'styled-components/native'
+import { ActivityIndicator, Image, ScrollView, View } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
+
+import routes from '../../constants/routes'
+import { currencyFormatter } from '../../shared/currencyFormatter'
+import useWarehouse from '../../shared/useWarehouse'
 
 import Container from '../../components/container'
-import Text from '../../components/text'
+import BaseText from '../../components/base-text'
 
 import IconFragileCategory from '../../components/icons/icon-fragile-category'
 import IconElectricCategory from '../../components/icons/icon-electric-category'
 import IconHeavyMaterialsCategory from '../../components/icons/icon-heavy-materials-category'
 import IconChemicalCategory from '../../components/icons/icon-chemical-category'
-import BaseText from '../../components/base-text'
-import useWarehouse from '../../shared/useWarehouse'
-import { currencyFormatter } from '../../shared/currencyFormatter'
 
-const FeaturedWarehouseCard = ({ theme, item }) => {
+const CoreFeaturedWarehouseCard = styled.Pressable`
+  width: 175px;
+  height: 254px;
+  background-color: 'white';
+  border-radius: 5;
+  padding-top: 10;
+  padding-bottom: 10;
+  padding-right: 10;
+`
+
+const CategoriesRow = styled.View`
+  display: flex;
+  flex-direction: row;
+`
+
+const CategoriesItem = styled.View`
+  margin-right: 5px;
+`
+
+const FeaturedWarehouseCard = ({ theme, item, onPress }) => {
   const keyedCategories = item.relationships.categories.map(category =>
     category.toLowerCase()
   )
@@ -37,17 +51,7 @@ const FeaturedWarehouseCard = ({ theme, item }) => {
   })
 
   return (
-    <View
-      style={{
-        width: 175,
-        height: 254,
-        backgroundColor: 'white',
-        borderRadius: 5,
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingRight: 10,
-      }}
-    >
+    <CoreFeaturedWarehouseCard onPress={onPress}>
       <Image
         source={{ uri: item.attributes['image_url'] }}
         style={{
@@ -62,14 +66,18 @@ const FeaturedWarehouseCard = ({ theme, item }) => {
       <BaseText color="grey3" regular tall sm>
         {`${item.relationships.address['city']}, ${item.relationships.address['province']}`}
       </BaseText>
-      <View style={{ flexDirection: 'row' }}>{categoryIcons}</View>
+      <CategoriesRow>
+        {categoryIcons.map((icon, index) => (
+          <CategoriesItem key={index}>{icon}</CategoriesItem>
+        ))}
+      </CategoriesRow>
       <BaseText medium tall sm>
         Start From
       </BaseText>
       <BaseText color="primary" semiBold tall lg>
         {currencyFormatter(item.attributes['base_price'])}/month
       </BaseText>
-    </View>
+    </CoreFeaturedWarehouseCard>
   )
 }
 
@@ -96,6 +104,11 @@ export function Featured({ navigation }) {
               key={item.attributes.id}
               theme={theme}
               item={item}
+              onPress={() =>
+                navigation.navigate(routes.warehousePageRoute, {
+                  warehouseID: item.attributes.id,
+                })
+              }
             />
           ))}
         <View style={{ paddingRight: 30 }}></View>

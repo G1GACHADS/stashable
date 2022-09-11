@@ -1,19 +1,12 @@
 import { useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
-import {
-  Image,
-  ScrollView,
-  StatusBar,
-  TouchableOpacity,
-  View,
-} from 'react-native'
-import Text from '../../components/text'
 import Container from '../../components/container'
+import Text from '../../components/text'
 
-import IconFragileCategory from '../../components/icons/icon-fragile-category'
-import IconElectricCategory from '../../components/icons/icon-electric-category'
-import IconHeavyMaterialsCategory from '../../components/icons/icon-heavy-materials-category'
 import IconChemicalCategory from '../../components/icons/icon-chemical-category'
+import IconElectricCategory from '../../components/icons/icon-electric-category'
+import IconFragileCategory from '../../components/icons/icon-fragile-category'
+import IconHeavyMaterialsCategory from '../../components/icons/icon-heavy-materials-category'
 
 const category = {
   FRAGILE: 'fragile',

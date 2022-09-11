@@ -8,6 +8,7 @@ export const warehouseRoomDetailPageRoute = 'warehouse-room-detail'
 export const warehouseCheckoutPageRoute = 'warehouse-checkout-page'
 export const historyPageRoute = 'history-page-route'
 export const historyDetailPageRoute = 'history-detail-page-route'
+export const barcodePageRoute = 'barcode-page-route'
 
 export default {
   gettingStartedRoute,
@@ -20,4 +21,5 @@ export default {
   warehouseCheckoutPageRoute,
   historyPageRoute,
   historyDetailPageRoute,
+  barcodePageRoute,
 }

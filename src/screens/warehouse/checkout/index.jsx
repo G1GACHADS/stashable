@@ -2,18 +2,21 @@ import { useCallback, useLayoutEffect, useMemo, useState } from 'react'
 import { Dimensions, Platform, ScrollView, StatusBar, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import Button from '../../../components/button'
-import Container from '../../../components/container'
-import Input from '../../../components/input'
-import Label from '../../../components/label'
-import BaseText from '../../../components/base-text'
+import api from '../../../api'
+import routes from '../../../constants/routes'
 
 import ItemForm from './item-form'
 import ItemSelectShippingType from './item-select-shipping-type'
 import ItemUploadZone from './item-upload-zone'
-import { currencyFormatter } from '../../../shared/currencyFormatter'
+
+import BaseText from '../../../components/base-text'
+import Button from '../../../components/button'
+import Container from '../../../components/container'
+import Input from '../../../components/input'
+import Label from '../../../components/label'
+
 import HorizontalCardItem from '../../../components/horizontal-card-item'
-import api from '../../../api'
+import { currencyFormatter } from '../../../shared/currencyFormatter'
 
 const CoreCheckoutPaymentPanel = styled.View`
   flex: 1;
@@ -77,11 +80,15 @@ const FirstStep = ({
   error,
   nextStep,
 }) => {
+  const imagesArrayIsEmpty = value =>
+    Array.isArray(value) && value.every(item => item === null)
+
   const isEmpty =
     Object.values(form).some(
-      value => value === '' || (Array.isArray(value) && value.length === 0)
+      value => value === '' || imagesArrayIsEmpty(value)
     ) || !shippingType
 
+  console.log(form)
   const keyedCategories = useMemo(
     () =>
       warehouse.relationships.categories.map(category =>
@@ -217,7 +224,7 @@ const SuccessView = styled.View`
   margin-top: ${Dimensions.get('window').height * 0.25}px;
 `
 
-const FinalStep = ({ rentalID }) => (
+const FinalStep = ({ navigation, rentalID }) => (
   <>
     <SuccessView>
       <BaseText semiBold grande md>
@@ -226,7 +233,16 @@ const FinalStep = ({ rentalID }) => (
       <BaseText semiBold grande md>
         Payment Successful
       </BaseText>
-      <Button sm title="Check Your Order" />
+      <Button
+        title="Check Your Order"
+        sm
+        mt={10}
+        onPress={() => {
+          navigation.navigate(routes.historyDetailPageRoute, {
+            rentalID,
+          })
+        }}
+      />
     </SuccessView>
   </>
 )
@@ -234,7 +250,13 @@ const FinalStep = ({ rentalID }) => (
 export function CheckoutScreen({ route, navigation }) {
   const theme = useTheme()
 
-  const { warehouse, room, isPaidAnnually, totalFee } = route.params
+  const {
+    warehouse,
+    room,
+    isPaidAnnually,
+    totalFee,
+    startAtStep = 0,
+  } = route.params
 
   const [step, setStep] = useState(0)
   const [form, setForm] = useState({
@@ -254,7 +276,7 @@ export function CheckoutScreen({ route, navigation }) {
   const [shippingType, setShippingType] = useState('')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [rentalID, setRentalID] = useState(0)
+  const [rentalID, setRentalID] = useState(startAtStep)
 
   // Change title based on step
   useLayoutEffect(() => {
@@ -282,6 +304,7 @@ export function CheckoutScreen({ route, navigation }) {
     payload.append('weight', form.weight)
     payload.append('quantity', form.quantity)
     payload.append('shipping_type', shippingType)
+    payload.append('paid_annually', isPaidAnnually)
     payload.append('room_id', room.attributes.id)
     payload.append('category_id', 1) // TODO: remove this
 

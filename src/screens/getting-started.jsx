@@ -30,6 +30,7 @@ export function GettingStartedScreen({ navigation }) {
           <View style={{ alignItems: 'flex-end' }}>
             <Button
               sm
+              mt={15}
               title="Get Started"
               onPress={() => navigation.navigate(routes.loginRoute)}
             />

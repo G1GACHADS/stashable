@@ -4,11 +4,11 @@ import styled, { useTheme } from 'styled-components/native'
 
 import routes from '../../constants/routes'
 
+import BaseText from '../../components/base-text'
 import Button from '../../components/button'
 import IconGoogle from '../../components/icons/icon-google'
 import Input from '../../components/input'
 import Label from '../../components/label'
-import BaseText from '../../components/base-text'
 import useAuthStore from '../../store/useAuthStore'
 
 const TextDivider = styled.View`

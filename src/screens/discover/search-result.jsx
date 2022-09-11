@@ -1,19 +1,11 @@
+import { SafeAreaView } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
-import {
-  Image,
-  ScrollView,
-  StatusBar,
-  TouchableOpacity,
-  SafeAreaView,
-  Pressable,
-  View,
-} from 'react-native'
 import Text from '../../components/text'
 
+import { useMemo } from 'react'
 import Container from '../../components/container'
 import FilterButton from '../../components/filter-button'
 import HorizontalCardItem from '../../components/horizontal-card-item'
-import { useMemo } from 'react'
 
 const SearchHeader = styled.Pressable`
   display: flex;

@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components/native'
 
+import BaseText from '../../../components/base-text'
 import IconDelivery from '../../../components/icons/icon-delivery'
 import IconWalking from '../../../components/icons/icon-walking'
 import Label from '../../../components/label'
-import BaseText from '../../../components/base-text'
 
 const CoreShippingTypeOption = styled.Pressable`
   flex: 1;

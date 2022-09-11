@@ -1,26 +1,26 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import * as route from './constants/routes'
 import useAuthStore from './store/useAuthStore'
 
 import BaseText from './components/base-text'
-import IconHome from './components/icons/icon-home'
 import IconDiscover from './components/icons/icon-discover'
 import IconHistory from './components/icons/icon-history'
+import IconHome from './components/icons/icon-home'
 
+import DiscoverScreen from './screens/discover'
 import GettingStartedScreen from './screens/getting-started'
+import HistoryScreen from './screens/history'
+import BarcodeScreen from './screens/history/barcode'
+import HistoryDetailScreen from './screens/history/details'
 import LoginScreen from './screens/login'
 import MainScreen from './screens/main'
-import DiscoverScreen from './screens/discover'
 import RegisterScreen from './screens/register'
 import WarehouseScreen from './screens/warehouse'
 import CheckoutScreen from './screens/warehouse/checkout'
-import HistoryScreen from './screens/history'
-import HistoryDetailScreen from './screens/history/history-detail'
-import BarcodeScreen from './screens/history/barcode'
 import RoomDetailScreen from './screens/warehouse/room'
 
 const Tab = createBottomTabNavigator()
@@ -202,6 +202,7 @@ export const Tabs = () => {
               </BaseText>
             </View>
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -247,24 +248,13 @@ export const Navigator = () => {
     >
       {isAuthenticated ? (
         // User is signed in
-        ((
-          <Stack.Screen
-            name={route.mainPageRoute}
-            component={Tabs}
-            options={{
-              headerShown: false,
-            }}
-          />
-        ),
-        (
-          <Stack.Screen
-            name={route.discoverPageRoute}
-            component={Tabs}
-            options={{
-              headerShown: false,
-            }}
-          />
-        ))
+        <Stack.Screen
+          name={route.mainPageRoute}
+          component={Tabs}
+          options={{
+            headerShown: false,
+          }}
+        />
       ) : (
         // User is not signed in
         <>

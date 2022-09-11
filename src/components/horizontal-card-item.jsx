@@ -52,6 +52,7 @@ export const HorizontalCardItem = ({
   priceLabel,
   price,
   status,
+  paidAnnually,
   onPress,
 }) => {
   const categoryIcons = useMemo(
@@ -128,7 +129,7 @@ export const HorizontalCardItem = ({
           {priceLabel}
         </BaseText>
         <BaseText color="primary" semiBold tall md>
-          {currencyFormatter(price)}/month
+          {currencyFormatter(price)}/{paidAnnually ? 'year' : 'month'}
         </BaseText>
       </CoreHorizontalCardContent>
     </CoreHorizontalCardItem>

@@ -2,14 +2,14 @@ import { useState } from 'react'
 import { Image, ScrollView, StatusBar, View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import Search from '../../components/search'
 import Container from '../../components/container'
 import IconSearch from '../../components/icons/icon-search'
+import Search from '../../components/search'
 
-import MoreWarehouse from './more-warehouse'
 import Featured from './main-featured'
 import Place from './main-place'
-import useAuthStore from '../../store/useAuthStore'
+import MoreWarehouse from './more-warehouse'
+// import useAuthStore from '../../store/useAuthStore'
 
 export function MainScreen({ navigation }) {
   const theme = useTheme()

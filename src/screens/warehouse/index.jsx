@@ -3,9 +3,9 @@ import { Image, ScrollView, StatusBar } from 'react-native'
 import BaseText from '../../components/base-text'
 import Container from '../../components/container'
 
-import Details from './details'
-import AvailableRooms from './available-rooms'
 import useWarehouseDetail from '../../shared/useWarehouseDetail'
+import AvailableRooms from './available-rooms'
+import Details from './details'
 
 export function WarehouseScreen({ route, navigation }) {
   const { warehouse, isLoading } = useWarehouseDetail(route.params.warehouseID)

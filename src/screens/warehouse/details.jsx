@@ -1,11 +1,11 @@
 import styled from 'styled-components/native'
 
+import { ActivityIndicator } from 'react-native'
+import BaseText from '../../components/base-text'
 import IconChemical from '../../components/icons/icon-chemical'
 import IconElectric from '../../components/icons/icon-electric'
 import IconFragile from '../../components/icons/icon-fragile'
 import IconHeavyMaterial from '../../components/icons/icon-heavymaterial'
-import BaseText from '../../components/base-text'
-import { ActivityIndicator } from 'react-native'
 
 const DetailContainer = styled.View`
   margin-top: 15px;

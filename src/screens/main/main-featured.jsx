@@ -5,13 +5,13 @@ import routes from '../../constants/routes'
 import { currencyFormatter } from '../../shared/currencyFormatter'
 import useWarehouse from '../../shared/useWarehouse'
 
-import Container from '../../components/container'
 import BaseText from '../../components/base-text'
+import Container from '../../components/container'
 
-import IconFragileCategory from '../../components/icons/icon-fragile-category'
-import IconElectricCategory from '../../components/icons/icon-electric-category'
-import IconHeavyMaterialsCategory from '../../components/icons/icon-heavy-materials-category'
 import IconChemicalCategory from '../../components/icons/icon-chemical-category'
+import IconElectricCategory from '../../components/icons/icon-electric-category'
+import IconFragileCategory from '../../components/icons/icon-fragile-category'
+import IconHeavyMaterialsCategory from '../../components/icons/icon-heavy-materials-category'
 
 const CoreFeaturedWarehouseCard = styled.Pressable`
   width: 175px;

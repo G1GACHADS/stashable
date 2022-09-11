@@ -1,17 +1,10 @@
-import {
-  FlatList,
-  SafeAreaView,
-  Pressable,
-  ActivityIndicator,
-} from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import { ActivityIndicator, SafeAreaView } from 'react-native'
 
-import Container from '../../components/container'
+import { useMemo } from 'react'
 import BaseText from '../../components/base-text'
 import HorizontalCardItem from '../../components/horizontal-card-item'
-import { useMemo } from 'react'
-import useWarehouse from '../../shared/useWarehouse'
 import routes from '../../constants/routes'
+import useWarehouse from '../../shared/useWarehouse'
 
 const WarehouseItem = ({ item, onPress }) => {
   const keyedCategories = useMemo(

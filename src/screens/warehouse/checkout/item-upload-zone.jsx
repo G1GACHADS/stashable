@@ -1,5 +1,5 @@
-import { Dimensions, Pressable } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
+import { Dimensions, Pressable } from 'react-native'
 import styled, { css, useTheme } from 'styled-components/native'
 
 import IconCamera from '../../../components/icons/icon-camera'

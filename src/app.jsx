@@ -13,7 +13,6 @@ import {
 } from '@expo-google-fonts/poppins'
 import { NavigationContainer } from '@react-navigation/native'
 import { registerRootComponent } from 'expo'
-import { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components/native'
 import api from './api'
 

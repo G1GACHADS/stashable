@@ -3,10 +3,10 @@ import { View } from 'react-native'
 
 import { useAuthStore } from '../../store/useAuthStore'
 
+import BaseText from '../../components/base-text'
 import Button from '../../components/button'
 import Input from '../../components/input'
 import Label from '../../components/label'
-import BaseText from '../../components/base-text'
 import routes from '../../constants/routes'
 
 export function SignInForm({ navigation }) {

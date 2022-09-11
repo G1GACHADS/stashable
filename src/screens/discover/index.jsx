@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { Image, ScrollView, StatusBar, View } from 'react-native'
+import { ScrollView, StatusBar, View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import Search from '../../components/search'
 import Container from '../../components/container'
 import IconSearch from '../../components/icons/icon-search'
+import Search from '../../components/search'
 
 import Category from './category'
 import SearchResult from './search-result'

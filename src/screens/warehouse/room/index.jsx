@@ -1,17 +1,17 @@
 import { useState } from 'react'
 import {
-  StatusBar,
-  ScrollView,
-  View,
-  Image,
   ActivityIndicator,
+  Image,
+  ScrollView,
+  StatusBar,
+  View,
 } from 'react-native'
 import styled from 'styled-components/native'
 
 import SelectPlan from './select-plan'
 
-import routes from '../../../constants/routes'
 import plans from '../../../constants/plans'
+import routes from '../../../constants/routes'
 
 import useWarehouseRoomDetail from '../../../shared/useWarehouseRoomDetail'
 
@@ -92,13 +92,13 @@ const RoomDetailSize = ({ length, width, height }) => (
     </BaseText>
     <RoomDetailSizeDescription>
       <BaseText color="grey3" regular tall md>
-        Length: {length} cm
+        Length: {length} m
       </BaseText>
       <BaseText color="grey3" regular tall md>
-        Width: {width} cm
+        Width: {width} m
       </BaseText>
       <BaseText color="grey3" regular tall md>
-        Height: {height} cm
+        Height: {height} m
       </BaseText>
     </RoomDetailSizeDescription>
   </View>

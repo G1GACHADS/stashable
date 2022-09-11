@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
+import { useCallback, useState } from 'react'
 import { ActivityIndicator, ScrollView, StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 import { useDebounce } from 'use-debounce'
@@ -35,10 +36,25 @@ const SearchInput = ({ query, setQuery }) => {
   )
 }
 
-export function DiscoverScreen({ navigation }) {
+export function DiscoverScreen({ route, navigation }) {
   const [query, setQuery] = useState('')
   const [debouncedQuery] = useDebounce(query, 100)
   const { warehouses, isLoading } = useWarehouseSearch(debouncedQuery)
+
+  // If there is a query in the route params, set it as the search query
+  useFocusEffect(
+    useCallback(() => {
+      if (route.params?.query) {
+        setQuery(route.params.query)
+      }
+
+      return () => {
+        // Reset the query in the route params to prevent it from being set
+        // as the search query when the screen is focused again
+        navigation.setParams({ query: undefined })
+      }
+    }, [route.params?.query])
+  )
 
   return (
     <>

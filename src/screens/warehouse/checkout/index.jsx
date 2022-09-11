@@ -88,7 +88,6 @@ const FirstStep = ({
       value => value === '' || imagesArrayIsEmpty(value)
     ) || !shippingType
 
-  console.log(form)
   const keyedCategories = useMemo(
     () =>
       warehouse.relationships.categories.map(category =>
@@ -331,7 +330,6 @@ export function CheckoutScreen({ route, navigation }) {
         nextStep()
       })
       .catch(error => {
-        console.log(error)
         setError(error.message)
       })
       .finally(() => {

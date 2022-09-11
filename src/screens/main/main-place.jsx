@@ -1,6 +1,7 @@
 import styled from 'styled-components/native'
 
 import BaseText from '../../components/base-text'
+import routes from '../../constants/routes'
 
 const PlaceRow = styled.View`
   display: flex;
@@ -10,7 +11,7 @@ const PlaceRow = styled.View`
   margin-bottom: 10px;
 `
 
-const PlaceItem = styled.View`
+const PlaceItem = styled.Pressable`
   min-width: 33.3333%;
   max-width: 33.3333%;
   padding-right: 10px;
@@ -59,7 +60,14 @@ export function Place({ navigation }) {
       </BaseText>
       <PlaceRow>
         {places.slice(0, 3).map((place, index) => (
-          <PlaceItem key={index}>
+          <PlaceItem
+            key={index}
+            onPress={() => {
+              navigation.navigate(routes.discoverPageRoute, {
+                query: place.name,
+              })
+            }}
+          >
             <PlaceImage source={place.image}>
               <BaseText color="white1" semiBold tall lg>
                 {place.name}
@@ -70,7 +78,14 @@ export function Place({ navigation }) {
       </PlaceRow>
       <PlaceRow>
         {places.slice(3, 6).map((place, index) => (
-          <PlaceItem key={index}>
+          <PlaceItem
+            key={index}
+            onPress={() => {
+              navigation.navigate(routes.discoverPageRoute, {
+                query: place.name,
+              })
+            }}
+          >
             <PlaceImage source={place.image}>
               <BaseText color="white1" semiBold tall lg>
                 {place.name}

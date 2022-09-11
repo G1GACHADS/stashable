@@ -9,7 +9,7 @@ import IconSearch from '../../components/icons/icon-search'
 import MoreWarehouse from './more-warehouse'
 import Featured from './main-featured'
 import Place from './main-place'
-import useAuthStore from '../../store/auth-store'
+import useAuthStore from '../../store/useAuthStore'
 
 export function MainScreen({ navigation }) {
   const theme = useTheme()

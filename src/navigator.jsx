@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import * as route from './constants/routes'
-import useAuthStore from './store/auth-store'
+import useAuthStore from './store/useAuthStore'
 
 import BaseText from './components/base-text'
 import IconHome from './components/icons/icon-home'

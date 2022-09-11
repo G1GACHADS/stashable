@@ -13,6 +13,7 @@ import ItemSelectShippingType from './item-select-shipping-type'
 import ItemUploadZone from './item-upload-zone'
 import { currencyFormatter } from '../../../shared/currencyFormatter'
 import HorizontalCardItem from '../../../components/horizontal-card-item'
+import api from '../../../api'
 
 const CoreCheckoutPaymentPanel = styled.View`
   flex: 1;
@@ -27,23 +28,38 @@ const CoreCheckoutPaymentPanel = styled.View`
 `
 
 const CheckoutPaymentPanel = ({
+  error,
   totalFee,
   isPaidAnnually,
+  isLoading,
   disabled,
   nextStep,
 }) => {
   return (
-    <CoreCheckoutPaymentPanel>
-      <View>
-        <BaseText medium tall lg mb={5}>
-          Total Payment
+    <>
+      {error !== '' && (
+        <BaseText color="primary" capitalize medium tall lg mb={15}>
+          {error}
         </BaseText>
-        <BaseText color="primary" semiBold tall xl mb={5}>
-          {currencyFormatter(totalFee)}/{isPaidAnnually ? 'year' : 'month'}
-        </BaseText>
-      </View>
-      <Button sm title="Checkout" disabled={disabled} onPress={nextStep} />
-    </CoreCheckoutPaymentPanel>
+      )}
+      <CoreCheckoutPaymentPanel>
+        <View>
+          <BaseText medium tall lg mb={5}>
+            Total Payment
+          </BaseText>
+          <BaseText color="primary" semiBold tall xl mb={5}>
+            {currencyFormatter(totalFee)}/{isPaidAnnually ? 'year' : 'month'}
+          </BaseText>
+        </View>
+        <Button
+          sm
+          title="Checkout"
+          disabled={disabled}
+          loading={isLoading}
+          onPress={nextStep}
+        />
+      </CoreCheckoutPaymentPanel>
+    </>
   )
 }
 
@@ -51,12 +67,14 @@ const FirstStep = ({
   theme,
   form,
   setForm,
+  isLoading,
   warehouse,
   room,
   shippingType,
   setShippingType,
   totalFee,
   isPaidAnnually,
+  error,
   nextStep,
 }) => {
   const isEmpty =
@@ -94,9 +112,12 @@ const FirstStep = ({
         setShippingType={setShippingType}
       />
       <CheckoutPaymentPanel
+        theme={theme}
         totalFee={totalFee}
         isPaidAnnually={isPaidAnnually}
         disabled={isEmpty}
+        error={error}
+        isLoading={isLoading}
         nextStep={nextStep}
       />
     </>
@@ -113,15 +134,24 @@ const InlineFormItem = styled.View`
   min-width: 50%;
 `
 
-const SecondStep = ({ nextStep }) => {
+const SecondStep = ({ rentalID, nextStep }) => {
   const [paymentMethod, setPaymentMethod] = useState({
     creditCardNumber: '',
     expirationDate: '',
     cvc: '',
     nameOnCreditCard: '',
   })
+  const [isLoading, setIsLoading] = useState(false)
 
   const isEmpty = Object.values(paymentMethod).some(value => value === '')
+
+  const handlePaymentMethodSubmit = useCallback(async () => {
+    setIsLoading(true)
+    await api
+      .patch(`/rent/${rentalID}/pay`, {})
+      .finally(() => setIsLoading(false))
+    nextStep()
+  }, [rentalID, nextStep])
 
   return (
     <>
@@ -170,7 +200,12 @@ const SecondStep = ({ nextStep }) => {
         }
       />
 
-      <Button title="Next" disabled={isEmpty} onPress={nextStep} />
+      <Button
+        title="Next"
+        disabled={isEmpty}
+        loading={isLoading}
+        onPress={handlePaymentMethodSubmit}
+      />
     </>
   )
 }
@@ -182,7 +217,7 @@ const SuccessView = styled.View`
   margin-top: ${Dimensions.get('window').height * 0.25}px;
 `
 
-const FinalStep = () => (
+const FinalStep = ({ rentalID }) => (
   <>
     <SuccessView>
       <BaseText semiBold grande md>
@@ -203,16 +238,23 @@ export function CheckoutScreen({ route, navigation }) {
 
   const [step, setStep] = useState(0)
   const [form, setForm] = useState({
-    name: '',
-    description: '',
-    length: '',
-    width: '',
-    height: '',
-    weight: '',
-    quantity: '',
+    name: 'Aqua Gelas Air 240 ML 12 dus isi 48',
+    description: `Aqua Gelas Air Mineral (48 x 220ml)
+
+    Air mineral berkualitas yang berasal dari sumber air pegunungan pilihan dan terlindungi. AQUA melindungi keseimbangan alami ekosistem sumber airnya sehingga kekayaan dan kealamian mineralnya terjaga.
+
+    AQUA, kebaikan alam, kebaikan hidup.`,
+    length: '30',
+    width: '15',
+    height: '30',
+    weight: '5',
+    quantity: '12',
     images: [null, null, null, null],
   })
   const [shippingType, setShippingType] = useState('')
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [rentalID, setRentalID] = useState(0)
 
   // Change title based on step
   useLayoutEffect(() => {
@@ -229,6 +271,51 @@ export function CheckoutScreen({ route, navigation }) {
     setStep(step + 1)
   }, [step])
 
+  const handleCheckoutSubmit = useCallback(() => {
+    const payload = new FormData()
+
+    payload.append('name', form.name)
+    payload.append('description', form.description)
+    payload.append('length', form.length)
+    payload.append('width', form.width)
+    payload.append('height', form.height)
+    payload.append('weight', form.weight)
+    payload.append('quantity', form.quantity)
+    payload.append('shipping_type', shippingType)
+    payload.append('room_id', room.attributes.id)
+    payload.append('category_id', 1) // TODO: remove this
+
+    form.images.forEach((image, _) => {
+      if (image) {
+        payload.append('images[]', {
+          uri: image,
+          type: `image/${image.split('.').pop()}`,
+          name: image.split('/').pop(),
+        })
+      }
+    })
+
+    setIsLoading(true)
+    api
+      .post(`/rent/${warehouse.attributes.id}`, payload, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then(response => {
+        setRentalID(response.data['rental_id'])
+        alert(response.data['message'])
+        nextStep()
+      })
+      .catch(error => {
+        console.log(error)
+        setError(error.message)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
+  }, [form, shippingType])
+
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
@@ -241,15 +328,19 @@ export function CheckoutScreen({ route, navigation }) {
               warehouse={warehouse}
               form={form}
               setForm={setForm}
+              isLoading={isLoading}
               shippingType={shippingType}
               setShippingType={setShippingType}
               totalFee={totalFee}
               isPaidAnnually={isPaidAnnually}
-              nextStep={nextStep}
+              error={error}
+              nextStep={handleCheckoutSubmit}
             />
           )}
-          {step === 1 && <SecondStep nextStep={nextStep} />}
-          {step === 2 && <FinalStep navigation={navigation} />}
+          {step === 1 && <SecondStep rentalID={rentalID} nextStep={nextStep} />}
+          {step === 2 && (
+            <FinalStep rentalID={rentalID} navigation={navigation} />
+          )}
         </Container>
       </ScrollView>
     </>

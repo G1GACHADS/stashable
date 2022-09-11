@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { View } from 'react-native'
 
-import { useAuthStore } from '../../store/auth-store'
+import { useAuthStore } from '../../store/useAuthStore'
 
 import Button from '../../components/button'
 import Input from '../../components/input'

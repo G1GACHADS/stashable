@@ -2,7 +2,7 @@ import { ActivityIndicator, Dimensions, View } from 'react-native'
 import styled, { css, useTheme } from 'styled-components/native'
 
 const ButtonContainer = styled.Pressable`
-  min-width: ${props =>
+  max-width: ${props =>
     props.sm
       ? Dimensions.get('window').width * 0.4
       : Dimensions.get('window').width - 30}px;
@@ -60,7 +60,10 @@ export const Button = ({
       disabled={disabled}
     >
       {loading ? (
-        <ActivityIndicator size="large" color={theme.colors.white} />
+        <ActivityIndicator
+          size="large"
+          color={loadingColor ?? theme.colors.white1}
+        />
       ) : (
         <>
           {icon && (

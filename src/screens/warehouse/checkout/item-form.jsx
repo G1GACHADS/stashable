@@ -67,7 +67,7 @@ export const ItemForm = ({ form, setForm }) => {
         <ItemDetailInputWrapper>
           <Input
             value={form.weight}
-            placeholder="Weight (cm)"
+            placeholder="Weight (kg)"
             onChangeText={weight => setForm({ ...form, weight })}
             keyboardType="numeric"
           />
@@ -75,7 +75,7 @@ export const ItemForm = ({ form, setForm }) => {
         <ItemDetailInputWrapper>
           <Input
             value={form.quantity}
-            placeholder="Quantity (cm)"
+            placeholder="Quantity"
             onChangeText={quantity => setForm({ ...form, quantity })}
             keyboardType="numeric"
           />

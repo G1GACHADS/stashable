@@ -7,6 +7,5 @@ export default axios.create({
   baseURL: LAN_URL,
   headers: {
     Accept: 'application/json',
-    'Content-Type': 'application/json',
   },
 })

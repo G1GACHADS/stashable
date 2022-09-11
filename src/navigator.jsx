@@ -20,6 +20,7 @@ import WarehouseScreen from './screens/warehouse'
 import CheckoutScreen from './screens/warehouse/checkout'
 import HistoryScreen from './screens/history'
 import HistoryDetailScreen from './screens/history/history-detail'
+import BarcodeScreen from './screens/history/barcode'
 import RoomDetailScreen from './screens/warehouse/room'
 
 const Tab = createBottomTabNavigator()
@@ -109,6 +110,13 @@ const HistoryStack = () => {
       <Stack.Screen
         name={route.historyDetailPageRoute}
         component={HistoryDetailScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={route.barcodePageRoute}
+        component={BarcodeScreen}
         options={{
           headerShown: false,
         }}

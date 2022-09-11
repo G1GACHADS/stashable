@@ -221,7 +221,7 @@ export function HistoryDetailScreen({ navigation }) {
                   title="Show Barcode"
                   onPress={() =>
                     // change navigation
-                    navigation.navigate(routes.historyDetailPageRoute)
+                    navigation.navigate(routes.barcodePageRoute)
                   }
                 />
               </ButtonContainer>

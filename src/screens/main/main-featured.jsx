@@ -17,10 +17,10 @@ const CoreFeaturedWarehouseCard = styled.Pressable`
   width: 175px;
   height: 254px;
   background-color: 'white';
-  border-radius: 5;
-  padding-top: 10;
-  padding-bottom: 10;
-  padding-right: 10;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
 `
 
 const CategoriesRow = styled.View`

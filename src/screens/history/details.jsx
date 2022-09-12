@@ -1,3 +1,4 @@
+import { format, parseJSON } from 'date-fns'
 import { Alert, ScrollView, StatusBar, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -37,7 +38,13 @@ const HistoryDetailHeader = ({ warehouse, name, address }) => (
   </View>
 )
 
-const RentalDescription = ({ paid_annually, status, address }) => {
+const RentalDescription = ({
+  paidAnnually,
+  status,
+  address,
+  createdAt,
+  paymentDue,
+}) => {
   return (
     <View>
       <BaseText semiBold tall xl>
@@ -55,13 +62,14 @@ const RentalDescription = ({ paid_annually, status, address }) => {
         Rental Term
       </BaseText>
       <BaseText mb="20" color="grey3" regular tall md>
-        {address['street_name']}
+        {format(parseJSON(createdAt), 'dd LLLL yyyy')} -{' '}
+        {format(parseJSON(paymentDue), 'dd LLLL yyyy')}
       </BaseText>
       <BaseText semiBold tall xl>
         Rental Plan
       </BaseText>
       <BaseText mb="20" color="grey3" regular tall md>
-        {{ paid_annually } ? 'Yearly Plan' : 'Montly Plan'}
+        {{ paidAnnually } ? 'Yearly Plan' : 'Montly Plan'}
       </BaseText>
     </View>
   )
@@ -212,8 +220,10 @@ export function HistoryDetailScreen({ route, navigation }) {
               />
               <RentalDescription
                 status={rental.attributes.status}
-                paid_annually={rental.attributes.paid_annually}
+                paidAnnually={rental.attributes.paid_annually}
                 address={rental.relationships.address}
+                createdAt={rental.attributes.created_at}
+                paymentDue={rental.attributes.payment_due}
               />
               <ItemDetails
                 length={rental.attributes.length}

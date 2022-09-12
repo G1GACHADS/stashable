@@ -146,7 +146,6 @@ export function RoomDetailScreen({ route, navigation }) {
             </>
           )}
           <Button
-            sm
             title="Checkout"
             onPress={() =>
               navigation.navigate(routes.warehouseCheckoutPageRoute, {

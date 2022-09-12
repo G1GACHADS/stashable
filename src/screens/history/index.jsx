@@ -74,16 +74,15 @@ export function HistoryScreen({ navigation }) {
       <Container>
         {loading && <Loading />}
         {!loading && (
-          <ScrollView
-            refreshControl={
-              <RefreshControl refreshing={loading} onRefresh={reloadData} />
-            }
-          >
+          <ScrollView>
             <ScrollView horizontal>
               <FlatList
                 data={rentals.items}
                 renderItem={renderItem}
                 keyExtractor={item => item.attributes['id']}
+                refreshControl={
+                  <RefreshControl refreshing={loading} onRefresh={reloadData} />
+                }
                 nestedScrollEnabled
               />
             </ScrollView>

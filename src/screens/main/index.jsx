@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Image, ScrollView, StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 
+// import useAuthStore from '../../store/useAuthStore'
+
 import Container from '../../components/container'
 import IconSearch from '../../components/icons/icon-search'
 import Search from '../../components/search'
@@ -10,7 +12,6 @@ import routes from '../../constants/routes'
 import Featured from './main-featured'
 import Place from './main-place'
 import MoreWarehouse from './more-warehouse'
-// import useAuthStore from '../../store/useAuthStore'
 
 const CoreSearchInput = styled.View`
   display: flex;

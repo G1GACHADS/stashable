@@ -95,6 +95,7 @@ const FirstStep = ({
       ),
     [warehouse.relationships.categories]
   )
+
   const subtitle = `${room.attributes['length']} meter x ${room.attributes['width']} meter x ${room.attributes['height']} meter`
 
   return (

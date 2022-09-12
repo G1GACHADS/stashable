@@ -33,12 +33,11 @@ const UploadZoneExtraContainer = styled.View`
 `
 
 const UploadZoneExtra = styled.ImageBackground`
-  flex: 1;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  width: 93px;
-  height: 93px;
+  width: 94px;
+  height: 94px;
   margin-bottom: 20px;
   background-color: ${({ theme }) => theme.colors.white2};
   border-radius: 14px;
@@ -137,9 +136,13 @@ export const ItemUploadZone = ({ form, setForm }) => {
           <Pressable onPress={() => addImage(imageIndex + 1)} key={imageIndex}>
             <UploadZoneExtra
               hasImage={form.images[imageIndex + 1] !== null}
-              source={{
-                uri: form.images[imageIndex + 1],
-              }}
+              source={
+                form.images[imageIndex + 1] !== null
+                  ? {
+                      uri: form.images[imageIndex + 1],
+                    }
+                  : null
+              }
             >
               {form.images[imageIndex + 1] === null && <IconPlus />}
             </UploadZoneExtra>

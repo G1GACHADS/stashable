@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import BaseText from '../../../components/base-text'
 
 import Input from '../../../components/input'
 import Label from '../../../components/label'
@@ -38,9 +39,12 @@ export const ItemForm = ({ form, setForm }) => {
 - Kanebo`}
         onChangeText={description => setForm({ ...form, description })}
       />
-      <Label>Item Details</Label>
+      <BaseText semiBold tall lg mt={10} mb={10}>
+        Item Details
+      </BaseText>
       <ItemDetailContainer>
         <ItemDetailInputWrapper>
+          <Label>Length (cm)</Label>
           <Input
             value={form.length}
             placeholder="Length (cm)"
@@ -49,6 +53,7 @@ export const ItemForm = ({ form, setForm }) => {
           />
         </ItemDetailInputWrapper>
         <ItemDetailInputWrapper>
+          <Label>Width (cm)</Label>
           <Input
             value={form.width}
             placeholder="Width (cm)"
@@ -57,6 +62,7 @@ export const ItemForm = ({ form, setForm }) => {
           />
         </ItemDetailInputWrapper>
         <ItemDetailInputWrapper>
+          <Label>Height (cm)</Label>
           <Input
             value={form.height}
             placeholder="Height (cm)"
@@ -65,6 +71,7 @@ export const ItemForm = ({ form, setForm }) => {
           />
         </ItemDetailInputWrapper>
         <ItemDetailInputWrapper>
+          <Label>Weight (kg)</Label>
           <Input
             value={form.weight}
             placeholder="Weight (kg)"
@@ -73,6 +80,7 @@ export const ItemForm = ({ form, setForm }) => {
           />
         </ItemDetailInputWrapper>
         <ItemDetailInputWrapper>
+          <Label>Quantity</Label>
           <Input
             value={form.quantity}
             placeholder="Quantity"

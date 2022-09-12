@@ -262,9 +262,9 @@ export function CheckoutScreen({ route, navigation }) {
     name: 'Aqua Gelas Air 240 ML 12 dus isi 48',
     description: `Aqua Gelas Air Mineral (48 x 220ml)
 
-    Air mineral berkualitas yang berasal dari sumber air pegunungan pilihan dan terlindungi. AQUA melindungi keseimbangan alami ekosistem sumber airnya sehingga kekayaan dan kealamian mineralnya terjaga.
+Air mineral berkualitas yang berasal dari sumber air pegunungan pilihan dan terlindungi. AQUA melindungi keseimbangan alami ekosistem sumber airnya sehingga kekayaan dan kealamian mineralnya terjaga.
 
-    AQUA, kebaikan alam, kebaikan hidup.`,
+AQUA, kebaikan alam, kebaikan hidup.`,
     length: '30',
     width: '15',
     height: '30',

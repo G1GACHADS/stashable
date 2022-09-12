@@ -1,21 +1,44 @@
 import { useState } from 'react'
-import { Image, ScrollView, StatusBar, View } from 'react-native'
-import { useTheme } from 'styled-components/native'
+import { Image, ScrollView, StatusBar } from 'react-native'
+import styled from 'styled-components/native'
 
 import Container from '../../components/container'
 import IconSearch from '../../components/icons/icon-search'
 import Search from '../../components/search'
+import routes from '../../constants/routes'
 
 import Featured from './main-featured'
 import Place from './main-place'
 import MoreWarehouse from './more-warehouse'
 // import useAuthStore from '../../store/useAuthStore'
 
+const CoreSearchInput = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 40px;
+  margin-bottom: 20px;
+  border-radius: 44px;
+  background-color: ${({ theme }) => theme.colors.white2};
+`
+
+const SearchInput = ({ navigation, query, setQuery }) => (
+  <CoreSearchInput>
+    <IconSearch />
+    <Search
+      value={query}
+      placeholder="Search for a place..."
+      onChangeText={query => setQuery(query)}
+      onSubmitEditing={() =>
+        navigation.navigate(routes.discoverPageRoute, { query })
+      }
+    />
+  </CoreSearchInput>
+)
+
 export function MainScreen({ navigation }) {
-  const theme = useTheme()
-  const [search, setForm] = useState({
-    keyname: '',
-  })
+  const [query, setQuery] = useState('')
 
   // const { logoutUser } = useAuthStore()
   // logoutUser()
@@ -25,27 +48,11 @@ export function MainScreen({ navigation }) {
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <ScrollView>
         <Container>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              borderRadius: 44,
-              paddingHorizontal: 40,
-              paddingVertical: 12,
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: 8,
-              backgroundColor: theme.colors.white2,
-              marginVertical: 38,
-            }}
-          >
-            <IconSearch />
-            <Search
-              value={search.keyname}
-              placeholder="Search for a place..."
-              onChangeText={keyname => setForm({ ...search, keyname })}
-            />
-          </View>
+          <SearchInput
+            navigation={navigation}
+            query={query}
+            setQuery={setQuery}
+          />
           {/* Banner */}
           <Image
             source={require('../../assets/images/stashable-sale-banner.png')}

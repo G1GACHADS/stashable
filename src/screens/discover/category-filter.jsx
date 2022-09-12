@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import styled, { useTheme } from 'styled-components/native'
-import Text from '../../components/text'
+import styled from 'styled-components/native'
 
 import { useCallback } from 'react'
 import BaseText from '../../components/base-text'
@@ -37,7 +36,6 @@ const CategoryIcon = styled.Pressable`
 `
 
 export function CategoryFilter() {
-  const theme = useTheme()
   const [selectedCategories, setSelectedCategories] = useState([])
 
   const supportedCategories = [
@@ -72,13 +70,9 @@ export function CategoryFilter() {
 
   return (
     <>
-      <Text
-        color={theme.colors.black}
-        weight={theme.typography.weight.semiBold}
-        size={theme.typography.tall.xl}
-      >
+      <BaseText semiBold tall xl>
         Category
-      </Text>
+      </BaseText>
       <CategoryContainer>
         {supportedCategories.map(({ name, icon }) => (
           <CategoryIcon

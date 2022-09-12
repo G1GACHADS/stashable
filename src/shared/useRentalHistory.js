@@ -7,21 +7,23 @@ function useRentalHistory() {
     items: [],
   })
   const [refreshControl, setRefreshControl] = useState(false)
-  const [isLoading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const fetchRentals = () => {
-    api.get(`/rent/history`).then(response => {
-      setRentals(response.data)
-    })
+    setLoading(true)
+    api
+      .get(`/rent/history`)
+      .then(response => {
+        setRentals(response.data)
+      })
+      .finally(() => setLoading(false))
   }
 
   useEffect(() => {
-    setLoading(true)
     fetchRentals()
-    setLoading(false)
   }, [refreshControl])
 
-  return { rentals, isLoading, refreshControl, setRefreshControl }
+  return { rentals, loading, refreshControl, setRefreshControl }
 }
 
 export default useRentalHistory

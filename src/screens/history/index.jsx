@@ -1,11 +1,5 @@
 import { useMemo } from 'react'
-import {
-  ActivityIndicator,
-  FlatList,
-  RefreshControl,
-  ScrollView,
-  StatusBar,
-} from 'react-native'
+import { FlatList, RefreshControl, ScrollView, StatusBar } from 'react-native'
 
 import routes from '../../constants/routes'
 
@@ -15,6 +9,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import { useCallback } from 'react'
 import Container from '../../components/container'
 import HorizontalCardItem from '../../components/horizontal-card-item'
+import Loading from '../../components/loading'
 
 const HistoryCardItem = ({ item, onPress }) => {
   const keyedCategories = useMemo(
@@ -44,7 +39,7 @@ const HistoryCardItem = ({ item, onPress }) => {
 }
 
 export function HistoryScreen({ navigation }) {
-  const { rentals, isLoading, refreshControl, setRefreshControl } =
+  const { rentals, loading, refreshControl, setRefreshControl } =
     useRentalHistory()
 
   useFocusEffect(
@@ -77,11 +72,11 @@ export function HistoryScreen({ navigation }) {
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <Container>
-        {isLoading && <ActivityIndicator />}
-        {!isLoading && (
+        {loading && <Loading />}
+        {!loading && (
           <ScrollView
             refreshControl={
-              <RefreshControl refreshing={isLoading} onRefresh={reloadData} />
+              <RefreshControl refreshing={loading} onRefresh={reloadData} />
             }
           >
             <ScrollView horizontal>

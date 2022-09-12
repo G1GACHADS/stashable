@@ -1,10 +1,11 @@
 import { useMemo } from 'react'
-import { ActivityIndicator, SafeAreaView } from 'react-native'
+import { SafeAreaView } from 'react-native'
 
 import routes from '../../constants/routes'
 
 import BaseText from '../../components/base-text'
 import HorizontalCardItem from '../../components/horizontal-card-item'
+import Loading from '../../components/loading'
 
 const WarehouseItem = ({ item, onPress }) => {
   const { room, categories } = item
@@ -29,7 +30,7 @@ const WarehouseItem = ({ item, onPress }) => {
   )
 }
 
-export function AvailableRooms({ isLoading, warehouse, navigation }) {
+export function AvailableRooms({ loading, warehouse, navigation }) {
   const rooms = warehouse.relationships['rooms']
   const categories = warehouse.relationships['categories']
 
@@ -39,8 +40,8 @@ export function AvailableRooms({ isLoading, warehouse, navigation }) {
         Select Available Room
       </BaseText>
       <SafeAreaView>
-        {isLoading && <ActivityIndicator />}
-        {!isLoading &&
+        {loading && <Loading />}
+        {!loading &&
           rooms.map(room => (
             <WarehouseItem
               key={room.id}

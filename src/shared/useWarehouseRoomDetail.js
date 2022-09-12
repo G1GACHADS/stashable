@@ -36,21 +36,23 @@ function useWarehouseRoomDetail(id, roomID) {
       categories: [],
     },
   })
-  const [isLoading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const fetchRoom = (id, roomID) => {
-    api.get(`/warehouses/${id}/room/${roomID}`).then(response => {
-      setRoom(response.data)
-    })
+    setLoading(true)
+    api
+      .get(`/warehouses/${id}/room/${roomID}`)
+      .then(response => {
+        setRoom(response.data)
+      })
+      .finally(() => setLoading(false))
   }
 
   useEffect(() => {
-    setLoading(true)
     fetchRoom(id, roomID)
-    setLoading(false)
   }, [])
 
-  return { room, isLoading }
+  return { room, loading }
 }
 
 export default useWarehouseRoomDetail

@@ -8,13 +8,13 @@ import AvailableRooms from './available-rooms'
 import Details from './details'
 
 export function WarehouseScreen({ route, navigation }) {
-  const { warehouse, isLoading } = useWarehouseDetail(route.params.warehouseID)
+  const { warehouse, loading } = useWarehouseDetail(route.params.warehouseID)
 
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <ScrollView>
-        {!isLoading && (
+        {!loading && (
           <Image
             source={{ uri: warehouse.attributes['image_url'] }}
             style={{
@@ -24,7 +24,7 @@ export function WarehouseScreen({ route, navigation }) {
           />
         )}
         <Container>
-          {!isLoading && (
+          {!loading && (
             <>
               <BaseText semiBold grande sm>
                 {warehouse.attributes.name}
@@ -38,12 +38,12 @@ export function WarehouseScreen({ route, navigation }) {
                 {warehouse.relationships.address['province']}
               </BaseText>
               <Details
-                isLoading={isLoading}
+                loading={loading}
                 warehouse={warehouse}
                 navigation={navigation}
               />
               <AvailableRooms
-                isLoading={isLoading}
+                loading={loading}
                 warehouse={warehouse}
                 navigation={navigation}
               />

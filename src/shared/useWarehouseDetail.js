@@ -26,21 +26,23 @@ function useWarehouseDetail(id) {
       categories: [],
     },
   })
-  const [isLoading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const fetchWarehouse = id => {
-    api.get(`/warehouses/${id}`).then(response => {
-      setWarehouse(response.data)
-    })
+    setLoading(true)
+    api
+      .get(`/warehouses/${id}`)
+      .then(response => {
+        setWarehouse(response.data)
+      })
+      .finally(() => setLoading(false))
   }
 
   useEffect(() => {
-    setLoading(true)
     fetchWarehouse(id)
-    setLoading(false)
   }, [])
 
-  return { warehouse, isLoading }
+  return { warehouse, loading }
 }
 
 export default useWarehouseDetail

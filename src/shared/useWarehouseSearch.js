@@ -7,9 +7,10 @@ function useWarehouseSearch(query, limit = 20) {
     total_items: 0,
     items: [],
   })
-  const [isLoading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const fetchWarehouses = (query, limit, cancelSource) => {
+    setLoading(true)
     api
       .get(`/warehouses/search?q=${query}&limit=${limit}`, {
         cancelToken: cancelSource.token,
@@ -20,17 +21,18 @@ function useWarehouseSearch(query, limit = 20) {
       .then(response => {
         setWarehouses(response.data)
       })
+      .finally(() => setLoading(false))
   }
 
   useEffect(() => {
     const source = axios.CancelToken.source()
-    setLoading(true)
+
     fetchWarehouses(query, limit, source)
-    setLoading(false)
+
     return () => source.cancel()
   }, [query])
 
-  return { warehouses, isLoading }
+  return { warehouses, loading }
 }
 
 export default useWarehouseSearch

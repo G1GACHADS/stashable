@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const LAN_URL = 'http://192.168.1.5:5000'
+const LAN_URL = 'http://192.168.1.7:5000'
 
 export default axios.create({
   // baseURL: 'https://stashable-backend.fly.dev',

@@ -57,21 +57,23 @@ function useRentalHistoryDetail(rentalID) {
     },
   })
   const [refreshControl, setRefreshControl] = useState(false)
-  const [isLoading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const fetchRentalDetail = rentalID => {
-    api.get(`/rent/history/${rentalID}`).then(response => {
-      setRental(response.data)
-    })
+    setLoading(true)
+    api
+      .get(`/rent/history/${rentalID}`)
+      .then(response => {
+        setRental(response.data)
+      })
+      .finally(() => setLoading(false))
   }
 
   useEffect(() => {
-    setLoading(true)
     fetchRentalDetail(rentalID)
-    setLoading(false)
   }, [refreshControl])
 
-  return { rental, isLoading, refreshControl, setRefreshControl }
+  return { rental, loading, refreshControl, setRefreshControl }
 }
 
 export default useRentalHistoryDetail

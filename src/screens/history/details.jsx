@@ -1,10 +1,4 @@
-import {
-  ActivityIndicator,
-  Alert,
-  ScrollView,
-  StatusBar,
-  View,
-} from 'react-native'
+import { Alert, ScrollView, StatusBar, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import routes from '../../constants/routes'
@@ -16,6 +10,7 @@ import api from '../../api'
 import BaseText from '../../components/base-text'
 import Button from '../../components/button'
 import Container from '../../components/container'
+import Loading from '../../components/loading'
 import Status from '../../components/status'
 
 const HistoryDetailImage = styled.Image`
@@ -199,7 +194,7 @@ export function HistoryDetailScreen({ route, navigation }) {
   const theme = useTheme()
 
   const { rentalID } = route.params
-  const { rental, isLoading } = useRentalHistoryDetail(rentalID)
+  const { rental, loading } = useRentalHistoryDetail(rentalID)
 
   return (
     <>
@@ -207,8 +202,8 @@ export function HistoryDetailScreen({ route, navigation }) {
       <ScrollView>
         <HistoryDetailImage source={{ uri: rental.attributes.image_urls[0] }} />
         <Container>
-          {isLoading && <ActivityIndicator />}
-          {!isLoading && (
+          {loading && <Loading />}
+          {!loading && (
             <>
               <HistoryDetailHeader
                 name={rental.attributes.name}

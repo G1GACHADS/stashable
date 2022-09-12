@@ -34,7 +34,7 @@ const CheckoutPaymentPanel = ({
   error,
   totalFee,
   isPaidAnnually,
-  isLoading,
+  loading,
   disabled,
   nextStep,
 }) => {
@@ -58,7 +58,7 @@ const CheckoutPaymentPanel = ({
           sm
           title="Checkout"
           disabled={disabled}
-          loading={isLoading}
+          loading={loading}
           onPress={nextStep}
         />
       </CoreCheckoutPaymentPanel>
@@ -70,7 +70,7 @@ const FirstStep = ({
   theme,
   form,
   setForm,
-  isLoading,
+  loading,
   warehouse,
   room,
   shippingType,
@@ -123,7 +123,7 @@ const FirstStep = ({
         isPaidAnnually={isPaidAnnually}
         disabled={isEmpty}
         error={error}
-        isLoading={isLoading}
+        loading={loading}
         nextStep={nextStep}
       />
     </>
@@ -147,15 +147,15 @@ const SecondStep = ({ rentalID, nextStep }) => {
     cvc: '',
     nameOnCreditCard: '',
   })
-  const [isLoading, setIsLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const isEmpty = Object.values(paymentMethod).some(value => value === '')
 
   const handlePaymentMethodSubmit = useCallback(async () => {
-    setIsLoading(true)
+    setLoading(true)
     await api
       .patch(`/rent/${rentalID}/pay`, {})
-      .finally(() => setIsLoading(false))
+      .finally(() => setLoading(false))
     nextStep()
   }, [rentalID, nextStep])
 
@@ -209,7 +209,7 @@ const SecondStep = ({ rentalID, nextStep }) => {
       <Button
         title="Next"
         disabled={isEmpty}
-        loading={isLoading}
+        loading={loading}
         onPress={handlePaymentMethodSubmit}
       />
     </>
@@ -274,7 +274,7 @@ export function CheckoutScreen({ route, navigation }) {
   })
   const [shippingType, setShippingType] = useState('')
   const [error, setError] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [rentalID, setRentalID] = useState(startAtStep)
 
   // Change title based on step
@@ -317,7 +317,7 @@ export function CheckoutScreen({ route, navigation }) {
       }
     })
 
-    setIsLoading(true)
+    setLoading(true)
     api
       .post(`/rent/${warehouse.attributes.id}`, payload, {
         headers: {
@@ -333,7 +333,7 @@ export function CheckoutScreen({ route, navigation }) {
         setError(error.message)
       })
       .finally(() => {
-        setIsLoading(false)
+        setLoading(false)
       })
   }, [form, shippingType])
 
@@ -349,7 +349,7 @@ export function CheckoutScreen({ route, navigation }) {
               warehouse={warehouse}
               form={form}
               setForm={setForm}
-              isLoading={isLoading}
+              loading={loading}
               shippingType={shippingType}
               setShippingType={setShippingType}
               totalFee={totalFee}

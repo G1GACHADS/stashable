@@ -1,8 +1,9 @@
-import { ActivityIndicator, SafeAreaView } from 'react-native'
+import { SafeAreaView } from 'react-native'
 
 import { useMemo } from 'react'
 import BaseText from '../../components/base-text'
 import HorizontalCardItem from '../../components/horizontal-card-item'
+import Loading from '../../components/loading'
 import routes from '../../constants/routes'
 import useWarehouse from '../../shared/useWarehouse'
 
@@ -28,15 +29,15 @@ const WarehouseItem = ({ item, onPress }) => {
 }
 
 export function MoreWarehouse({ navigation }) {
-  const { warehouses, isLoading } = useWarehouse(10)
+  const { warehouses, loading } = useWarehouse(10)
   return (
     <>
       <BaseText semiBold tall xl mb={15}>
         More Warehouse
       </BaseText>
       <SafeAreaView>
-        {isLoading && <ActivityIndicator />}
-        {!isLoading &&
+        {loading && <Loading />}
+        {!loading &&
           warehouses['items'].map(item => (
             <WarehouseItem
               key={item.attributes.id}

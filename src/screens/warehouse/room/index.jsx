@@ -1,11 +1,5 @@
 import { useState } from 'react'
-import {
-  ActivityIndicator,
-  Image,
-  ScrollView,
-  StatusBar,
-  View,
-} from 'react-native'
+import { Image, ScrollView, StatusBar, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import SelectPlan from './select-plan'
@@ -23,6 +17,7 @@ import IconChemical from '../../../components/icons/icon-chemical'
 import IconElectric from '../../../components/icons/icon-electric'
 import IconFragile from '../../../components/icons/icon-fragile'
 import IconHeavyMaterial from '../../../components/icons/icon-heavymaterial'
+import Loading from '../../../components/loading'
 
 const RoomDetailHeader = ({ name, address }) => (
   <View style={{ marginBottom: 20 }}>
@@ -106,7 +101,7 @@ const RoomDetailSize = ({ length, width, height }) => (
 
 export function RoomDetailScreen({ route, navigation }) {
   const { warehouse, roomID } = route.params
-  const { room, isLoading } = useWarehouseRoomDetail(
+  const { room, loading } = useWarehouseRoomDetail(
     warehouse.attributes['id'],
     roomID
   )
@@ -117,8 +112,8 @@ export function RoomDetailScreen({ route, navigation }) {
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <ScrollView>
-        {isLoading && <ActivityIndicator />}
-        {!isLoading && (
+        {loading && <Loading />}
+        {!loading && (
           <Image
             source={{ uri: room.attributes.image_url }}
             style={{
@@ -128,8 +123,8 @@ export function RoomDetailScreen({ route, navigation }) {
           />
         )}
         <Container>
-          {isLoading && <ActivityIndicator />}
-          {!isLoading && (
+          {loading && <Loading />}
+          {!loading && (
             <>
               <RoomDetailHeader
                 name={room.attributes.name}

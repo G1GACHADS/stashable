@@ -1,11 +1,11 @@
 import styled from 'styled-components/native'
 
-import { ActivityIndicator } from 'react-native'
 import BaseText from '../../components/base-text'
 import IconChemical from '../../components/icons/icon-chemical'
 import IconElectric from '../../components/icons/icon-electric'
 import IconFragile from '../../components/icons/icon-fragile'
 import IconHeavyMaterial from '../../components/icons/icon-heavymaterial'
+import Loading from '../../components/loading'
 
 const DetailContainer = styled.View`
   margin-top: 15px;
@@ -51,7 +51,7 @@ const WarehouseDetailSupportedCategories = ({ categories }) => (
   </CategoryContainer>
 )
 
-export function Details({ isLoading, warehouse, navigation }) {
+export function Details({ loading, warehouse, navigation }) {
   return (
     <>
       <DetailContainer>
@@ -67,8 +67,8 @@ export function Details({ isLoading, warehouse, navigation }) {
           Description
         </BaseText>
         <BaseText color="grey3" regular tall md mb={5}>
-          {isLoading && <ActivityIndicator />}
-          {!isLoading && warehouse.attributes['description']}
+          {loading && <Loading />}
+          {!loading && warehouse.attributes['description']}
         </BaseText>
       </DetailContainer>
       <DetailContainer>
@@ -76,12 +76,12 @@ export function Details({ isLoading, warehouse, navigation }) {
           Contact Number
         </BaseText>
         <BaseText color="grey3" regular tall md mb={5}>
-          {isLoading && <ActivityIndicator />}
-          {!isLoading && warehouse.attributes['email']}
+          {loading && <Loading />}
+          {!loading && warehouse.attributes['email']}
         </BaseText>
         <BaseText color="grey3" regular tall md mb={20}>
-          {isLoading && <ActivityIndicator />}
-          {!isLoading && warehouse.attributes['phone_number']}
+          {loading && <Loading />}
+          {!loading && warehouse.attributes['phone_number']}
         </BaseText>
       </DetailContainer>
     </>

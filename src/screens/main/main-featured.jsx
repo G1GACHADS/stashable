@@ -1,4 +1,4 @@
-import { ActivityIndicator, Image, ScrollView, View } from 'react-native'
+import { Image, ScrollView, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import routes from '../../constants/routes'
@@ -12,6 +12,7 @@ import IconChemicalCategory from '../../components/icons/icon-chemical-category'
 import IconElectricCategory from '../../components/icons/icon-electric-category'
 import IconFragileCategory from '../../components/icons/icon-fragile-category'
 import IconHeavyMaterialsCategory from '../../components/icons/icon-heavy-materials-category'
+import Loading from '../../components/loading'
 
 const CoreFeaturedWarehouseCard = styled.Pressable`
   width: 175px;
@@ -83,7 +84,7 @@ const FeaturedWarehouseCard = ({ theme, item, onPress }) => {
 
 export function Featured({ navigation }) {
   const theme = useTheme()
-  const { warehouses, isLoading } = useWarehouse(3)
+  const { warehouses, loading } = useWarehouse(3)
 
   return (
     <>
@@ -97,8 +98,8 @@ export function Featured({ navigation }) {
         showsHorizontalScrollIndicator={false}
         style={{ paddingLeft: 15 }}
       >
-        {isLoading && <ActivityIndicator />}
-        {!isLoading &&
+        {loading && <Loading />}
+        {!loading &&
           warehouses['items'].map(item => (
             <FeaturedWarehouseCard
               key={item.attributes.id}

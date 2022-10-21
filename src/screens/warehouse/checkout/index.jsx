@@ -143,10 +143,10 @@ const InlineFormItem = styled.View`
 
 const SecondStep = ({ rentalID, nextStep }) => {
   const [paymentMethod, setPaymentMethod] = useState({
-    creditCardNumber: '',
-    expirationDate: '',
-    cvc: '',
-    nameOnCreditCard: '',
+    creditCardNumber: '5399 9245 6467 1955',
+    expirationDate: '02/27',
+    cvc: '553',
+    nameOnCreditCard: 'Brian Tracy',
   })
   const [loading, setLoading] = useState(false)
 

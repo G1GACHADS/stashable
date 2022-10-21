@@ -69,7 +69,7 @@ const RentalDescription = ({
         Rental Plan
       </BaseText>
       <BaseText mb="20" color="grey3" regular tall md>
-        {{ paidAnnually } ? 'Yearly Plan' : 'Montly Plan'}
+        {paidAnnually ? 'Yearly Plan' : 'Monthly Plan'}
       </BaseText>
     </View>
   )
@@ -165,7 +165,7 @@ const RentalAction = ({ theme, rental, navigation }) => {
             onPress={() => navigation.navigate(routes.historyDetailPageRoute)}
           />
           <Button
-            title="Show Barcode"
+            title="Show QR Code"
             onPress={() => navigation.navigate(routes.barcodePageRoute)}
           />
         </>
@@ -203,7 +203,7 @@ export function HistoryDetailScreen({ route, navigation }) {
 
   const { rentalID } = route.params
   const { rental, loading } = useRentalHistoryDetail(rentalID)
-
+  console.log(rental)
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
@@ -220,7 +220,7 @@ export function HistoryDetailScreen({ route, navigation }) {
               />
               <RentalDescription
                 status={rental.attributes.status}
-                paidAnnually={rental.attributes.paid_annually}
+                paidAnnually={rental.attributes['paid_annually']}
                 address={rental.relationships.address}
                 createdAt={rental.attributes.created_at}
                 paymentDue={rental.attributes.payment_due}

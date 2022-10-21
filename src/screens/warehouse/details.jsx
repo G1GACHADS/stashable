@@ -73,7 +73,7 @@ export function Details({ loading, warehouse, navigation }) {
       </DetailContainer>
       <DetailContainer>
         <BaseText semiBold tall xl mb={5}>
-          Contact Number
+          Contact
         </BaseText>
         <BaseText color="grey3" regular tall md mb={5}>
           {loading && <Loading />}

@@ -4,11 +4,11 @@ import styled from 'styled-components/native'
 import BaseText from './base-text'
 import Status from './status'
 
-import IconFragileCategory from './icons/icon-fragile-category'
-import IconElectricCategory from './icons/icon-electric-category'
-import IconHeavyMaterialsCategory from './icons/icon-heavy-materials-category'
-import IconChemicalCategory from './icons/icon-chemical-category'
 import { currencyFormatter } from '../shared/currencyFormatter'
+import IconChemicalCategory from './icons/icon-chemical-category'
+import IconElectricCategory from './icons/icon-electric-category'
+import IconFragileCategory from './icons/icon-fragile-category'
+import IconHeavyMaterialsCategory from './icons/icon-heavy-materials-category'
 
 const CoreHorizontalCardItem = styled.Pressable`
   display: flex;
@@ -103,7 +103,10 @@ export const HorizontalCardItem = ({
 
   return (
     <CoreHorizontalCardItem onPress={onPress}>
-      <CoreHorizontalCardImage source={{ uri: imageURL }} resizeMode="cover" />
+      <CoreHorizontalCardImage
+        source={{ uri: imageURL, cache: 'force-cache' }}
+        resizeMode="cover"
+      />
       <CoreHorizontalCardContent>
         {status ? (
           <CoreHorizontalCardWithStatus>

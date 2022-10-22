@@ -174,15 +174,15 @@ export const RegisterForm = ({ navigation }) => {
   const [loading, setLoading] = useState(false)
   const [step, setStep] = useState(0)
   const [form, setForm] = useState({
-    fullName: 'Brian Tracy',
-    email: 'briantracy@mail.com',
-    phoneNumber: '08033528885',
-    province: 'DKI Jakarta',
-    city: 'Jakarta Pusat',
-    streetName: 'Jln. Merdeka Barat No.13',
-    zipCode: '123456',
-    password: '123123',
-    confirmPassword: '123123',
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+    province: '',
+    city: '',
+    streetName: '',
+    zipCode: '',
+    password: '',
+    confirmPassword: '',
   })
 
   const nextStep = () => setStep(step + 1)

@@ -203,7 +203,7 @@ export function HistoryDetailScreen({ route, navigation }) {
 
   const { rentalID } = route.params
   const { rental, loading } = useRentalHistoryDetail(rentalID)
-  console.log(rental)
+
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />

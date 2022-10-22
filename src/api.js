@@ -1,10 +1,9 @@
 import axios from 'axios'
-
-const LAN_URL = 'http://192.168.2.175:5000'
+import Constants from 'expo-constants'
 
 export default axios.create({
   // baseURL: 'https://stashable-backend.fly.dev',
-  baseURL: LAN_URL,
+  baseURL: Constants.manifest.extra.backendURL,
   headers: {
     Accept: 'application/json',
   },

@@ -1,0 +1,15 @@
+{
+  "build": {
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "production": {
+      "distribution": "internal",
+      "env": {
+        "BACKEND_URL": "https://stashable-backend.fly.dev"
+      }
+    }
+  }
+}

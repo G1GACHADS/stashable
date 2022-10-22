@@ -19,6 +19,7 @@ module.exports = {
     supportsTablet: true,
   },
   android: {
+    package: 'com.gigachads.stashable',
     adaptiveIcon: {
       foregroundImage: './src/assets/adaptive-icon.png',
       backgroundColor: '#FFFFFF',
@@ -28,7 +29,10 @@ module.exports = {
     favicon: './src/assets/favicon.png',
   },
   extra: {
-    backendURL: process.env.BACKEND_URL,
+    backendURL: process.env.BACKEND_URL ?? 'http://192.168.1.8:5000',
+    eas: {
+      projectId: 'c9bf37d3-2d96-402d-928d-ffa330140c41',
+    },
   },
   plugins: [['expo-image-picker']],
 }

@@ -9,20 +9,21 @@ module.exports = {
   splash: {
     image: './src/assets/splash.png',
     resizeMode: 'contain',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#FFFFFE',
   },
   updates: {
     fallbackToCacheTimeout: 0,
   },
   assetBundlePatterns: ['**/*'],
   ios: {
+    bundleIdentifier: 'com.gigachads.stashable',
     supportsTablet: true,
   },
   android: {
     package: 'com.gigachads.stashable',
     adaptiveIcon: {
       foregroundImage: './src/assets/adaptive-icon.png',
-      backgroundColor: '#FFFFFF',
+      backgroundColor: '#FFFFFE',
     },
   },
   web: {

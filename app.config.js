@@ -30,7 +30,7 @@ module.exports = {
     favicon: './src/assets/favicon.png',
   },
   extra: {
-    backendURL: process.env.BACKEND_URL ?? 'http://192.168.1.8:5000',
+    backendURL: process.env.BACKEND_URL ?? 'http://192.168.1.12:5000',
     eas: {
       projectId: 'c9bf37d3-2d96-402d-928d-ffa330140c41',
     },

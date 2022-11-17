@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import api from '../../../api'
 import routes from '../../../constants/routes'
+import shipping from '../../../constants/shipping'
 
 import ItemForm from './item-form'
 import ItemSelectShippingType from './item-select-shipping-type'
@@ -273,7 +274,7 @@ AQUA, kebaikan alam, kebaikan hidup.`,
     quantity: '12',
     images: [null, null, null, null],
   })
-  const [shippingType, setShippingType] = useState('')
+  const [shippingType, setShippingType] = useState(shipping.pickUpTruck)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [rentalID, setRentalID] = useState(startAtStep)
